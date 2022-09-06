@@ -3,6 +3,8 @@
   "version": 2,
   "projects": {
     "admin-dashboard": "apps/admin-dashboard",
-    "admin-dashboard-e2e": "apps/admin-dashboard-e2e"
+    "admin-dashboard-e2e": "apps/admin-dashboard-e2e",
+    "roadmap": "apps/roadmap",
+    "roadmap-e2e": "apps/roadmap-e2e"
   }
 }
