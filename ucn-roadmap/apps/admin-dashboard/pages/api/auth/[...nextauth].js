@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials";
-import axios from 'axios';
+import axios from "axios"
 import jwt_decode from "jwt-decode"
 
 

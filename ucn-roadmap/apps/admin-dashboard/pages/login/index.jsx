@@ -32,9 +32,9 @@ const Index = ({ csrfToken }) => {
                 <input placeholder="Email" name="user" type="email" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={e => setEmail(e.target.value)} />
                 <div className="password_container">
                     <input placeholder="Adgangskode" name="password" minLength="3" type={visibility ? "text" : "Password"} value={password} onChange={e => setPassword(e.target.value)} />
-                    <button onClick={handleVisibility}>
+                    <div onClick={handleVisibility}>
                         {visibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                    </button>
+                    </div>
                 </div>
 
 
