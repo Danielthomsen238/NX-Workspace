@@ -5,6 +5,8 @@ import { getCsrfToken } from "next-auth/react"
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
+import UCNLogo from '../../src/images/ucnlogo.svg'
+
 
 
 const Index = ({ csrfToken }) => {
@@ -25,10 +27,11 @@ const Index = ({ csrfToken }) => {
         <>
             <form method="post" action="/api/auth/callback/credentials" className="login_container">
                 <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+                <UCNLogo />
                 <h2>Log ind</h2>
                 <input placeholder="Email" name="user" type="email" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={e => setEmail(e.target.value)} />
                 <div className="password_container">
-                    <input placeholder="Adgangskode" name="password" minlength="8" type={visibility ? "text" : "Password"} value={password} onChange={e => setPassword(e.target.value)} />
+                    <input placeholder="Adgangskode" name="password" minLength="3" type={visibility ? "text" : "Password"} value={password} onChange={e => setPassword(e.target.value)} />
                     <button onClick={handleVisibility}>
                         {visibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
                     </button>
