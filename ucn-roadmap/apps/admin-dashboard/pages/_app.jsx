@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import '../src/styles/styles.css';
+import '../src/styles/login.css';
 
 function CustomApp({ Component, pageProps }) {
   return (
