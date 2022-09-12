@@ -11,14 +11,14 @@ function CustomApp({ Component, pageProps }) {
         <title>Welcome to admin-dashboard!</title>
       </Head>
       <SessionProvider session={pageProps.session}>
-      {Component.auth ? (
-        <Auth>
-          <Component {...pageProps} />
-        </Auth>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </SessionProvider>
+        {Component.auth ? (
+          <Auth>
+            <Component {...pageProps} />
+          </Auth>
+        ) : (
+            <Component {...pageProps} />
+          )}
+      </SessionProvider>
     </>
   );
 }

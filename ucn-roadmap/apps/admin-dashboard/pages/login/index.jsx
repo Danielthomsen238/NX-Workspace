@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 
+import { getCsrfToken } from "next-auth/react"
 
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const Index = () => {
+
+
+const Index = ({ csrfToken }) => {
 
     const [visibility, setVisibility] = useState(false)
 
@@ -20,11 +23,12 @@ const Index = () => {
 
     return (
         <>
-            <form className="login_container">
+            <form method="post" action="/api/auth/callback/credentials" className="login_container">
+                <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
                 <h2>Log ind</h2>
-                <input placeholder="Email" type="email" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={e => setEmail(e.target.value)} />
+                <input placeholder="Email" name="user" type="email" value={email} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" onChange={e => setEmail(e.target.value)} />
                 <div className="password_container">
-                    <input placeholder="Adgangskode" minlength="8" type={visibility ? "text" : "Password"} value={password} onChange={e => setPassword(e.target.value)} />
+                    <input placeholder="Adgangskode" name="password" minlength="8" type={visibility ? "text" : "Password"} value={password} onChange={e => setPassword(e.target.value)} />
                     <button onClick={handleVisibility}>
                         {visibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
                     </button>
@@ -32,11 +36,20 @@ const Index = () => {
 
 
 
-                <button> Log på </button>
+                <button type="submit"> Log på </button>
                 <button className="sign_up_button"> eller, Tilmelde </button>
             </form>
         </>
     );
 }
 
+export const getServerSideProps = async (context) => {
+    return {
+        props: {
+            csrfToken: await getCsrfToken(context),
+        },
+    };
+};
+
 export default Index;
+
