@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios"
 import jwt_decode from "jwt-decode"
 
+const base_URL = process.env.base_URL
 
 export default NextAuth({
   //Configure JWT
@@ -73,7 +74,7 @@ const login = async (username, password) => {
     password
   }
   try {
-    const response = axios.post('http://localhost:4000/login', data)
+    const response = axios.post(base_URL, data)
     return response
   } catch (error) {
     console.log(error)
