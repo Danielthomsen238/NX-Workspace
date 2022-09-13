@@ -1,0 +1,96 @@
+@import './helper/variables';
+
+
+//font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+.body {
+  position: relative;
+  height: 100vh;
+  background-color: $base_Color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -9997;
+  overflow: hidden;
+}
+
+
+
+.login_container {
+  position: relative;
+  margin:0 auto;
+  width: 30vw;
+  padding: 2vw 2vw 2vw 2vw;
+  background-color: $white_Color;
+  border-radius: 0.5vw;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+
+
+  h2 {
+    margin-bottom: 1vw;
+    font-size: 2.3vw;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.4vw;
+    padding: 0.5vw;
+    font-size: 1.5vw;
+    margin-bottom: 1vw;
+  }
+
+  .sign_up_button {
+    background-color: $white_Color;
+    color: grey;
+    border: 2px solid $white_Color;
+  }
+
+
+
+  button {
+    width: 100%;
+    font-size: 1.5vw;
+    border-radius: 0.4vw;
+    background-color: $base_Color;
+    color: $white_Color;
+    transition: 300ms ease-in-out;
+    margin-bottom: 1vw;
+    padding: 0.5vw;
+    border: 2px solid $base_Color;
+    cursor: pointer;
+    &:hover {
+      background-color: $black_Color;
+      border: 2px solid $black_Color;
+      color: $white_Color;
+    }
+  }
+
+
+}
+
+.password_container {
+  position: relative;
+  width: 100%;
+
+  div {
+    position: absolute;
+    top: 0.7vw;
+    right: 1vw;
+    color: black;
+    transition: 0ms;
+    border: none;
+    transform: scale(1.2);
+
+  }
+}
+
+
+.background {
+  position: absolute;
+  z-index: -9996;
+  top: 0;
+  transform: rotate(30deg);
+}

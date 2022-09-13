@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#__next {
+  position: relative;
+  z-index: -9999;
+}
+
+body {
+  position: relative;
+  z-index: -9998;
+}
+
+#ucnlogo_svg__Layer_1 {
+  position: absolute;
+  top: 2vw;
+  right: 2.5vw;
+  width: 4vw;
+}
+
+.ucnbg_svg__bg0 {
+  fill: rgba(190, 214, 219, 0.1960784314);
+}

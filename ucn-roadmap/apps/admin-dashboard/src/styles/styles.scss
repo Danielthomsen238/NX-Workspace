@@ -1,0 +1,27 @@
+@import './helper/variables';
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  #__next {
+    position: relative;
+    z-index: -9999;
+  }
+  body {
+    position: relative;
+    z-index: -9998;
+  }
+
+//logo
+#ucnlogo_svg__Layer_1 {
+    position: absolute;
+    top: 2vw;
+    right: 2.5vw;
+    width: 4vw;
+  }
+  //bg
+      .ucnbg_svg__bg0{
+      fill: #bed6db32;
+    }
