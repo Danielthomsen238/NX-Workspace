@@ -13,7 +13,6 @@ const SignUp = () => {
     //router 
     const router = useRouter()
     //geocoding 
-    const [latlng, getGeoCoding] = useState({})
     const api = "AIzaSyCufVGqDojiQIsK6ndPvoxPJAWvPqG0_e0"
     //bruger form
     const [firstVisibility, setFirstVisibility] = useState(false)
@@ -32,7 +31,6 @@ const SignUp = () => {
     const [skoleTelefon, setSkoleTelefon] = useState()
     const [skoleEmail, setSkoleEmail] = useState()
     const [beskrivelse, setBeskrivelse] = useState()
-    // const [skoleId, setSkoleId] = useState()
 
 
   const handleSubmit = () => {
@@ -44,7 +42,7 @@ const SignUp = () => {
     (response) => {
       const { lat, lng } = response.results[0].geometry.location;
       if(lat && lng){
-        submit(lat, lng)
+        submitSkole(lat, lng)
       }
       
     },
@@ -54,7 +52,7 @@ const SignUp = () => {
   )
 
 } 
-    const submit = (lat, lng) => {
+    const submitSkole = (lat, lng) => {
         const data = {
             name: skoleNavn,
             address: address,
