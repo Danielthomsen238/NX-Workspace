@@ -9,6 +9,7 @@ body {
 }
 
 .login_container {
+  position: relative;
   margin: auto;
   margin-top: 10vw;
   width: 30vw;
@@ -50,14 +51,30 @@ body {
   position: relative;
   width: 100%;
 }
+<<<<<<< HEAD
 .password_container button {
+=======
+
+.password_container div {
+>>>>>>> 3f8f7e14953d671f62e78024709dfada76108115
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0);
+  top: 0.7vw;
+  right: 1vw;
   color: black;
   transition: 0ms;
   border: none;
+<<<<<<< HEAD
   width: 4vw;
   height: 3.5vw;
 }
+=======
+  transform: scale(1.2);
+}
+
+#ucnlogo_svg__Layer_1 {
+  position: absolute;
+  top: 2vw;
+  right: 2.5vw;
+  width: 4vw;
+}
+>>>>>>> 3f8f7e14953d671f62e78024709dfada76108115
