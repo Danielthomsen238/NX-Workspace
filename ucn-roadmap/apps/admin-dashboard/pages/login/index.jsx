@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import Link from 'next/link';
 import { getCsrfToken } from "next-auth/react"
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -39,7 +40,8 @@ const Index = ({ csrfToken }) => {
 
 
                 <button type="submit"> Log på </button>
-                <button className={login_styles.sign_up_button}> eller, Tilmelde </button>
+                
+               <Link href="/login/signUp"><button className={login_styles.sign_up_button}> eller, Tilmelde </button></Link>
             </form>
             <UCNBackGround className={login_styles.background}/>
         </div>

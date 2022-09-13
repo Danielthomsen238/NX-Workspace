@@ -34,6 +34,7 @@
   }
 
   input {
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     box-sizing: border-box;
     border-radius: 0.4vw;
@@ -43,14 +44,16 @@
   }
 
   .sign_up_button {
+    font-family: 'Montserrat', sans-serif;
     background-color: $white_Color;
     color: grey;
     border: 2px solid $white_Color;
   }
-
+    
 
 
   button {
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     font-size: 1.5vw;
     border-radius: 0.4vw;
@@ -90,6 +93,7 @@
 
 .background {
   position: absolute;
+  width: 80%;
   z-index: -9996;
   top: 0;
   transform: rotate(30deg);
