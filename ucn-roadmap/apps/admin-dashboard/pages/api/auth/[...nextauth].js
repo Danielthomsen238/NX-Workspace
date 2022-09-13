@@ -27,7 +27,6 @@ export default NextAuth({
           async authorize(credentials) {
              const accessToken = await login(credentials.user, credentials.password)
              const payload = jwt_decode(accessToken.data.token)
-             console.log(payload)
              if(accessToken.data.token){
               return {userName: credentials.user, token: accessToken.data.token, userID: payload.user_id, firstname: payload.firstname, role_id: payload.role_id, role: payload.role}
              }else {
