@@ -1,7 +1,55 @@
-const navbar = () => {
-    return (<>
+import LogoutIcon from '@mui/icons-material/Logout';
+import Groups2Icon from '@mui/icons-material/Groups2';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import SchoolIcon from '@mui/icons-material/School';
+import ListIcon from '@mui/icons-material/List';
+import SettingsIcon from '@mui/icons-material/Settings';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
+import navbar_styles from '../src/styles/navbar.module.css'
+
+import { useSession } from "next-auth/react"
+
+import { useState } from 'react';
+
+import { signOut } from 'next-auth/react'
+
+
+
+
+const Navbar = () => {
+    const { data: session, status } = useSession();
+
+    const [isDroppedUp, setIsDroppedUp] = useState(false);
+
+
+    const handleDropUp = event => {
+        setIsDroppedUp(current => !current);
+    };
+
+    return (<>
+        <nav className={navbar_styles.nav}>
+            <div className={navbar_styles.current_user_container}>
+                <div><img src="" alt="" /></div>
+                <h2 className={navbar_styles.current_user_name}>{session.user.firstname}</h2>
+                <p className={navbar_styles.current_user_school}>{session.user.username}</p>
+            </div>
+            <ul className={isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul}>
+                <li>Admin <ArrowDropUpIcon className={isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows} onClick={handleDropUp} /></li>
+                <li> <Groups2Icon className={navbar_styles.icons} /> Users</li>
+                <li> <ApartmentIcon className={navbar_styles.icons} /> Schools</li>
+                <li> <SchoolIcon className={navbar_styles.icons} /> Courses</li>
+                <li> <ListIcon className={navbar_styles.icons} /> Categories</li>
+            </ul>
+            <ul >
+                <li>User</li>
+                <li> <SettingsIcon className={navbar_styles.icons} /> Settings</li>
+                <li onClick={() => signOut()}> <LogoutIcon className={navbar_styles.icons} /><button>Sign Out</button></li>
+            </ul>
+
+
+        </nav>
     </>);
 }
 
-export default navbar;
+export default Navbar;
