@@ -1,32 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
   position: absolute;
-  font-family: 'Montserrat', sans-serif;
-  width: 100vw;
+
+  font-family: "Montserrat", sans-serif;
+  width: 190vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: -9996;
   transition: 400ms ease-in-out;
-  left: 35%;
+  left: 35vw;
 }
 
 .form {
+  margin-top: 2vw;
   width: 30vw;
-  padding: 2vw 2vw 2vw 2vw;
+  padding: 1vw 1vw 1vw 1vw;
   background-color: #fff;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
   border-radius: 0.5vw;
 }
 
 .form fieldset {
+  border-radius: 10px;
   padding: 1vw;
+  border-color: rgba(0, 0, 0, 0.45);
 }
 
 .form fieldset legend {
   font-size: 1.3vw;
   padding: 0.5vw;
   margin-left: 0.5vw;
+  color: #004250;
 }
 
 .form fieldset input {
@@ -34,22 +39,65 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 0.4vw;
+  border-color: rgba(0, 0, 0, 0.45);
   padding: 0.5vw;
   font-size: 1.3vw;
   margin-bottom: 1vw;
+  color: #004250;
+}
+.form fieldset input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset input:focus {
+  outline-color: #004250;
 }
 
 .form fieldset textarea {
   font-family: 'Montserrat', sans-serif;
   width: 100%;
-  min-height: 10vw;
-  resize: vertical;
+  min-height: 7vw;
+  resize: none;
   box-sizing: border-box;
   border-radius: 0.4vw;
+  border: solid 2px rgba(0, 0, 0, 0.45);
   padding: 0.5vw;
   font-size: 1.3vw;
-  margin-left: 0.2vw;
   margin-bottom: 1vw;
+  color: #004250;
+}
+.form fieldset textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset textarea::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset textarea:focus {
+  outline-color: #004250;
+}
+.form fieldset textarea::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+.form fieldset textarea::-webkit-scrollbar-track {
+  background: #004250; /* color of the tracking area */
+}
+.form fieldset textarea::-webkit-scrollbar-thumb {
+  background-color: #bed6db; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #004250; /* creates padding around scroll thumb */
+}
+.form .text_container {
+  border-radius: 0.4vw;
+  height: 7vw;
+  overflow: hidden;
 }
 
 .form .button_container {
@@ -61,12 +109,12 @@
   width: 100%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
-  background-color: #004250;
+  background-color: #0046AD;
   color: #fff;
   transition: 300ms ease-in-out;
   margin-bottom: 0.5vw;
   padding: 0.5vw;
-  border: 2px solid #004250;
+  border: 2px solid #0046AD;
   cursor: pointer;
 }
 
@@ -78,7 +126,7 @@
 
 .form .button_container .back_button {
   background-color: #fff;
-  color: grey;
+  color: #004250;
   border: 2px solid #fff;
 }
 
@@ -115,7 +163,7 @@
 .background {
   position: absolute;
   width: 80%;
+  left: 10%;
   z-index: -9997;
-  top: 20%;
   transform: rotate(30deg);
 }

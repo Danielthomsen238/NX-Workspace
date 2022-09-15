@@ -14,7 +14,9 @@
     z-index: -9998;
     overflow: hidden;
     background-color: #004250;
+
   }
+
 
 //logo
 #ucnlogo_svg__Layer_1 {
@@ -26,4 +28,12 @@
   //bg
       .ucnbg_svg__bg0{
       fill: #bed6db32;
+    }
+
+    .background {
+      position: absolute;
+      width: 80%;
+      z-index: -9996;
+      top: 0;
+      transform: rotate(30deg);
     }
