@@ -7,6 +7,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 import {useRouter} from 'next/router';
+import emailjs from 'emailjs-com'
 
 
 const SignUp = () => {
@@ -32,8 +33,9 @@ const SignUp = () => {
     const [skoleEmail, setSkoleEmail] = useState()
     const [beskrivelse, setBeskrivelse] = useState()
 
-
-  const handleSubmit = () => {
+//submit data after converting address to lat and lng
+  const handleSubmit = (e) => {
+  e.preventDefault()  
   Geocode.setApiKey(api);
   Geocode.setLanguage("en");
   Geocode.setLocationType("ROOFTOP");
@@ -88,17 +90,40 @@ const SignUp = () => {
         .catch((e) => { console.log(e)}
         )
     }
-
-
-
+//move the container on click next/back button
+    const moveContainer = (e) => {
+       e.preventDefault()
+       let container = document.querySelector("#container")
+       if(container.style.left == "35vw"){
+        container.style.left = "-35vw"
+       }else{
+        container.style.left = "35vw"
+       }
+       
+    }
+//see/unsee the password
     const handleFirstVisibility = () => {
         setFirstVisibility(current => !current);
     }
     const handleSecVisibility = () => {
         setSecVisibility(current => !current);
     }
+
+//Emailjs 
+const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
+
     return (
-    <div className={signUp_styles.body}>
+        <>
+    <div id="container" className={signUp_styles.body}>
         <form className={signUp_styles.form}>
             <fieldset>
                 <legend>Tilmeld Bruger</legend>
@@ -119,6 +144,12 @@ const SignUp = () => {
                     </div>
                 </div>
             </fieldset>
+            <div className={signUp_styles.button_container}>
+            <button onClick={moveContainer}>Næste</button>
+            <Link href="/login/"><button className={signUp_styles.back_button}>Tilbage</button></Link>
+            </div>
+            </form>
+            <form className={signUp_styles.form}>
             <fieldset>
                 <legend>Tilmeld Skole</legend>
                 <input type="text" placeholder="Navn på skolen" value={skoleNavn} onChange={(e) => setSkoleNavn(e.target.value)} />
@@ -129,10 +160,12 @@ const SignUp = () => {
                 <input type="email" placeholder="Email" value={skoleEmail} onChange={(e) => setSkoleEmail(e.target.value)} />
                 <textarea maxLength={1500} type="text" placeholder='Beskrivelse omkring skolen' value={beskrivelse} onChange={(e) => setBeskrivelse(e.target.value)} />
             </fieldset>
-          <div className={signUp_styles.button_container}><button onClick={handleSubmit} on type="button">Opret Bruger og Skole</button><Link href="/login/"><button className={signUp_styles.back_button}>Tilbage</button></Link></div> 
+          <div className={signUp_styles.button_container}><button onClick={handleSubmit} on type="button">Opret Bruger og Skole</button><button onClick={moveContainer} className={signUp_styles.back_button}>Tilbage</button></div> 
         </form>
+
+    </div>
     <UCNBackGround className={signUp_styles.background}/>
-    </div> 
+    </>
      );
 }
  

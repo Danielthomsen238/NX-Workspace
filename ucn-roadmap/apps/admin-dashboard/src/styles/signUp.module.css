@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
+  position: absolute;
   font-family: "Montserrat", sans-serif;
-  position: relative;
-  background-color: #004250;
-  padding: 5vw 0;
+  width: 100vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  z-index: -9997;
+  z-index: -9996;
+  transition: 400ms ease-in-out;
+  left: 35%;
 }
 
 .form {
@@ -21,7 +22,7 @@
   padding: 1vw;
 }
 .form fieldset legend {
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   padding: 0.5vw;
   margin-left: 0.5vw;
 }
@@ -31,7 +32,7 @@
   box-sizing: border-box;
   border-radius: 0.4vw;
   padding: 0.5vw;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-bottom: 1vw;
 }
 .form fieldset textarea {
@@ -42,7 +43,7 @@
   box-sizing: border-box;
   border-radius: 0.4vw;
   padding: 0.5vw;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   margin-left: 0.2vw;
   margin-bottom: 1vw;
 }
@@ -52,12 +53,12 @@
 .form .button_container button {
   font-family: "Montserrat", sans-serif;
   width: 100%;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   border-radius: 0.4vw;
   background-color: #004250;
   color: #fff;
   transition: 300ms ease-in-out;
-  margin-bottom: 1vw;
+  margin-bottom: 0.5vw;
   padding: 0.5vw;
   border: 2px solid #004250;
   cursor: pointer;
@@ -104,7 +105,7 @@
 .background {
   position: absolute;
   width: 80%;
-  z-index: -9996;
+  z-index: -9997;
   top: 20%;
   transform: rotate(30deg);
 }
