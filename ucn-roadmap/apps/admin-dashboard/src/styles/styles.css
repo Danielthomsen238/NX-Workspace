@@ -25,3 +25,11 @@ body {
 .ucnbg_svg__bg0 {
   fill: rgba(190, 214, 219, 0.1960784314);
 }
+
+.background {
+  position: absolute;
+  width: 80%;
+  z-index: -9996;
+  top: 0;
+  transform: rotate(30deg);
+}
