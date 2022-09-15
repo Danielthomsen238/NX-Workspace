@@ -149,7 +149,7 @@ const sendEmail = () => {
                 </div>
                 <button type="submit"> Log på </button>
          <button onClick={(e) => {e.preventDefault()
-                container.current.style.left = "-45vw"}} className={login_styles.sign_up_button}> eller, Tilmelde </button>
+                container.current.style.left = "-45vw"}} className={login_styles.sign_up_button}> eller, Tilmeld </button>
             </form>
             {/* Opret bruger form */}
         <form ref={form} className={signUp_styles.form}>
