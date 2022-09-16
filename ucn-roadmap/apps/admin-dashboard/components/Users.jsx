@@ -4,23 +4,22 @@ import { useEffect, useState } from "react";
 
 const Users = () => {
     const { data: session, status } = useSession();
-    const [data, setData] = useState()
-    console.log(session)
-    const config = {
-        headers: { Authorization: `Bearer ${session?.user.token}` }
-    };
-    useEffect(() => {
-        axios.get('http://localhost:4000/User')
-        .then((response) => {
-            console.log(response)
-    })
-    .catch((e) => {
-        console.log(e) 
-    }
-    )
-    },[])
 
-    return ( <h1>Users</h1> );
+
+
+    return (<>
+        <table>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Telefon</th>
+                <th>E-mail</th>
+                <th>School_id</th>
+                <th>Role_id</th>
+                <th>Active</th>
+            </tr>
+        </table>
+    </>);
 }
- 
+
 export default Users;
