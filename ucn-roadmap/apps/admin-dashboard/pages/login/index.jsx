@@ -103,7 +103,7 @@ const Index = ({csrfToken}) => {
             axios.post('http://localhost:4000/user', data)
             .then((response) => {
             sendEmail()   
-            router.push("/login")
+            router.push("/")
         })
         .catch((e) => { 
             setWaitButton(false)
