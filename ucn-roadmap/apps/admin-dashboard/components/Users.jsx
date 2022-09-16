@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 const Users = () => {
     const { data: session, status } = useSession();
     const [data, setData] = useState()
+    const [router, setRouter] = useState("user")
     console.log(session)
     const config = {
         headers: { Authorization: `Bearer ${session?.user.token}` }
     };
     useEffect(() => {
-        axios.get('http://localhost:4000/User')
+        axios.get(`http://localhost:4000/${router}`)
         .then((response) => {
             console.log(response)
     })
@@ -18,7 +19,7 @@ const Users = () => {
         console.log(e) 
     }
     )
-    },[])
+    },[router])
 
     return ( <h1>Users</h1> );
 }
