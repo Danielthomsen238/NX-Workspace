@@ -23,8 +23,7 @@ body {
 }
 
 .ucnbg_svg__bg0 {
-
-  fill: rgba(190, 214, 219, 0.1960784314);
+  fill: #bed6db32;
 }
 
 .background {
@@ -33,4 +32,9 @@ body {
   z-index: -9996;
   top: 0;
   transform: rotate(30deg);
+}
+
+.global_body {
+  display: flex;
+  justify-content: space-between;
 }
