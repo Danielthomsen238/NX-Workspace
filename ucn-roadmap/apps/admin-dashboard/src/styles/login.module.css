@@ -36,15 +36,11 @@
   margin-bottom: 1vw;
   border-color: rgba(0, 0, 0, 0.45);
 }
-.login_container input::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
-.login_container input:-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
+
 .login_container input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
+
 .login_container input:focus {
   outline-color: #004250;
 }
@@ -98,3 +94,4 @@
   top: 0;
   transform: rotate(30deg);
 }
+/*# sourceMappingURL=login.module.css.map */

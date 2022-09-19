@@ -1,39 +1,46 @@
 @import './helper/variables';
 
 * {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  #__next {
-    position: relative;
-    z-index: -9999;
-  }
-  body {
-    position: relative;
-    z-index: -9998;
-    overflow: hidden;
-    background-color: #004250;
+#__next {
+  position: relative;
+  z-index: -9999;
+}
 
-  }
+body {
+  position: relative;
+  z-index: -9998;
+  overflow: hidden;
+  background-color: #004250;
+
+}
 
 
 //logo
 #ucnlogo_svg__Layer_1 {
-    position: absolute;
-    top: 2vw;
-    right: 2.5vw;
-    width: 4vw;
-  }
-  //bg
-      .ucnbg_svg__bg0{
-      fill: #bed6db32;
-    }
+  position: absolute;
+  top: 2vw;
+  right: 2.5vw;
+  width: 4vw;
+}
 
-    .background {
-      position: absolute;
-      width: 80%;
-      z-index: -9996;
-      top: 0;
-      transform: rotate(30deg);
-    }
+//bg
+.ucnbg_svg__bg0 {
+  fill: #bed6db32;
+}
+
+.background {
+  position: absolute;
+  width: 80%;
+  z-index: -9996;
+  top: 0;
+  transform: rotate(30deg);
+}
+
+.global_body {
+  display: flex;
+  justify-content: space-between;
+}
