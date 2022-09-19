@@ -6,15 +6,13 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  color: #212121;
+  color: rgb(33, 33, 33);
 }
-
 .table td,
 .table th {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 0;
 }
-
 .table th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -22,22 +20,24 @@
   background-color: #004250;
   color: white;
 }
-
 .table tr {
   background-color: white;
 }
-
 .table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #d8d8d8;
 }
-
 .table tr:hover {
   background-color: #ddd;
 }
-
 .table button {
   border: none;
   background-color: rgba(255, 0, 0, 0);
+}
+.table input {
+  height: 2vw;
+  width: 100%;
+  border: none;
+  background-color: rgba(221, 221, 221, 0);
 }
 
 .icon {
@@ -51,7 +51,6 @@
   height: 3vw;
   display: inline;
 }
-
 .OverButton button {
   position: absolute;
   width: 2vw;
@@ -62,4 +61,3 @@
 .NotActive {
   border: orange solid;
 }
-/*# sourceMappingURL=user.module.css.map */
