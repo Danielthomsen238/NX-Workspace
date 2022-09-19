@@ -23,7 +23,7 @@ body {
 }
 
 .ucnbg_svg__bg0 {
-  fill: #bed6db32;
+  fill: rgba(190, 214, 219, 0.1960784314);
 }
 
 .background {
@@ -38,4 +38,3 @@ body {
   display: flex;
   justify-content: space-between;
 }
-/*# sourceMappingURL=styles.css.map */

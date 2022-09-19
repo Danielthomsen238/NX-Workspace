@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
   position: absolute;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 190vw;
   display: flex;
   justify-content: space-between;
@@ -19,22 +19,19 @@
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
   border-radius: 0.5vw;
 }
-
 .form fieldset {
   border-radius: 10px;
   padding: 1vw;
   border-color: rgba(0, 0, 0, 0.45);
 }
-
 .form fieldset legend {
   font-size: 1.3vw;
   padding: 0.5vw;
   margin-left: 0.5vw;
   color: #004250;
 }
-
 .form fieldset input {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
   box-sizing: border-box;
   border-radius: 0.4vw;
@@ -44,17 +41,20 @@
   margin-bottom: 1vw;
   color: #004250;
 }
-
+.form fieldset input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
 .form fieldset input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
-
 .form fieldset input:focus {
   outline-color: #004250;
 }
-
 .form fieldset textarea {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
   min-height: 7vw;
   resize: none;
@@ -66,46 +66,39 @@
   margin-bottom: 1vw;
   color: #004250;
 }
-
+.form fieldset textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
 .form fieldset textarea::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
-
 .form fieldset textarea:focus {
   outline-color: #004250;
 }
-
 .form fieldset textarea::-webkit-scrollbar {
-  width: 8px;
-  /* width of the entire scrollbar */
+  width: 8px; /* width of the entire scrollbar */
 }
-
 .form fieldset textarea::-webkit-scrollbar-track {
-  background: #004250;
-  /* color of the tracking area */
+  background: #004250; /* color of the tracking area */
 }
-
 .form fieldset textarea::-webkit-scrollbar-thumb {
-  background-color: #bed6db;
-  /* color of the scroll thumb */
-  border-radius: 20px;
-  /* roundness of the scroll thumb */
-  border: 3px solid #004250;
-  /* creates padding around scroll thumb */
+  background-color: #bed6db; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #004250; /* creates padding around scroll thumb */
 }
-
 .form .text_container {
   border-radius: 0.4vw;
   height: 7vw;
   overflow: hidden;
 }
-
 .form .button_container {
   margin-top: 2vw;
 }
-
 .form .button_container button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
@@ -117,13 +110,11 @@
   border: 2px solid #0046AD;
   cursor: pointer;
 }
-
 .form .button_container button:hover {
   background-color: black;
   border: 2px solid black;
   color: #fff;
 }
-
 .form .button_container .back_button {
   background-color: #fff;
   color: #004250;
@@ -134,7 +125,6 @@
   position: relative;
   width: 100%;
 }
-
 .first_password_container div {
   position: absolute;
   top: 0.7vw;
@@ -149,7 +139,6 @@
   position: relative;
   width: 100%;
 }
-
 .sec_password_container div {
   position: absolute;
   top: 0.7vw;
@@ -167,4 +156,3 @@
   z-index: -9997;
   transform: rotate(30deg);
 }
-/*# sourceMappingURL=signUp.module.css.map */

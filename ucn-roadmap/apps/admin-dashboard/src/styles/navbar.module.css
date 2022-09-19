@@ -1,23 +1,20 @@
 .nav {
   font-size: 1.5vw;
   width: 25vw;
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: #252f32;
   height: 100vh;
 }
-
 .nav ul:nth-child(3) {
   position: fixed;
   top: 40.5vw;
   width: 25vw;
 }
-
 .nav ul {
   margin-bottom: 5vw;
   overflow: hidden;
   transition: 200ms ease-in-out;
 }
-
 .nav ul li {
   position: relative;
   padding: 1vw;
@@ -26,12 +23,10 @@
   border-bottom: rgba(119, 169, 210, 0.16) solid;
   cursor: pointer;
 }
-
 .nav ul li:nth-child(1) {
-  background-color: #1f2628;
+  background-color: rgb(31, 38, 40);
   padding-left: 1vw;
 }
-
 .nav button {
   border: none;
   background-color: inherit;
@@ -46,18 +41,15 @@
   width: 100%;
   height: 8vw;
 }
-
 .current_user_container h2 {
   margin-left: 10vw;
   padding-top: 2vw;
   font-size: 2vw;
 }
-
 .current_user_container p {
   margin-left: 10vw;
   font-size: 1vw;
 }
-
 .current_user_container div {
   position: absolute;
   width: 5vw;
@@ -100,4 +92,3 @@
 .droppedul {
   height: 20vw;
 }
-/*# sourceMappingURL=navbar.module.css.map */

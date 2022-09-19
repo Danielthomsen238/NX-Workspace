@@ -28,7 +28,7 @@ export default NextAuth({
              const accessToken = await login(credentials.user, credentials.password)
              const payload = jwt_decode(accessToken.data.token)
              if(accessToken.data.token){
-              return {userName: credentials.user, token: accessToken.data.token, userID: payload.user_id, firstname: payload.firstname, role_id: payload.role_id, role: payload.role}
+              return {userName: credentials.user, token: accessToken.data.token, userID: payload.user_id, firstname: payload.firstname, role_id: payload.role_id, role: payload.role, school_name: payload.school_name, school_id: payload.school_id}
              }else {
               console.log("error")
                return null
@@ -54,6 +54,8 @@ export default NextAuth({
     session.user.firstname = token.user.firstname
     session.user.role_id = token.user.role_id
     session.user.role = token.user.role
+    session.user.school_name = token.user.school_name
+    session.user.school_id = token.user.school_id
       return session
   }
     
@@ -73,7 +75,7 @@ const login = async (username, password) => {
     password
   }
   try {
-    const response = axios.post(base_URL, data)
+    const response = axios.post("https://sequelize-api.vercel.app/login", data)
     return response
   } catch (error) {
     console.log(error)

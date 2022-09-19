@@ -5,7 +5,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import ListIcon from '@mui/icons-material/List';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-
+import Link from 'next/link';
 import navbar_styles from '../src/styles/navbar.module.css'
 
 import { useSession } from "next-auth/react"
@@ -36,7 +36,7 @@ const Navbar = () => {
             </div>
             <ul className={isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul}>
                 <li>Admin <ArrowDropUpIcon className={isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows} onClick={handleDropUp} /></li>
-                <li> <Groups2Icon className={navbar_styles.icons} /> Users</li>
+                <li> <Groups2Icon className={navbar_styles.icons} /><Link href="/userList">Users</Link></li>
                 <li> <ApartmentIcon className={navbar_styles.icons} /> Schools</li>
                 <li> <SchoolIcon className={navbar_styles.icons} /> Courses</li>
                 <li> <ListIcon className={navbar_styles.icons} /> Categories</li>

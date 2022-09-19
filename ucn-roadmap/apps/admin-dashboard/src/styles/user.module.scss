@@ -14,7 +14,7 @@
   td,
   th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 0;
   }
 
   th {
@@ -30,7 +30,7 @@
   }
 
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #d8d8d8;
   }
 
   tr:hover {
@@ -40,6 +40,12 @@
   button {
     border: none;
     background-color: rgba(255, 0, 0, 0);
+  }
+  input{
+    height: 2vw;
+    width: 100%;
+    border: none;
+    background-color: rgba(221, 221, 221, 0);
   }
 }
 
