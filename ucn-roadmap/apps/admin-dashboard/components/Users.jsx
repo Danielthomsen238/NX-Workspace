@@ -16,7 +16,6 @@ const Users = (props) => {
     const { data } = props
     const [itemClicked, setItemClicked] = useState()
 
-    console.log(data)
 
     const ToggleItem = () => {
         const [toggleThisElement, setToggleThisElement] = useState(false);
@@ -30,7 +29,17 @@ const Users = (props) => {
     };
 
     const HandleClick = (e) => {
-        setItemClicked(e.target.value)
+        setItemClicked(e.target.className)
+        console.log(itemClicked)
+    }
+
+    const HandleEdit = (e) => {
+        setItemClicked(e.target.className)
+        console.log(itemClicked)
+    }
+
+    const HandleCancel = (e) => {
+        setItemClicked(e.target.className)
         console.log(itemClicked)
     }
 
@@ -40,10 +49,14 @@ const Users = (props) => {
         if (person == "DELETE") {
             alert("Deleted")
         }
-        else {
+        else if(person !== "DELETED"){
             alert("Wrong")
         }
+        else {
+            return
+        }
     }
+
 
 
     function Other(X) {
@@ -70,20 +83,20 @@ const Users = (props) => {
                 </thead>
                 <tbody>
                     {data?.data.map((user, idx) => {
-                        return (<tr key={idx}>
+                        return (<tr key={idx} className={user.active == false ? user_styles.NotActive : ""}>
                             {console.log(itemClicked)}
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.firstname}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.lastname}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.telefon}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.email}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.school.name}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>{user.role_id}</td>
-                            <td contenteditable={itemClicked == user.id ? 'true' : 'false'}>
-                                <select name="cars" id="cars" disabled={itemClicked == user.id ? null : 'true'}>
-                                    <option value={user.active.toString()}>{user.active.toString()}</option>
-                                    <option value={Other(user.active).toString()}>{Other(user.active).toString()}</option>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.firstname}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.lastname}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.telefon}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.email}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.school.name}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>{user.role_id}</td>
+                            <td contentEditable={itemClicked == user.id ? 'true' : 'false'}>
+                                <select name="cars" id="cars" disabled={itemClicked == user.id ? null : true}>
+                                    <option className={user.active.toString()}>{user.active.toString()}</option>
+                                    <option className={Other(user.active).toString()}>{Other(user.active).toString()}</option>
                                 </select></td>
-                            <td>{itemClicked == user.id ? <button> <CheckIcon /> <ClearIcon /></button> : <button value={user.id} onClick={HandleClick}><EditIcon className={user_styles.icon} /></button>}<button onClick={DeleteData}><DeleteForeverIcon /></button></td>
+                            <td>{itemClicked == user.id ? <button> <CheckIcon /> <ClearIcon onClick={HandleCancel} /></button> : <div className={user_styles.OverButton}><button className={user.id} onClick={HandleClick}></button><EditIcon/></div>}<div className={user_styles.OverButton}><button onClick={DeleteData}></button><DeleteForeverIcon/></div></td>
 
                         </tr>)
                     })}

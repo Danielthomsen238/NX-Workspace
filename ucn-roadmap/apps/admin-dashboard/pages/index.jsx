@@ -9,14 +9,14 @@ const Index = () => {
     const { data: session, status } = useSession();
 
     const [data, setData] = useState()
-    console.log(session)
+    // console.log(session)
     useEffect(() => {
         axios.get('http://localhost:4000/User')
             .then((response) => {
                 setData(response)
             })
             .catch((e) => {
-                console.log(e)
+                // console.log(e)
             }
             )
     }, [])
@@ -24,7 +24,7 @@ const Index = () => {
     return (
         <>
             <div className="global_body">
-                <Navbar />
+                <Navbar data={data}/>
                 <Users data={data} />
             </div>
         </>
