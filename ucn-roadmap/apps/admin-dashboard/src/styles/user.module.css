@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
-  width: 80%;
+  font-family: "Montserrat", sans-serif;
+  width: 80vw;
+  margin-bottom: 3vw;
 }
 
 .table {
@@ -10,6 +13,7 @@
 }
 .table td,
 .table th {
+  font-size: 1.2vw;
   border: 1px solid #ddd;
 }
 .table td div,
@@ -46,6 +50,7 @@
   background-color: rgba(255, 0, 0, 0);
 }
 .table input {
+  font-size: 1.2vw;
   height: 2vw;
   width: 95%;
   border: none;
@@ -71,6 +76,7 @@
   cursor: pointer;
 }
 
-.NotActive {
-  border: orange solid;
+.table_h2 {
+  background-color: white;
+  padding: 1vw;
 }
