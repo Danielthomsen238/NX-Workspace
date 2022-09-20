@@ -77,7 +77,7 @@ const Index = ({ csrfToken }) => {
       lng: lng,
     };
     axios
-      .post('http://localhost:4000/school', data)
+      .post('https://sequelize-api.vercel.app/school', data)
       .then((response) => {
         submitUser(response.data.newId);
       })
@@ -97,7 +97,7 @@ const Index = ({ csrfToken }) => {
       school_id: skoleId,
     };
     axios
-      .post('http://localhost:4000/user', data)
+      .post('https://sequelize-api.vercel.app/user', data)
       .then((response) => {
         sendEmail();
         router.push('/');
