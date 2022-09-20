@@ -1,5 +1,5 @@
 .body {
-  width: 75%;
+  width: 80%;
 }
 
 .table {
@@ -11,10 +11,22 @@
 .table td,
 .table th {
   border: 1px solid #ddd;
-  padding: 0;
+}
+.table td div,
+.table th div {
+  min-width: 15vw;
+  max-width: 25vw;
+  overflow: auto;
+}
+.table th:last-child {
+  width: 5vw;
+}
+.table th:nth-child(7) {
+  width: 5vw;
 }
 .table th {
   padding-top: 12px;
+  padding-left: 0.5vw;
   padding-bottom: 12px;
   text-align: left;
   background-color: #004250;
@@ -35,14 +47,14 @@
 }
 .table input {
   height: 2vw;
-  width: 100%;
+  width: 95%;
   border: none;
   background-color: rgba(221, 221, 221, 0);
+  padding-left: 0.5vw;
 }
 
 .icon {
-  color: greenyellow;
-  fill: greenyellow;
+  cursor: pointer;
 }
 
 .OverButton {
@@ -56,6 +68,7 @@
   width: 2vw;
   height: 2vw;
   background-color: rgba(221, 221, 221, 0);
+  cursor: pointer;
 }
 
 .NotActive {

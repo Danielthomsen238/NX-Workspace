@@ -2,29 +2,34 @@
 
 .nav {
   font-size: 1.5vw;
-  width: 25vw;
+  min-width: 20vw;
   color: rgb(255, 255, 255);
   background-color: #252f32;
   height: 100vh;
+  a {
+    text-decoration: none;
+    color: white;
+    width: 20vw;
+    cursor: pointer;
+  }
 
   ul:nth-child(3) {
     position: fixed;
-    top: 40.5vw;
-    width: 25vw;
+    bottom: 0;
+    min-width: 20vw;
   }
 
   ul {
-    margin-bottom: 5vw;
     overflow: hidden;
     transition: 200ms ease-in-out;
-
+  
     li {
       position: relative;
       padding: 1vw;
       padding-left: 3.5vw;
       background-color: #252f32;
       border-bottom: rgba(119, 169, 210, 0.16) solid;
-      cursor: pointer;
+      
     }
 
     li:nth-child(1) {
@@ -51,13 +56,13 @@
   height: 8vw;
 
   h2 {
-    margin-left: 10vw;
+    margin-left: 8vw;
     padding-top: 2vw;
     font-size: 2vw;
   }
 
   p {
-    margin-left: 10vw;
+    margin-left: 8vw;
     font-size: 1vw;
   }
 
@@ -87,6 +92,7 @@
   right: 2vw;
   font-size: 2vw;
   transition: 100ms ease-in-out;
+  cursor: pointer;
 }
 
 .dropped {
@@ -96,6 +102,7 @@
   font-size: 2vw;
   transition: 100ms ease-in-out;
   transform: rotate(180deg);
+  cursor: pointer;
 }
 
 .notdropped {
