@@ -35,6 +35,8 @@ const Schools = () => {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
 
+
+
   // Handel selected file for upload
   const fileSelectedHandler = event => {
     const formdata = new FormData()
@@ -211,7 +213,7 @@ const Schools = () => {
     console.log(schoolid, itemClicked)
   };
   //Admin jsx (only admin can see this)
-  if (session.user.role == 'Admin') {
+  if (session.user.role != 'Admin') {
     return (
       <>
         <div className={school_styles.body}>
@@ -300,6 +302,18 @@ const Schools = () => {
       </>
     );
   }
+  if (session.user.role == 'Admin') {
+    return (<>
+      {schoolData?.data.map((school, idx) => {
+        return (<>
+          { session.user.school_id == school.id ? <h1>{session.user.school_id} {school.id}</h1> : <h1>{session.user.school_id} {school.id}</h1>}
+        </>)
+
+      })}
+    </>)
+  }
 };
+
+
 
 export default Schools;
