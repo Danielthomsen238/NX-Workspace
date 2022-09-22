@@ -3,12 +3,16 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Geocode from 'react-geocode';
 import { useRef } from 'react';
+
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import school_styles from '../src/styles/school.module.css';
+import singleSchool_styles from '../src/styles/singleSchool.module.css';
+
 
 const Schools = () => {
   //States for user changes
@@ -303,14 +307,38 @@ const Schools = () => {
     );
   }
   if (session.user.role == 'Admin') {
-    return (<>
+    return (<div className={singleSchool_styles.body}>
       {schoolData?.data.map((school, idx) => {
         return (<>
-          { session.user.school_id == school.id ? <h1>{session.user.school_id} {school.id}</h1> : <h1>{session.user.school_id} {school.id}</h1>}
-        </>)
+          {session.user.school_id == school.id ? <div>
+            <div className={singleSchool_styles.ImageContainer}>
+              <a target="_blank" href={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)}>
+                <img src={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)} alt="" />
+              </a>
+              <div className={singleSchool_styles.imgEdit} >
+                <label className={singleSchool_styles.files} htmlFor="files"><AddCircleIcon className={singleSchool_styles.icon} /></label>
+                <input disabled={itemClicked == school.id ? 'disabled' : ''} type="file" id="files" onClick={fileSelectedHandler} />
+              </div>
 
+            </div>
+            <input value={school.name} type="text" disabled={itemClicked == school.id ? '' : 'disabled'}
+              value={
+                itemClicked == school.id
+                  ? schoolName
+                  : school.name
+              }
+              onChange={(e) => setSchoolName(e.target.value)} />
+            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolPhone : school.telefon} onChange={(e) => setSchoolPhone(e.target.value)} type="number" />
+            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolEmail : school.email} onChange={(e) => setSchoolEmail(e.target.value)} type="text" />
+            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolAddresse : school.address} onChange={(e) => setSchoolAddresse(e.target.value)} type="text" />
+            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolZip : school.zip} onChange={(e) => setSchoolZip(e.target.value)} type="text" />
+            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolCity : school.city} onChange={(e) => setSchoolCity(e.target.value)} type="text" />
+            <textarea disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolContent : school.description} onChange={(e) => setSchoolContent(e.target.value)}></textarea>
+          </div> : ''}
+        </>)
       })}
-    </>)
+    </div>)
+
   }
 };
 
