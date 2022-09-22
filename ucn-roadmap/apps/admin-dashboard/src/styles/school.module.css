@@ -12,6 +12,7 @@
 .table td,
 .table th {
   border: 1px solid #ddd;
+  transition: 500ms ease-in-out;
 }
 
 .table td div,
@@ -23,6 +24,10 @@
 
 .table th:last-child {
   width: 5vw;
+}
+
+.table textarea {
+  transition: 500ms ease-in-out;
 }
 
 .table th:nth-child(7) {
@@ -46,8 +51,8 @@
   background-color: #d8d8d8;
 }
 
-.table tr:hover {
-  background-color: #ddd;
+.table td:nth-child(4) a {
+  padding-left: 0.5vw;
 }
 
 .table button {
@@ -84,4 +89,39 @@
 
 .NotActive {
   border: orange solid;
+}
+
+.preview {
+  margin-top: 5vw;
+  width: 80vw;
+  height: 35vw;
+  background-color: red;
+}
+
+.readable {
+  position: relative;
+  width: 25vw;
+  height: 0vw;
+}
+
+.readable textarea {
+  position: absolute;
+  top: 0;
+  width: 90%;
+  height: 13.6vw;
+  z-index: 50;
+  padding: 5%;
+}
+
+.collapsed {
+  position: relative;
+  width: 15vw;
+  height: 0vw;
+}
+
+.collapsed textarea {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }

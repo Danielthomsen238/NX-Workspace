@@ -175,12 +175,13 @@ const Users = () => {
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         disabled={itemClicked == user.id ? '' : 'disabled'}
                         value={
                           itemClicked == user.id ? userTelefon : user.telefon
                         }
                         onChange={(e) => setUserTelefon(e.target.value)}
+
                       />
                     </td>
                     <td>
@@ -192,7 +193,7 @@ const Users = () => {
                         }
                       >
                         <input
-                          type="text"
+                          type="email"
                           disabled={itemClicked == user.id ? '' : 'disabled'}
                           value={
                             itemClicked == user.id ? userEmail : user.email
@@ -268,25 +269,25 @@ const Users = () => {
                           />
                         </button>
                       ) : (
-                        <div className={user_styles.OverButton}>
-                          <button
-                            className={user.id}
-                            onClick={(e) => {
-                              HandleEdit(e);
-                              setInitaleValue(
-                                user.firstname,
-                                user.lastname,
-                                user.telefon,
-                                user.email,
-                                user.school.name,
-                                user.role_id,
-                                user.active
-                              );
-                            }}
-                          ></button>
-                          <EditIcon className={user_styles.icon} />
-                        </div>
-                      )}
+                          <div className={user_styles.OverButton}>
+                            <button
+                              className={user.id}
+                              onClick={(e) => {
+                                HandleEdit(e);
+                                setInitaleValue(
+                                  user.firstname,
+                                  user.lastname,
+                                  user.telefon,
+                                  user.email,
+                                  user.school.name,
+                                  user.role_id,
+                                  user.active
+                                );
+                              }}
+                            ></button>
+                            <EditIcon className={user_styles.icon} />
+                          </div>
+                        )}
                       <div className={user_styles.OverButton}>
                         <button onClick={DeleteData}></button>
                         <DeleteForeverIcon className={user_styles.icon} />
@@ -396,25 +397,25 @@ const Users = () => {
                             />
                           </button>
                         ) : (
-                          <div className={user_styles.OverButton}>
-                            <button
-                              className={user.id}
-                              onClick={(e) => {
-                                HandleEdit(e);
-                                setInitaleValue(
-                                  user.firstname,
-                                  user.lastname,
-                                  user.telefon,
-                                  user.email,
-                                  user.school.name,
-                                  user.role_id,
-                                  user.active
-                                );
-                              }}
-                            ></button>
-                            <EditIcon className={user_styles.icon} />
-                          </div>
-                        )}
+                            <div className={user_styles.OverButton}>
+                              <button
+                                className={user.id}
+                                onClick={(e) => {
+                                  HandleEdit(e);
+                                  setInitaleValue(
+                                    user.firstname,
+                                    user.lastname,
+                                    user.telefon,
+                                    user.email,
+                                    user.school.name,
+                                    user.role_id,
+                                    user.active
+                                  );
+                                }}
+                              ></button>
+                              <EditIcon className={user_styles.icon} />
+                            </div>
+                          )}
                         <div className={user_styles.OverButton}>
                           <button onClick={DeleteData}></button>
                           <DeleteForeverIcon className={user_styles.icon} />
