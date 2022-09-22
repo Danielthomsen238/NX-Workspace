@@ -23,21 +23,30 @@ export default NextAuth({
       credentials: {
         user: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
+        otp: { label: 'Otp', type: 'password' },
       },
       async authorize(credentials) {
-        const accessToken = await login(credentials.user, credentials.password);
-        const payload = jwt_decode(accessToken.data.token);
-        if (accessToken.data.token) {
-          return {
-            userName: credentials.user,
-            token: accessToken.data.token,
-            userID: payload.user_id,
-            firstname: payload.firstname,
-            role_id: payload.role_id,
-            role: payload.role,
-            school_name: payload.school_name,
-            school_id: payload.school_id,
-          };
+        if (credentials.password) {
+          const accessToken = await login(
+            credentials.user,
+            credentials.password
+          );
+          const payload = jwt_decode(accessToken.data.token);
+          if (accessToken.data.token) {
+            return {
+              userName: credentials.user,
+              token: accessToken.data.token,
+              userID: payload.user_id,
+              firstname: payload.firstname,
+              role_id: payload.role_id,
+              role: payload.role,
+              school_name: payload.school_name,
+              school_id: payload.school_id,
+            };
+          } else {
+            console.log('error');
+            return null;
+          }
         } else {
           console.log('error');
           return null;
@@ -46,6 +55,17 @@ export default NextAuth({
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      const isAllowedToSignIn = true;
+      if (isAllowedToSignIn) {
+        return true;
+      } else {
+        // Return false to display a default error message
+        return '/login/signup';
+        // Or you can return a URL to redirect to:
+        // return '/unauthorized'
+      }
+    },
     async redirect({ url, baseUrl }) {
       return baseUrl;
     },
@@ -69,7 +89,7 @@ export default NextAuth({
   pages: {
     signIn: '/login/',
     // signOut: '/auth/signout',
-    // error: '/auth/error', // Error code passed in query string as ?error=
+    error: '/fallback', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
