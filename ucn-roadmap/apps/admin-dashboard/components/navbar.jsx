@@ -58,7 +58,10 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <ApartmentIcon className={navbar_styles.icons} /> Schools
+            <ApartmentIcon className={navbar_styles.icons} />
+            <Link href="/schoolList">
+              <a>Schools</a>
+            </Link>
           </li>
           <li>
             <SchoolIcon className={navbar_styles.icons} /> Courses
