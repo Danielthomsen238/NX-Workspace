@@ -57,7 +57,18 @@
     border: 2px solid $white_Color;
   }
     
-
+  .resetBtn{
+    font-size: 1vw;
+    background-color: $white_Color;
+    color: $base_Color;
+    border: 2px solid $white_Color;
+   &:hover {
+    background-color: white;
+    color: $base_Color;
+    border: solid 2px $white_Color
+   }
+  }
+  
 
   button {
     font-family: 'Montserrat', sans-serif;
@@ -80,6 +91,7 @@
 
 
 }
+
 
 .password_container {
   position: relative;
@@ -104,4 +116,61 @@
   z-index: -9997;
   top: 0;
   transform: rotate(30deg);
+}
+
+.gentag_kode_container {
+  position: relative;
+  right: 30vw;
+  top:30vh;
+  width: 30vw;
+  padding: 2vw 2vw 2vw 2vw;
+  background-color: $white_Color;
+  border-radius: 0.5vw;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+
+  height: 15vw;
+  h2 {
+    margin-bottom: 1vw;
+    font-size: 2vw;
+    color: $base_Color;
+  }
+
+  input {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0.4vw;
+    padding: 0.5vw;
+    font-size: 1.3vw;
+    margin-bottom: 1vw;
+ 
+    border-color: rgba(0, 0, 0, 0.45);
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.45);
+    }
+    &:focus {
+      outline-color: $base_Color;
+    }
+  }
+
+  button {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    font-size: 1.3vw;
+    border-radius: 0.4vw;
+    background-color: $ucn_Blue;
+    color: $white_Color;
+    transition: 300ms ease-in-out;
+    margin-bottom: 1vw;
+    padding: 0.5vw;
+    border: 2px solid $ucn_Blue;
+    cursor: pointer;
+    &:hover {
+      background-color: $black_Color;
+      border: 2px solid $black_Color;
+      color: $white_Color;
+    }
+  }
+
 }

@@ -22,6 +22,9 @@ const Index = ({ csrfToken }) => {
   const api = 'AIzaSyCufVGqDojiQIsK6ndPvoxPJAWvPqG0_e0';
   //button state
   const [waitButton, setWaitButton] = useState(false);
+  //reset form
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetTelefon, setResetTelefon] = useState('');
   //login form
   const [loginVisibility, setLoginVisibility] = useState(false);
   const [loginEmail, setLoginEmail] = useState('');
@@ -43,11 +46,12 @@ const Index = ({ csrfToken }) => {
   const [skoleTelefon, setSkoleTelefon] = useState();
   const [skoleEmail, setSkoleEmail] = useState();
   const [beskrivelse, setBeskrivelse] = useState();
-
+  //activ login form
+  const [activeForm, setActiveForm] = useState(false);
   //submit data after converting address to lat and lng
   const handleSubmit = (e) => {
     e.preventDefault();
-    Geocode.setApiKey(api);
+    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_API);
     Geocode.setLanguage('en');
     Geocode.setLocationType('ROOFTOP');
     setWaitButton(true);
@@ -136,11 +140,28 @@ const Index = ({ csrfToken }) => {
         }
       );
   };
-
+  //Error handling
+  const error = router.query.error;
+  //submit reset password
+  const handleReset = (e) => {
+    const payload = {
+      username: resetEmail,
+      telefon: resetTelefon,
+    };
+    axios
+      .put(`http://localhost:3123/reset`, payload)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
   return (
     <>
       <div ref={container} className={signUp_styles.body}>
-        {/* Login form */}
+        {/* OTP Login form */}
+
         <form
           method="post"
           action="/api/auth/callback/credentials"
@@ -148,7 +169,7 @@ const Index = ({ csrfToken }) => {
         >
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <UCNLogo />
-          <h2>Log ind</h2>
+          <h2>Engangs login</h2>
           <input
             placeholder="Email"
             name="user"
@@ -160,7 +181,7 @@ const Index = ({ csrfToken }) => {
           <div className={login_styles.password_container}>
             <input
               placeholder="Adgangskode"
-              name="password"
+              name="otp"
               minLength="3"
               type={loginVisibility ? 'text' : 'Password'}
               value={loginPassword}
@@ -171,16 +192,92 @@ const Index = ({ csrfToken }) => {
             </div>
           </div>
           <button type="submit"> Log på </button>
+        </form>
+        {/* Reset password */}
+        <form className={login_styles.login_container}>
+          <UCNLogo />
+          <h2>Reset Password</h2>
+          <input
+            placeholder="Email"
+            name="user"
+            type="email"
+            value={resetEmail}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            onChange={(e) => setResetEmail(e.target.value)}
+          />
+          <input
+            placeholder="Telefon"
+            name="text"
+            value={resetTelefon}
+            onChange={(e) => setResetTelefon(e.target.value)}
+          />
           <button
+            type="submit"
             onClick={(e) => {
               e.preventDefault();
-              container.current.style.left = '-45vw';
+              handleReset();
+              container.current.style.left = '33vw';
             }}
-            className={login_styles.sign_up_button}
           >
-            eller, Tilmeld
+            Send Engangs kode
           </button>
         </form>
+        {/* Login form */}
+        {activeForm ? (
+          <form className={login_styles.login_container}></form>
+        ) : (
+          <form
+            method="post"
+            action="/api/auth/callback/credentials"
+            className={login_styles.login_container}
+          >
+            <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+            <UCNLogo />
+            <h2>Log ind</h2>
+            <input
+              placeholder="Email"
+              name="user"
+              type="email"
+              value={loginEmail}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+            <div className={login_styles.password_container}>
+              <input
+                placeholder="Adgangskode"
+                name="password"
+                minLength="3"
+                type={loginVisibility ? 'text' : 'Password'}
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+              />
+              <div onClick={handleLoginVisibility}>
+                {loginVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </div>
+            </div>
+            <button type="submit"> Log på </button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                container.current.style.left = '-205vw';
+              }}
+              className={login_styles.sign_up_button}
+            >
+              eller, Tilmeld
+            </button>
+            <button
+              className={login_styles.resetBtn}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveForm((state) => !state);
+                container.current.style.left = '-49vw';
+              }}
+            >
+              Glemt kode
+            </button>
+          </form>
+        )}
+
         {/* Opret bruger form */}
         <form ref={form} className={signUp_styles.form}>
           <fieldset>
@@ -244,7 +341,7 @@ const Index = ({ csrfToken }) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                container.current.style.left = '-120vw';
+                container.current.style.left = '-283vw';
               }}
             >
               Næste
@@ -252,7 +349,7 @@ const Index = ({ csrfToken }) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                container.current.style.left = '35vw';
+                container.current.style.left = '-127vw';
               }}
               className={signUp_styles.back_button}
             >
@@ -323,7 +420,7 @@ const Index = ({ csrfToken }) => {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                container.current.style.left = '-45vw';
+                container.current.style.left = '-205vw';
               }}
               className={signUp_styles.back_button}
             >

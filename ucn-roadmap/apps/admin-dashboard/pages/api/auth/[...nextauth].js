@@ -23,7 +23,7 @@ export default NextAuth({
       credentials: {
         user: { label: 'Username', type: 'text' },
         password: { label: 'Password', type: 'password' },
-        otp: { label: 'Otp', type: 'password' },
+        otp: { label: 'otp', type: 'password' },
       },
       async authorize(credentials) {
         if (credentials.password) {
@@ -42,6 +42,29 @@ export default NextAuth({
               role: payload.role,
               school_name: payload.school_name,
               school_id: payload.school_id,
+              otp: payload.otp,
+            };
+          } else {
+            console.log('error');
+            return null;
+          }
+        } else if (credentials.otp) {
+          const accessToken = await oneTimeLogin(
+            credentials.user,
+            credentials.otp
+          );
+          const payload = jwt_decode(accessToken.data.token);
+          if (accessToken.data.token) {
+            return {
+              userName: credentials.user,
+              token: accessToken.data.token,
+              userID: payload.user_id,
+              firstname: payload.firstname,
+              role_id: payload.role_id,
+              role: payload.role,
+              school_name: payload.school_name,
+              school_id: payload.school_id,
+              otp: payload.otp,
             };
           } else {
             console.log('error');
@@ -61,7 +84,7 @@ export default NextAuth({
         return true;
       } else {
         // Return false to display a default error message
-        return '/login/signup';
+        return false;
         // Or you can return a URL to redirect to:
         // return '/unauthorized'
       }
@@ -83,13 +106,14 @@ export default NextAuth({
       session.user.role = token.user.role;
       session.user.school_name = token.user.school_name;
       session.user.school_id = token.user.school_id;
+      session.user.otp = token.user.otp;
       return session;
     },
   },
   pages: {
-    signIn: '/login/',
+    signIn: '/login',
     // signOut: '/auth/signout',
-    error: '/fallback', // Error code passed in query string as ?error=
+    error: '/login', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // (used for check email message)
     // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
   },
@@ -102,6 +126,19 @@ const login = async (username, password) => {
   };
   try {
     const response = axios.post('https://sequelize-api.vercel.app/login', data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const oneTimeLogin = async (username, otp) => {
+  const data = {
+    username,
+    otp,
+  };
+  try {
+    const response = axios.post('http://localhost:3123/otp', data);
     return response;
   } catch (error) {
     console.log(error);
