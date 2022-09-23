@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-target-blank */
+/* eslint-disable react/jsx-no-duplicate-props */
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -12,7 +14,6 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import school_styles from '../src/styles/school.module.css';
 import singleSchool_styles from '../src/styles/singleSchool.module.css';
-
 
 const Schools = () => {
   //States for user changes
@@ -39,33 +40,28 @@ const Schools = () => {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
 
-
-
   // Handel selected file for upload
-  const fileSelectedHandler = event => {
-    const formdata = new FormData()
-    formdata.append("image", event.target.files[0])
-    fetch("https://api.imgur.com/3/upload/", {
-      method: "post",
+  const fileSelectedHandler = (event) => {
+    const formdata = new FormData();
+    formdata.append('image', event.target.files[0]);
+    fetch('https://api.imgur.com/3/upload/', {
+      method: 'post',
       headers: {
-        Authorization: "Client-ID 1b600c51c02423d"
+        Authorization: 'Client-ID 1b600c51c02423d',
       },
-      body: formdata
-    }).then(data => data.json()).then(data => {
-      sessionStorage.setItem('ImageToPost', data.data.link);
-      if (data.data.link) {
-
-        GeneratedImageUrl = data.data.link
-
-      }
-      else {
-
-        GeneratedImageUrl = schoolImage
-
-      }
-      setSchoolImage(GeneratedImageUrl)
+      body: formdata,
     })
-  }
+      .then((data) => data.json())
+      .then((data) => {
+        sessionStorage.setItem('ImageToPost', data.data.link);
+        if (data.data.link) {
+          GeneratedImageUrl = data.data.link;
+        } else {
+          GeneratedImageUrl = schoolImage;
+        }
+        setSchoolImage(GeneratedImageUrl);
+      });
+  };
 
   //fetch data
   useEffect(() => {
@@ -111,7 +107,7 @@ const Schools = () => {
         description: schoolContent,
         image: schoolImage,
         lat: lat,
-        lng: lng
+        lng: lng,
       };
       axios
         .put(`https://sequelize-api.vercel.app/school`, payload, config)
@@ -123,7 +119,7 @@ const Schools = () => {
         .catch((e) => {
           console.log(e);
         });
-      console.log("Payload", payload);
+      console.log('Payload', payload);
     };
   };
 
@@ -214,10 +210,10 @@ const Schools = () => {
     if (!schoolContent) {
       setSchoolContent(content);
     }
-    console.log(schoolid, itemClicked)
+    console.log(schoolid, itemClicked);
   };
   //Admin jsx (only admin can see this)
-  if (session.user.role != 'Admin') {
+  if (session.user.role == 'Admin') {
     return (
       <>
         <div className={school_styles.body}>
@@ -238,24 +234,112 @@ const Schools = () => {
             <tbody>
               {schoolData?.data.map((school, idx) => {
                 return (
-                  <tr
-                    key={idx}>
-                    <td><input value={school.name} type="text" disabled={itemClicked == school.id ? '' : 'disabled'}
-                      value={
-                        itemClicked == school.id
-                          ? schoolName
-                          : school.name
-                      }
-                      onChange={(e) => setSchoolName(e.target.value)}
-                    /></td>
-                    <td><input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolPhone : school.telefon} onChange={(e) => setSchoolPhone(e.target.value)} type="number" /></td>
-                    <td><input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolEmail : school.email} onChange={(e) => setSchoolEmail(e.target.value)} type="text" /></td>
-                    <td> <a target="_blank" href={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)}><input type="text" disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)} /></a>  <input disabled={itemClicked == school.id ? '' : 'disabled'} type="file" onClick={fileSelectedHandler} />
+                  <tr key={idx}>
+                    <td>
+                      <input
+                        value={school.name}
+                        type="text"
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        onChange={(e) => setSchoolName(e.target.value)}
+                      />
                     </td>
-                    <td><input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolAddresse : school.address} onChange={(e) => setSchoolAddresse(e.target.value)} type="text" /></td>
-                    <td><input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolZip : school.zip} onChange={(e) => setSchoolZip(e.target.value)} type="text" /></td>
-                    <td><input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolCity : school.city} onChange={(e) => setSchoolCity(e.target.value)} type="text" /></td>
-                    <td class={itemClicked == school.id ? school_styles.readable : school_styles.collapsed} ><textarea disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolContent : school.description} onChange={(e) => setSchoolContent(e.target.value)}></textarea></td>
+                    <td>
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id
+                            ? schoolPhone
+                            : school.telefon
+                        }
+                        onChange={(e) => setSchoolPhone(e.target.value)}
+                        type="number"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id ? schoolEmail : school.email
+                        }
+                        onChange={(e) => setSchoolEmail(e.target.value)}
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      {' '}
+                      <a
+                        target="_blank"
+                        href={
+                          itemClicked == school.id ? schoolImage : school.image
+                        }
+                        onChange={(e) => setSchoolImage(e.target.value)}
+                      >
+                        <input
+                          type="text"
+                          disabled={itemClicked == school.id ? '' : 'disabled'}
+                          value={
+                            itemClicked == school.id
+                              ? schoolImage
+                              : school.image
+                          }
+                          onChange={(e) => setSchoolImage(e.target.value)}
+                        />
+                      </a>{' '}
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        type="file"
+                        onClick={fileSelectedHandler}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id
+                            ? schoolAddresse
+                            : school.address
+                        }
+                        onChange={(e) => setSchoolAddresse(e.target.value)}
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id ? schoolZip : school.zip
+                        }
+                        onChange={(e) => setSchoolZip(e.target.value)}
+                        type="text"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id ? schoolCity : school.city
+                        }
+                        onChange={(e) => setSchoolCity(e.target.value)}
+                        type="text"
+                      />
+                    </td>
+                    <td
+                      className={
+                        itemClicked == school.id
+                          ? school_styles.readable
+                          : school_styles.collapsed
+                      }
+                    >
+                      <textarea
+                        disabled={itemClicked == school.id ? '' : 'disabled'}
+                        value={
+                          itemClicked == school.id
+                            ? schoolContent
+                            : school.description
+                        }
+                        onChange={(e) => setSchoolContent(e.target.value)}
+                      ></textarea>
+                    </td>
                     <td>
                       {itemClicked == school.id ? (
                         <button>
@@ -269,79 +353,142 @@ const Schools = () => {
                           />
                         </button>
                       ) : (
-                          <div className={school_styles.OverButton}>
-                            <button
-                              className={school.id}
-                              onClick={(e) => {
-                                HandleEdit(e);
-                                setInitaleValue(
-                                  school.name,
-                                  school.telefon,
-                                  school.email,
-                                  school.image,
-                                  school.address,
-                                  school.zip,
-                                  school.city,
-                                  school.description,
-                                  school.id
-                                );
-                              }}
-                            ></button>
-                            <EditIcon className={school_styles.icon} />
-                          </div>
-                        )}
+                        <div className={school_styles.OverButton}>
+                          <button
+                            className={school.id}
+                            onClick={(e) => {
+                              HandleEdit(e);
+                              setInitaleValue(
+                                school.name,
+                                school.telefon,
+                                school.email,
+                                school.image,
+                                school.address,
+                                school.zip,
+                                school.city,
+                                school.description,
+                                school.id
+                              );
+                            }}
+                          ></button>
+                          <EditIcon className={school_styles.icon} />
+                        </div>
+                      )}
                       <div className={school_styles.OverButton}>
                         <button id={school.id} onClick={DeleteData}></button>
                         <DeleteForeverIcon className={school_styles.icon} />
                       </div>
                     </td>
-
                   </tr>
                 );
-              }
-              )}
+              })}
             </tbody>
           </table>
         </div>
       </>
     );
   }
-  if (session.user.role == 'Admin') {
-    return (<div className={singleSchool_styles.body}>
-      {schoolData?.data.map((school, idx) => {
-        return (<>
-          {session.user.school_id == school.id ? <div>
-            <div className={singleSchool_styles.ImageContainer}>
-              <a target="_blank" href={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)}>
-                <img src={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)} alt="" />
-              </a>
-              <div className={singleSchool_styles.imgEdit} >
-                <label className={singleSchool_styles.files} htmlFor="files"><AddCircleIcon className={singleSchool_styles.icon} /></label>
-                <input disabled={itemClicked == school.id ? 'disabled' : ''} type="file" id="files" onClick={fileSelectedHandler} />
-              </div>
-
-            </div>
-            <input value={school.name} type="text" disabled={itemClicked == school.id ? '' : 'disabled'}
-              value={
-                itemClicked == school.id
-                  ? schoolName
-                  : school.name
-              }
-              onChange={(e) => setSchoolName(e.target.value)} />
-            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolPhone : school.telefon} onChange={(e) => setSchoolPhone(e.target.value)} type="number" />
-            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolEmail : school.email} onChange={(e) => setSchoolEmail(e.target.value)} type="text" />
-            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolAddresse : school.address} onChange={(e) => setSchoolAddresse(e.target.value)} type="text" />
-            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolZip : school.zip} onChange={(e) => setSchoolZip(e.target.value)} type="text" />
-            <input disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolCity : school.city} onChange={(e) => setSchoolCity(e.target.value)} type="text" />
-            <textarea disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolContent : school.description} onChange={(e) => setSchoolContent(e.target.value)}></textarea>
-          </div> : ''}
-        </>)
-      })}
-    </div>)
-
+  if (session.user.role != 'Admin') {
+    return (
+      <div className={singleSchool_styles.body}>
+        {schoolData?.data.map((school, idx) => {
+          return (
+            <>
+              {session.user.school_id == school.id ? (
+                <div>
+                  <div className={singleSchool_styles.ImageContainer}>
+                    <a
+                      target="_blank"
+                      href={
+                        itemClicked == school.id ? schoolImage : school.image
+                      }
+                      onChange={(e) => setSchoolImage(e.target.value)}
+                    >
+                      <img
+                        src={
+                          itemClicked == school.id ? schoolImage : school.image
+                        }
+                        onChange={(e) => setSchoolImage(e.target.value)}
+                        alt=""
+                      />
+                    </a>
+                    !
+                    <div className={singleSchool_styles.imgEdit}>
+                      <label
+                        className={singleSchool_styles.files}
+                        htmlFor="files"
+                      >
+                        <AddCircleIcon className={singleSchool_styles.icon} />
+                      </label>
+                      <input
+                        disabled={itemClicked == school.id ? 'disabled' : ''}
+                        type="file"
+                        id="files"
+                        onClick={fileSelectedHandler}
+                      />
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={itemClicked == school.id ? schoolName : school.name}
+                    onChange={(e) => setSchoolName(e.target.value)}
+                  />
+                  <input
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={
+                      itemClicked == school.id ? schoolPhone : school.telefon
+                    }
+                    onChange={(e) => setSchoolPhone(e.target.value)}
+                    type="number"
+                  />
+                  <input
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={
+                      itemClicked == school.id ? schoolEmail : school.email
+                    }
+                    onChange={(e) => setSchoolEmail(e.target.value)}
+                    type="text"
+                  />
+                  <input
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={
+                      itemClicked == school.id ? schoolAddresse : school.address
+                    }
+                    onChange={(e) => setSchoolAddresse(e.target.value)}
+                    type="text"
+                  />
+                  <input
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={itemClicked == school.id ? schoolZip : school.zip}
+                    onChange={(e) => setSchoolZip(e.target.value)}
+                    type="text"
+                  />
+                  <input
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={itemClicked == school.id ? schoolCity : school.city}
+                    onChange={(e) => setSchoolCity(e.target.value)}
+                    type="text"
+                  />
+                  <textarea
+                    disabled={itemClicked == school.id ? '' : 'disabled'}
+                    value={
+                      itemClicked == school.id
+                        ? schoolContent
+                        : school.description
+                    }
+                    onChange={(e) => setSchoolContent(e.target.value)}
+                  ></textarea>
+                </div>
+              ) : (
+                ''
+              )}
+            </>
+          );
+        })}
+      </div>
+    );
   }
 };
-
-
 
 export default Schools;
