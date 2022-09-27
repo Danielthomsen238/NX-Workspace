@@ -7,6 +7,28 @@
   width: 80vw;
   margin-bottom: 3vw;
 }
+.create_user_btn {
+  margin-top: 2vw;
+  margin-left: 30vw;
+  display: flex;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  width: 15vw;
+  font-size: 1.3vw;
+  border-radius: 0.4vw;
+  background-color: $ucn_Blue;
+  color: $white_Color;
+  transition: 300ms ease-in-out;
+  margin-bottom: 0.5vw;
+  padding: 0.5vw;
+  border: 2px solid $ucn_Blue;
+  cursor: pointer;
+  &:hover {
+    background-color: $black_Color;
+    border: 2px solid $black_Color;
+    color: $white_Color;
+  }
+}
 .table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -94,3 +116,5 @@
   background-color: white;
   padding: 1vw;
 }
+
+

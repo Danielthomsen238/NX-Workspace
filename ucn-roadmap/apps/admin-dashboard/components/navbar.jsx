@@ -27,6 +27,7 @@ const Navbar = () => {
     <>
       <nav className={navbar_styles.nav}>
         <div className={navbar_styles.current_user_container}>
+          <div />
           <h2 className={navbar_styles.current_user_name}>
             {session.user.firstname}
           </h2>
