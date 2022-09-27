@@ -1,15 +1,14 @@
 .body {
   width: 40vw;
   max-height: 90vh;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: auto;
   margin-top: 2vw;
   overflow: scroll;
 }
-
 .body textarea {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
   height: 10vw;
   box-sizing: border-box;
@@ -20,22 +19,20 @@
   margin-bottom: 4vw;
   color: #004250;
 }
-
 .body nav {
   position: absolute;
   bottom: 3.5vw;
   width: 40vw;
   padding-top: 1vw;
   height: 3.5vw;
-  background: linear-gradient(rgba(255, 255, 255, 0.872), white);
+  background: linear-gradient(rgba(255, 255, 255, 0.872), rgb(255, 255, 255));
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: space-evenly;
 }
-
 .body nav button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 45%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
@@ -47,7 +44,6 @@
   cursor: pointer;
   text-align: center;
 }
-
 .body nav button:hover {
   background-color: black;
   border: 0px solid black;
@@ -55,7 +51,7 @@
 }
 
 .disabled {
-  background-color: #a5a5a5;
+  background-color: rgb(165, 165, 165);
 }
 
 .ImageContainer {
@@ -63,26 +59,22 @@
   margin: auto;
   padding: 1.5vw 1.5vw 1.5vw 1.5vw;
 }
-
 .ImageContainer input[type=file]::-webkit-file-upload-button {
   display: none;
 }
-
 .ImageContainer input {
   content: "Hej";
   margin-left: 1.8vw;
   margin-top: 0.5vw;
   opacity: 0;
 }
-
 .ImageContainer .icon {
   position: absolute;
   left: 11vw;
   top: 0vw;
-  fill: white;
+  fill: rgb(255, 255, 255);
   transform: scale(3);
 }
-
 .ImageContainer img {
   margin-bottom: 1.5vw;
   width: 100%;
@@ -92,7 +84,7 @@
 
 .files {
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 98%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
@@ -103,7 +95,6 @@
   cursor: pointer;
   text-align: center;
 }
-
 .files:hover {
   background-color: black;
   border: 0px solid black;
@@ -113,9 +104,8 @@
 .InputContainer {
   padding: 1vw 1vw 1vw 1vw;
 }
-
 .InputContainer input {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 100%;
   box-sizing: border-box;
   border-radius: 0.4vw;
@@ -125,15 +115,18 @@
   margin-bottom: 1vw;
   color: #004250;
 }
-
+.InputContainer input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.InputContainer input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
 .InputContainer input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
-
 .InputContainer input:focus {
   outline-color: #004250;
 }
-
 .InputContainer input {
   display: block;
 }
@@ -144,11 +137,9 @@
   width: 2vw;
   height: 2vw;
 }
-
 .lockIcon button {
   border: none;
 }
-
 .lockIcon span {
   margin-left: 1vw;
   display: none;
