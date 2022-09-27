@@ -18,8 +18,7 @@ const Index = ({ csrfToken }) => {
   const form = useRef();
   //router
   const router = useRouter();
-  //geocoding
-  const api = 'AIzaSyCufVGqDojiQIsK6ndPvoxPJAWvPqG0_e0';
+
   //button state
   const [waitButton, setWaitButton] = useState(false);
   //reset form
@@ -81,7 +80,7 @@ const Index = ({ csrfToken }) => {
       lng: lng,
     };
     axios
-      .post('https://sequelize-api.vercel.app/school', data)
+      .post('https://sequelize-roadmap.herokuapp.com/school', data)
       .then((response) => {
         submitUser(response.data.newId);
       })
@@ -101,7 +100,7 @@ const Index = ({ csrfToken }) => {
       school_id: skoleId,
     };
     axios
-      .post('https://sequelize-api.vercel.app/user', data)
+      .post('https://sequelize-roadmap.herokuapp.com/user', data)
       .then((response) => {
         sendEmail();
         router.push('/');
@@ -149,7 +148,7 @@ const Index = ({ csrfToken }) => {
       telefon: resetTelefon,
     };
     axios
-      .put(`http://localhost:3123/reset`, payload)
+      .put(`https://sequelize-roadmap.herokuapp.com/reset`, payload)
       .then((response) => {
         console.log(response);
       })
@@ -170,6 +169,10 @@ const Index = ({ csrfToken }) => {
           <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <UCNLogo />
           <h2>Engangs login</h2>
+          <h3>
+            Der er blevet sendt en mail med en engangskode, tjek spam om du har
+            modtaget den.
+          </h3>
           <input
             placeholder="Email"
             name="user"

@@ -33,6 +33,7 @@ export default NextAuth({
           );
           const payload = jwt_decode(accessToken.data.token);
           if (accessToken.data.token) {
+            console.log(payload);
             return {
               userName: credentials.user,
               token: accessToken.data.token,
@@ -43,6 +44,7 @@ export default NextAuth({
               school_name: payload.school_name,
               school_id: payload.school_id,
               otp: payload.otp,
+              active: payload.active,
             };
           } else {
             console.log('error');
@@ -65,6 +67,7 @@ export default NextAuth({
               school_name: payload.school_name,
               school_id: payload.school_id,
               otp: payload.otp,
+              active: payload.active,
             };
           } else {
             console.log('error');
@@ -107,6 +110,7 @@ export default NextAuth({
       session.user.school_name = token.user.school_name;
       session.user.school_id = token.user.school_id;
       session.user.otp = token.user.otp;
+      session.user.active = token.user.active;
       return session;
     },
   },
@@ -125,7 +129,10 @@ const login = async (username, password) => {
     password,
   };
   try {
-    const response = axios.post('https://sequelize-api.vercel.app/login', data);
+    const response = axios.post(
+      'https://sequelize-roadmap.herokuapp.com/login',
+      data
+    );
     return response;
   } catch (error) {
     console.log(error);
@@ -138,7 +145,10 @@ const oneTimeLogin = async (username, otp) => {
     otp,
   };
   try {
-    const response = axios.post('http://localhost:3123/otp', data);
+    const response = axios.post(
+      'https://sequelize-roadmap.herokuapp.com/otp',
+      data
+    );
     return response;
   } catch (error) {
     console.log(error);

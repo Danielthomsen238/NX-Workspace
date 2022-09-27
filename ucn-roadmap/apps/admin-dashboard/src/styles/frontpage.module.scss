@@ -1,0 +1,22 @@
+@import './helper/variables';
+
+
+//font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+
+.container {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding: 2vw;
+    top: 15vw;
+    right: 23vw;
+    background-color: $white_Color;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+    width: 30vw;
+    height: 10vw;
+    h2 {
+        margin-bottom: 2vw;
+    }
+}

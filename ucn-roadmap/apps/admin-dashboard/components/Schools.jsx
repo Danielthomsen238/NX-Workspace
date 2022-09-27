@@ -66,7 +66,7 @@ const Schools = () => {
   //fetch data
   useEffect(() => {
     axios
-      .get('https://sequelize-api.vercel.app/School', config)
+      .get('https://sequelize-roadmap.herokuapp.com/School', config)
       .then((response) => {
         console.log(response);
         setData(response);
@@ -110,7 +110,7 @@ const Schools = () => {
         lng: lng,
       };
       axios
-        .put(`https://sequelize-api.vercel.app/school`, payload, config)
+        .put(`https://sequelize-roadmap.herokuapp.com/school`, payload, config)
         .then((e, response) => {
           console.log(response);
           setRunEffect((state) => !state);
@@ -150,7 +150,7 @@ const Schools = () => {
         data: { id: e.target.id },
       };
       axios
-        .delete(`https://sequelize-api.vercel.app/School`, payload)
+        .delete(`https://sequelize-roadmap.herokuapp.com/School`, payload)
         .then((response) => {
           console.log(response);
           setRunEffect((state) => !state);

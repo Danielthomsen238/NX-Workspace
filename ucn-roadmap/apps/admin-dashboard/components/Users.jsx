@@ -18,7 +18,7 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get('https://sequelize-api.vercel.app/User', config)
+      .get('https://sequelize-roadmap.herokuapp.com/User', config)
       .then((response) => {
         console.log(response);
         setData(response);

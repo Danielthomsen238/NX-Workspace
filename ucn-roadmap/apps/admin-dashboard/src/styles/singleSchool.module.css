@@ -11,7 +11,6 @@
   display: flex;
   justify-content: center;
 }
-
 .ImageContainer img {
   width: 50vw;
 }
@@ -24,26 +23,22 @@
   width: 10vw;
   transform: scale(1.2);
 }
-
 .imgEdit input[type=file]::-webkit-file-upload-button {
   display: none;
 }
-
 .imgEdit input {
   content: "Hej";
   margin-left: 1.8vw;
   margin-top: 0.5vw;
   opacity: 0;
 }
-
 .imgEdit .icon {
   position: absolute;
   left: 11vw;
   bottom: 2vw;
-  fill: white;
+  fill: rgb(255, 255, 255);
   transform: scale(3);
 }
-
 .imgEdit .files {
   width: 15vw;
 }
