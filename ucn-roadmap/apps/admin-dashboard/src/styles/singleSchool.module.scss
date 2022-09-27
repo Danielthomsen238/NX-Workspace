@@ -8,6 +8,52 @@
   margin: auto;
   margin-top: 2vw;
   overflow: scroll;
+
+  textarea {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 10vw;
+    box-sizing: border-box;
+    border-radius: 0.4vw;
+    border-color: rgba(0, 0, 0, 0.45);
+    padding: 0.5vw;
+    font-size: 1.3vw;
+    margin-bottom: 4vw;
+    color: $base_Color;
+  }
+
+  nav {
+    position: absolute;
+    bottom: 3.5vw;
+    width: 40vw;
+    padding-top: 1vw;
+    height: 3.5vw;
+    background: linear-gradient(rgba(255, 255, 255, 0.872), rgb(255, 255, 255));
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+
+    button {
+      font-family: 'Montserrat', sans-serif;
+      width: 45%;
+      font-size: 1.3vw;
+      border-radius: 0.4vw;
+      background-color: $ucn_Blue;
+      color: $white_Color;
+      transition: 300ms ease-in-out;
+      margin-bottom: 0.5vw;
+      padding: 0.5vw;
+      cursor: pointer;
+      text-align: center;
+
+      &:hover {
+        background-color: $black_Color;
+        border: 0px solid $black_Color;
+        color: $white_Color;
+      }
+    }
+  }
 }
 
 .disabled {
@@ -17,7 +63,7 @@
 .ImageContainer {
   position: relative;
   margin: auto;
-  padding: 2vw 2vw 2vw 2vw;
+  padding: 1.5vw 1.5vw 1.5vw 1.5vw;
 
 
   input[type=file]::-webkit-file-upload-button {
@@ -43,7 +89,7 @@
   }
 
   img {
-    margin-top: 0vw;
+    margin-bottom: 1.5vw;
     width: 100%;
     border-radius: 10px;
     background-color: red;
@@ -59,14 +105,13 @@
   background-color: $ucn_Blue;
   color: $white_Color;
   transition: 300ms ease-in-out;
-  margin-bottom: 0.5vw;
   padding: 0.5vw;
   cursor: pointer;
   text-align: center;
 
   &:hover {
     background-color: $black_Color;
-    border: 2px solid $black_Color;
+    border: 0px solid $black_Color;
     color: $white_Color;
   }
 }

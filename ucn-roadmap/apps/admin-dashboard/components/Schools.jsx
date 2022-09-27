@@ -345,27 +345,27 @@ const Schools = () => {
                           />
                         </button>
                       ) : (
-                        <div className={school_styles.OverButton}>
-                          <button
-                            className={school.id}
-                            onClick={(e) => {
-                              HandleEdit(e);
-                              setInitaleValue(
-                                school.name,
-                                school.telefon,
-                                school.email,
-                                school.image,
-                                school.address,
-                                school.zip,
-                                school.city,
-                                school.description,
-                                school.id
-                              );
-                            }}
-                          ></button>
-                          <EditIcon className={school_styles.icon} />
-                        </div>
-                      )}
+                          <div className={school_styles.OverButton}>
+                            <button
+                              className={school.id}
+                              onClick={(e) => {
+                                HandleEdit(e);
+                                setInitaleValue(
+                                  school.name,
+                                  school.telefon,
+                                  school.email,
+                                  school.image,
+                                  school.address,
+                                  school.zip,
+                                  school.city,
+                                  school.description,
+                                  school.id
+                                );
+                              }}
+                            ></button>
+                            <EditIcon className={school_styles.icon} />
+                          </div>
+                        )}
                       <div className={school_styles.OverButton}>
                         <button id={school.id} onClick={DeleteData}></button>
                         <DeleteForeverIcon className={school_styles.icon} />
@@ -388,6 +388,32 @@ const Schools = () => {
             <>
               {session.user.school_id == school.id ? (
                 <div>
+                  <nav>  <button className={school_styles.icon}
+                    onClick={handleSubmit}>Gem ændringer</button>  {itemClicked == school.id ? (
+
+                      <button className={school_styles.icon}
+                        onClick={HandleCancel}>
+                        Fortryd
+                      </button>
+                    ) : (
+                        <button
+                          className={school.id}
+                          onClick={(e) => {
+                            HandleEdit(e);
+                            setInitaleValue(
+                              school.name,
+                              school.telefon,
+                              school.email,
+                              school.image,
+                              school.address,
+                              school.zip,
+                              school.city,
+                              school.description,
+                              school.id
+                            );
+                          }}
+                        >Rediger</button>
+                      )}</nav>
                   <div className={singleSchool_styles.ImageContainer}>
                     <a
                       target="_blank"
@@ -420,47 +446,7 @@ const Schools = () => {
                       />
                     </div>
 
-                    {itemClicked == school.id ? (
-                      <div className={singleSchool_styles.lockIcon}>
-                        <LockOpenIcon
-                          className={school_styles.icon}
-                          onClick={HandleCancel}
-                        />
-                        <button>
-                          <span>
-                            tryk på låsen for at forhindre yderligere ændringer.
-                          </span>
-                          <span>
-                            vær opmærksom på, at eventuelle ændringer, der ikke
-                            gemmes, går tabt, hvis du låser formularen
-                          </span>
-                        </button>
-                      </div>
-                    ) : (
-                      <div className={singleSchool_styles.lockIcon}>
-                        <div className={school_styles.OverButton}>
-                          <button
-                            className={school.id}
-                            onClick={(e) => {
-                              HandleEdit(e);
-                              setInitaleValue(
-                                school.name,
-                                school.telefon,
-                                school.email,
-                                school.image,
-                                school.address,
-                                school.zip,
-                                school.city,
-                                school.description,
-                                school.id
-                              );
-                            }}
-                          ></button>
-                          <LockIcon className={school_styles.icon} />
-                          <span></span>
-                        </div>
-                      </div>
-                    )}
+
                   </div>
                   <div className={singleSchool_styles.InputContainer}>
                     <label htmlFor="name">Navn</label>
@@ -557,15 +543,11 @@ const Schools = () => {
                       }
                       onChange={(e) => setSchoolContent(e.target.value)}
                     ></textarea>
-                    <CheckIcon
-                      className={school_styles.icon}
-                      onClick={handleSubmit}
-                    />
                   </div>
                 </div>
               ) : (
-                ''
-              )}
+                  ''
+                )}
             </>
           );
         })}

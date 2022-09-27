@@ -8,28 +8,72 @@
   overflow: scroll;
 }
 
+.body textarea {
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 10vw;
+  box-sizing: border-box;
+  border-radius: 0.4vw;
+  border-color: rgba(0, 0, 0, 0.45);
+  padding: 0.5vw;
+  font-size: 1.3vw;
+  margin-bottom: 4vw;
+  color: #004250;
+}
+
+.body nav {
+  position: absolute;
+  bottom: 3.5vw;
+  width: 40vw;
+  padding-top: 1vw;
+  height: 3.5vw;
+  background: linear-gradient(rgba(255, 255, 255, 0.872), white);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.body nav button {
+  font-family: 'Montserrat', sans-serif;
+  width: 45%;
+  font-size: 1.3vw;
+  border-radius: 0.4vw;
+  background-color: #0046AD;
+  color: #fff;
+  transition: 300ms ease-in-out;
+  margin-bottom: 0.5vw;
+  padding: 0.5vw;
+  cursor: pointer;
+  text-align: center;
+}
+
+.body nav button:hover {
+  background-color: black;
+  border: 0px solid black;
+  color: #fff;
+}
 
 .disabled {
   background-color: #a5a5a5;
-
 }
 
 .ImageContainer {
   position: relative;
   margin: auto;
-  padding: 2vw 2vw 2vw 2vw;
+  padding: 1.5vw 1.5vw 1.5vw 1.5vw;
 }
 
-
+.ImageContainer input[type=file]::-webkit-file-upload-button {
+  display: none;
+}
 
 .ImageContainer input {
-
   content: "Hej";
   margin-left: 1.8vw;
   margin-top: 0.5vw;
   opacity: 0;
 }
-
 
 .ImageContainer .icon {
   position: absolute;
@@ -40,7 +84,7 @@
 }
 
 .ImageContainer img {
-  margin-top: 0vw;
+  margin-bottom: 1.5vw;
   width: 100%;
   border-radius: 10px;
   background-color: red;
@@ -55,7 +99,6 @@
   background-color: #0046AD;
   color: #fff;
   transition: 300ms ease-in-out;
-  margin-bottom: 0.5vw;
   padding: 0.5vw;
   cursor: pointer;
   text-align: center;
@@ -63,7 +106,7 @@
 
 .files:hover {
   background-color: black;
-  border: 2px solid black;
+  border: 0px solid black;
   color: #fff;
 }
 
