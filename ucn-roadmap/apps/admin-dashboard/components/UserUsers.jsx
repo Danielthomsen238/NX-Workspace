@@ -5,7 +5,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import Link from 'next/link';
 import user_styles from '../src/styles/user.module.css';
 
 const UserUsers = () => {
@@ -104,7 +103,7 @@ const UserUsers = () => {
   return (
     <>
       {userData?.data.map((user, idx) => {
-        if (session.user.school_name == user.school.name) {
+        if (session.user.school_id == user.school.id) {
           return (
             <tr key={idx}>
               <td>
@@ -188,9 +187,6 @@ const UserUsers = () => {
           );
         }
       })}
-      <Link href="/createUser">
-        <button>Opret Bruger</button>
-      </Link>
     </>
   );
 };

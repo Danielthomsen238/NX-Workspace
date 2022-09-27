@@ -1,6 +1,6 @@
 import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 import user_styles from '../src/styles/user.module.css';
 import ActiveUsers from './ActiveUsers';
 import UserUsers from './UserUsers';
@@ -94,6 +94,9 @@ const Users = () => {
               <UserUsers />
             </tbody>
           </table>
+          <Link href="/createUser">
+            <div className={user_styles.create_user_btn}>Opret Bruger</div>
+          </Link>
         </div>
       </>
     );
