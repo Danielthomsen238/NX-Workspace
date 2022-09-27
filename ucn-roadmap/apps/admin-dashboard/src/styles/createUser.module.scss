@@ -1,0 +1,102 @@
+@import './helper/variables';
+
+
+//font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+.body {
+    font-family: 'Montserrat', sans-serif;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    margin-top: 2vw;
+    width: 30vw;
+    padding: 1vw 1vw 1vw 1vw;
+    background-color: $white_Color;
+    box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+    border-radius: 0.5vw;
+    fieldset {
+      border-radius: 10px;
+        padding: 1vw;
+        border-color: rgba(0, 0, 0, 0.45);
+        legend {
+            font-size: 1.3vw;
+            padding: 0.5vw;
+            margin-left: 0.5vw;
+            color: $base_Color;
+        }
+        input {
+        font-family: 'Montserrat', sans-serif;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 0.4vw;
+        border-color: rgba(0, 0, 0, 0.45);
+        padding: 0.5vw;
+        font-size: 1.3vw;
+        margin-bottom: 1vw;
+        color: $base_Color;
+        &::placeholder {
+          color: rgba(0, 0, 0, 0.45);
+        }
+        &:focus {
+          outline-color: $base_Color;
+        }
+    }
+}
+}
+
+.first_password_container {
+    position: relative;
+    width: 100%;
+    div {
+        position: absolute;
+        top: 0.7vw;
+        right: 1vw;
+        color: black;
+        transition: 0ms;
+        border: none;
+        transform: scale(1.2);
+    }
+}
+.sec_password_container {
+    position: relative;
+    width: 100%;
+    div {
+        position: absolute;
+        top: 0.7vw;
+        right: 1vw;
+        color: black;
+        transition: 0ms;
+        border: none;
+        transform: scale(1.2);
+    }
+}
+
+
+.button_container {
+    margin-top: 2vw;
+    button {
+        font-family: 'Montserrat', sans-serif;
+        width: 100%;
+        font-size: 1.3vw;
+        border-radius: 0.4vw;
+        background-color: $ucn_Blue;
+        color: $white_Color;
+        transition: 300ms ease-in-out;
+        margin-bottom: 0.5vw;
+        padding: 0.5vw;
+        border: 2px solid $ucn_Blue;
+        cursor: pointer;
+        &:hover {
+          background-color: $black_Color;
+          border: 2px solid $black_Color;
+          color: $white_Color;
+        }
+      }
+    
+}   
+
+

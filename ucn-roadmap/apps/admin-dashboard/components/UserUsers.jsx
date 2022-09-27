@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import Link from 'next/link';
 import user_styles from '../src/styles/user.module.css';
 
 const UserUsers = () => {
@@ -188,6 +188,9 @@ const UserUsers = () => {
           );
         }
       })}
+      <Link href="/createUser">
+        <button>Opret Bruger</button>
+      </Link>
     </>
   );
 };
