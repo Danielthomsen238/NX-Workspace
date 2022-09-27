@@ -9,6 +9,8 @@ import { useSession } from 'next-auth/react';
 const CreateUser = () => {
   //session data
   const { data: session, status } = useSession();
+  //button clicked
+  const [buttonClicked, setButtonClicked] = useState(false);
   //router
   const router = useRouter();
   //form data
@@ -33,7 +35,7 @@ const CreateUser = () => {
     setSecVisibility((current) => !current);
   };
   //submit user
-  const submitUser = (skoleId) => {
+  const submitUser = () => {
     const data = {
       firstname: fornavn,
       lastname: efternavn,
@@ -47,8 +49,12 @@ const CreateUser = () => {
       .post('https://sequelize-roadmap.herokuapp.com/user', data)
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          router.push('/userList');
+        }, 1000);
       })
       .catch((e) => {
+        setButtonClicked((state) => !state);
         console.log(e);
       });
   };
@@ -113,15 +119,19 @@ const CreateUser = () => {
           </div>
         </fieldset>
         <div className={createUse_styles.button_container}>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              submitUser();
-              router.push('/userList');
-            }}
-          >
-            Opret Bruger
-          </button>
+          {buttonClicked ? (
+            <button>Vent et øjeblik</button>
+          ) : (
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setButtonClicked((state) => !state);
+                submitUser();
+              }}
+            >
+              Opret Bruger
+            </button>
+          )}
         </div>
       </form>
     </div>
