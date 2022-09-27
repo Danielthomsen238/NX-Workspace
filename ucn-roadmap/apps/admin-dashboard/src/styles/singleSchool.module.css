@@ -1,147 +1,146 @@
+@import './helper/variables';
+
 .body {
   width: 40vw;
-  max-height: 90vh;
+  height: 90vh;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: auto;
   margin-top: 2vw;
-  overflow: scroll;
-}
-.body textarea {
-  font-family: "Montserrat", sans-serif;
-  width: 100%;
-  height: 10vw;
-  box-sizing: border-box;
-  border-radius: 0.4vw;
-  border-color: rgba(0, 0, 0, 0.45);
-  padding: 0.5vw;
-  font-size: 1.3vw;
-  margin-bottom: 4vw;
-  color: #004250;
-}
-.body nav {
-  position: absolute;
-  bottom: 3.5vw;
-  width: 40vw;
-  padding-top: 1vw;
-  height: 3.5vw;
-  background: linear-gradient(rgba(255, 255, 255, 0.872), rgb(255, 255, 255));
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   display: flex;
-  justify-content: space-evenly;
-}
-.body nav button {
-  font-family: "Montserrat", sans-serif;
-  width: 45%;
-  font-size: 1.3vw;
-  border-radius: 0.4vw;
-  background-color: #0046AD;
-  color: #fff;
-  transition: 300ms ease-in-out;
-  margin-bottom: 0.5vw;
-  padding: 0.5vw;
-  cursor: pointer;
-  text-align: center;
-}
-.body nav button:hover {
-  background-color: black;
-  border: 0px solid black;
-  color: #fff;
-}
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  box-sizing: content-box;
 
-.disabled {
-  background-color: rgb(165, 165, 165);
-}
+  textarea {
+    font-family: 'Montserrat', sans-serif;
+    width: 90%;
+    height: 10vw;
+    box-sizing: border-box;
+    border-radius: 0.4vw;
+    border-color: rgba(0, 0, 0, 0.45);
+    padding: 0.5vw;
+    font-size: 1.3vw;
+    margin-bottom: 4vw;
+    color: $base_Color;
+  }
 
-.ImageContainer {
-  position: relative;
-  margin: auto;
-  padding: 1.5vw 1.5vw 1.5vw 1.5vw;
-}
-.ImageContainer input[type=file]::-webkit-file-upload-button {
-  display: none;
-}
-.ImageContainer input {
-  content: "Hej";
-  margin-left: 1.8vw;
-  margin-top: 0.5vw;
-  opacity: 0;
-}
-.ImageContainer .icon {
-  position: absolute;
-  left: 11vw;
-  top: 0vw;
-  fill: rgb(255, 255, 255);
-  transform: scale(3);
-}
-.ImageContainer img {
-  margin-bottom: 1.5vw;
-  width: 100%;
-  border-radius: 10px;
-  background-color: red;
+  .ImageContainer {
+    width: 100%;
+    height: 52%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 0 15px 20px rgb(255, 255, 255);
+    z-index: 1;
+
+
+    .imgEdit {
+      width: 90%;
+    }
+
+    input[type=file]::-webkit-file-upload-button {
+      display: none;
+    }
+
+
+    input {
+      margin-left: 1.8vw;
+      margin-top: 0.5vw;
+      opacity: 0;
+    }
+
+    img {
+      width: 90%;
+      border-radius: 10px;
+    }
+  }
+
+  .InputContainer {
+    width: 100%;
+    height: 38%;
+    overflow: scroll;
+    padding: 0vw 0vw 0vw 2vw;
+
+
+
+
+    input {
+      font-family: 'Montserrat', sans-serif;
+      width: 90%;
+      box-sizing: border-box;
+      border-radius: 0.4vw;
+      border-color: rgba(0, 0, 0, 0.45);
+      padding: 0.5vw;
+      font-size: 1.3vw;
+      margin-bottom: 1vw;
+      color: $base_Color;
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.45);
+      }
+
+      &:focus {
+        outline-color: $base_Color;
+      }
+    }
+
+    input {
+      display: block;
+    }
+  }
+
+
+
+  .ButtonsContainer {
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 0 0 10px 20px rgb(255, 255, 255);
+
+
+    button {
+      font-family: 'Montserrat', sans-serif;
+      width: 40%;
+      margin-left: -2vw;
+      font-size: 1.3vw;
+      border-radius: 0.4vw;
+      background-color: $ucn_Blue;
+      color: $white_Color;
+      transition: 300ms ease-in-out;
+      cursor: pointer;
+      border: rgba(255, 0, 0, 0);
+
+      &:hover {
+        background-color: $black_Color;
+        border: 0px solid $black_Color;
+        color: $white_Color;
+      }
+    }
+  }
 }
 
 .files {
   display: block;
-  font-family: "Montserrat", sans-serif;
-  width: 98%;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.3vw;
   border-radius: 0.4vw;
-  background-color: #0046AD;
-  color: #fff;
+  background-color: $ucn_Blue;
+  color: $white_Color;
   transition: 300ms ease-in-out;
   padding: 0.5vw;
   cursor: pointer;
   text-align: center;
-}
-.files:hover {
-  background-color: black;
-  border: 0px solid black;
-  color: #fff;
-}
 
-.InputContainer {
-  padding: 1vw 1vw 1vw 1vw;
-}
-.InputContainer input {
-  font-family: "Montserrat", sans-serif;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 0.4vw;
-  border-color: rgba(0, 0, 0, 0.45);
-  padding: 0.5vw;
-  font-size: 1.3vw;
-  margin-bottom: 1vw;
-  color: #004250;
-}
-.InputContainer input::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
-.InputContainer input:-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
-.InputContainer input::placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
-.InputContainer input:focus {
-  outline-color: #004250;
-}
-.InputContainer input {
-  display: block;
-}
-
-.lockIcon {
-  position: absolute;
-  bottom: 0;
-  width: 2vw;
-  height: 2vw;
-}
-.lockIcon button {
-  border: none;
-}
-.lockIcon span {
-  margin-left: 1vw;
-  display: none;
-  color: red;
+  &:hover {
+    background-color: $black_Color;
+    border: 0px solid $black_Color;
+    color: $white_Color;
+  }
 }

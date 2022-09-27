@@ -382,73 +382,40 @@ const Schools = () => {
   }
   if (session.user.role != 'Admin') {
     return (
-      <div className={singleSchool_styles.body}>
+      <>
         {schoolData?.data.map((school, idx) => {
           return (
             <>
-              {session.user.school_id == school.id ? (
-                <div>
-                  <nav>  <button className={school_styles.icon}
-                    onClick={handleSubmit}>Gem ændringer</button>  {itemClicked == school.id ? (
 
-                      <button className={school_styles.icon}
-                        onClick={HandleCancel}>
-                        Fortryd
-                      </button>
-                    ) : (
-                        <button
-                          className={school.id}
-                          onClick={(e) => {
-                            HandleEdit(e);
-                            setInitaleValue(
-                              school.name,
-                              school.telefon,
-                              school.email,
-                              school.image,
-                              school.address,
-                              school.zip,
-                              school.city,
-                              school.description,
-                              school.id
-                            );
-                          }}
-                        >Rediger</button>
-                      )}</nav>
+              {session.user.school_id == school.id ? (
+                <div className={singleSchool_styles.body}>
                   <div className={singleSchool_styles.ImageContainer}>
-                    <a
-                      target="_blank"
-                      href={
+
+                    <img
+                      src={
                         itemClicked == school.id ? schoolImage : school.image
                       }
                       onChange={(e) => setSchoolImage(e.target.value)}
-                    >
-                      <img
-                        src={
-                          itemClicked == school.id ? schoolImage : school.image
-                        }
-                        onChange={(e) => setSchoolImage(e.target.value)}
-                        alt=""
-                        layout="fill"
-                      />
-                    </a>
+                      alt=""
+                      layout="fill"
+                    />
                     <div className={singleSchool_styles.imgEdit}>
                       <label
                         className={singleSchool_styles.files}
-                        htmlFor={itemClicked == school.id ? 'files' : ''}
+                        htmlFor={itemClicked == school.id ? 'files' : 'files'}
                       >
-                        opdatere billede
-                      </label>
+                        Opdater billede
+                    </label>
                       <input
-                        disabled={itemClicked == school.id ? 'disabled' : ''}
                         type="file"
                         id="files"
                         onClick={fileSelectedHandler}
                       />
                     </div>
 
-
                   </div>
                   <div className={singleSchool_styles.InputContainer}>
+                    <br></br>
                     <label htmlFor="name">Navn</label>
                     <input
                       className={
@@ -543,15 +510,43 @@ const Schools = () => {
                       }
                       onChange={(e) => setSchoolContent(e.target.value)}
                     ></textarea>
+
+                  </div>
+                  <div className={singleSchool_styles.ButtonsContainer}>
+                    <button className={school_styles.icon}
+                      onClick={handleSubmit}>Gem ændringer</button>  {itemClicked == school.id ? (
+
+                        <button className={school_styles.icon}
+                          onClick={HandleCancel}>
+                          Fortryd
+                        </button>
+                      ) : (
+                          <button
+                            className={school.id}
+                            onClick={(e) => {
+                              HandleEdit(e);
+                              setInitaleValue(
+                                school.name,
+                                school.telefon,
+                                school.email,
+                                school.image,
+                                school.address,
+                                school.zip,
+                                school.city,
+                                school.description,
+                                school.id
+                              );
+                            }}
+                          >Rediger</button>
+                        )}
                   </div>
                 </div>
-              ) : (
-                  ''
-                )}
+              ) : ('')}
             </>
           );
         })}
-      </div>
+
+      </>
     );
   }
 };
