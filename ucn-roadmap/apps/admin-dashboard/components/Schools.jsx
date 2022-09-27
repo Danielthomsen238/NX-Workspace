@@ -4,13 +4,12 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Geocode from 'react-geocode';
-import Image from 'next/image'
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LockIcon from '@mui/icons-material/Lock';
 
@@ -22,9 +21,7 @@ const Schools = () => {
 
   //geocoding
 
-
   const { data: session, status } = useSession();
-  const [waitButton, setWaitButton] = useState(false);
   const [runEffect, setRunEffect] = useState(false);
   const [schoolName, setSchoolName] = useState();
   const [schoolPhone, setSchoolPhone] = useState();
@@ -81,10 +78,9 @@ const Schools = () => {
   //submit function to update school
   const handleSubmit = (e) => {
     e.preventDefault();
-    Geocode.setApiKey(api);
+    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_API);
     Geocode.setLanguage('en');
     Geocode.setLocationType('ROOFTOP');
-    setWaitButton(true);
     Geocode.fromAddress(`${schoolAddresse} ${schoolZip} ${schoolCity}`).then(
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -93,7 +89,6 @@ const Schools = () => {
         }
       },
       (error) => {
-        setWaitButton(false);
         console.error(error);
       }
     );
@@ -169,11 +164,6 @@ const Schools = () => {
     } else {
       return;
     }
-  };
-
-  //function for select/options for activ user
-  const Other = (X) => {
-    return !X;
   };
 
   //function to set the initial value of states if states is undefined on user clicked for editing
@@ -391,86 +381,196 @@ const Schools = () => {
     );
   }
   if (session.user.role != 'Admin') {
-
-    return (<div className={singleSchool_styles.body}>
-      {schoolData?.data.map((school, idx) => {
-        return (<>
-          {session.user.school_id == school.id ?
-            <div>
-              <div className={singleSchool_styles.ImageContainer}>
-                <a target="_blank" href={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)}>
-                  <img src={itemClicked == school.id ? schoolImage : school.image} onChange={(e) => setSchoolImage(e.target.value)} alt="" layout="fill" />
-                </a>
-                <div className={singleSchool_styles.imgEdit} >
-                  <label className={singleSchool_styles.files} htmlFor={itemClicked == school.id ? 'files' : ''}>opdatere billede</label>
-                  <input disabled={itemClicked == school.id ? 'disabled' : ''} type="file" id="files" onClick={fileSelectedHandler} />
-                </div>
-
-                {itemClicked == school.id ? (
-                  <div className={singleSchool_styles.lockIcon}>
-                    <LockOpenIcon
-                      className={school_styles.icon}
-                      onClick={HandleCancel}
-                    />
-                    <button>
-                      <span>tryk på låsen for at forhindre yderligere ændringer.</span>
-                      <span>vær opmærksom på, at eventuelle ændringer, der ikke gemmes, går tabt, hvis du låser formularen</span>
-                    </button>
-                  </div>
-                ) : (
-                    <div className={singleSchool_styles.lockIcon}>
-
-                      <div className={school_styles.OverButton}>
-                        <button
-                          className={school.id}
-                          onClick={(e) => {
-                            HandleEdit(e);
-                            setInitaleValue(
-                              school.name,
-                              school.telefon,
-                              school.email,
-                              school.image,
-                              school.address,
-                              school.zip,
-                              school.city,
-                              school.description,
-                              school.id
-                            );
-                          }}
-                        ></button>
-                        <LockIcon className={school_styles.icon} />
-                        <span></span>
-                      </div>
+    return (
+      <div className={singleSchool_styles.body}>
+        {schoolData?.data.map((school, idx) => {
+          return (
+            <>
+              {session.user.school_id == school.id ? (
+                <div>
+                  <div className={singleSchool_styles.ImageContainer}>
+                    <a
+                      target="_blank"
+                      href={
+                        itemClicked == school.id ? schoolImage : school.image
+                      }
+                      onChange={(e) => setSchoolImage(e.target.value)}
+                    >
+                      <img
+                        src={
+                          itemClicked == school.id ? schoolImage : school.image
+                        }
+                        onChange={(e) => setSchoolImage(e.target.value)}
+                        alt=""
+                        layout="fill"
+                      />
+                    </a>
+                    <div className={singleSchool_styles.imgEdit}>
+                      <label
+                        className={singleSchool_styles.files}
+                        htmlFor={itemClicked == school.id ? 'files' : ''}
+                      >
+                        opdatere billede
+                      </label>
+                      <input
+                        disabled={itemClicked == school.id ? 'disabled' : ''}
+                        type="file"
+                        id="files"
+                        onClick={fileSelectedHandler}
+                      />
                     </div>
 
-                  )}
-
-              </div>
-              <div className={singleSchool_styles.InputContainer}>
-                <label htmlFor="name">Navn</label>
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} id="name" type="text" disabled={itemClicked == school.id ? '' : 'disabled'}
-                  value={
-                    itemClicked == school.id
-                      ? schoolName
-                      : school.name
-                  }
-                  onChange={(e) => setSchoolName(e.target.value)} />
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolPhone : school.telefon} onChange={(e) => setSchoolPhone(e.target.value)} type="number" />
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolEmail : school.email} onChange={(e) => setSchoolEmail(e.target.value)} type="text" />
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolAddresse : school.address} onChange={(e) => setSchoolAddresse(e.target.value)} type="text" />
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolZip : school.zip} onChange={(e) => setSchoolZip(e.target.value)} type="text" />
-                <input className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolCity : school.city} onChange={(e) => setSchoolCity(e.target.value)} type="text" />
-                <textarea className={itemClicked == school.id ? '' : singleSchool_styles.disabled} disabled={itemClicked == school.id ? '' : 'disabled'} value={itemClicked == school.id ? schoolContent : school.description} onChange={(e) => setSchoolContent(e.target.value)}></textarea>
-                <CheckIcon
-                  className={school_styles.icon}
-                  onClick={handleSubmit}
-                />
-              </div></div> : ''}
-
-        </>)
-      })}
-    </div>)
-
+                    {itemClicked == school.id ? (
+                      <div className={singleSchool_styles.lockIcon}>
+                        <LockOpenIcon
+                          className={school_styles.icon}
+                          onClick={HandleCancel}
+                        />
+                        <button>
+                          <span>
+                            tryk på låsen for at forhindre yderligere ændringer.
+                          </span>
+                          <span>
+                            vær opmærksom på, at eventuelle ændringer, der ikke
+                            gemmes, går tabt, hvis du låser formularen
+                          </span>
+                        </button>
+                      </div>
+                    ) : (
+                      <div className={singleSchool_styles.lockIcon}>
+                        <div className={school_styles.OverButton}>
+                          <button
+                            className={school.id}
+                            onClick={(e) => {
+                              HandleEdit(e);
+                              setInitaleValue(
+                                school.name,
+                                school.telefon,
+                                school.email,
+                                school.image,
+                                school.address,
+                                school.zip,
+                                school.city,
+                                school.description,
+                                school.id
+                              );
+                            }}
+                          ></button>
+                          <LockIcon className={school_styles.icon} />
+                          <span></span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className={singleSchool_styles.InputContainer}>
+                    <label htmlFor="name">Navn</label>
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      id="name"
+                      type="text"
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id ? schoolName : school.name
+                      }
+                      onChange={(e) => setSchoolName(e.target.value)}
+                    />
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id ? schoolPhone : school.telefon
+                      }
+                      onChange={(e) => setSchoolPhone(e.target.value)}
+                      type="number"
+                    />
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id ? schoolEmail : school.email
+                      }
+                      onChange={(e) => setSchoolEmail(e.target.value)}
+                      type="text"
+                    />
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id
+                          ? schoolAddresse
+                          : school.address
+                      }
+                      onChange={(e) => setSchoolAddresse(e.target.value)}
+                      type="text"
+                    />
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={itemClicked == school.id ? schoolZip : school.zip}
+                      onChange={(e) => setSchoolZip(e.target.value)}
+                      type="text"
+                    />
+                    <input
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id ? schoolCity : school.city
+                      }
+                      onChange={(e) => setSchoolCity(e.target.value)}
+                      type="text"
+                    />
+                    <textarea
+                      className={
+                        itemClicked == school.id
+                          ? ''
+                          : singleSchool_styles.disabled
+                      }
+                      disabled={itemClicked == school.id ? '' : 'disabled'}
+                      value={
+                        itemClicked == school.id
+                          ? schoolContent
+                          : school.description
+                      }
+                      onChange={(e) => setSchoolContent(e.target.value)}
+                    ></textarea>
+                    <CheckIcon
+                      className={school_styles.icon}
+                      onClick={handleSubmit}
+                    />
+                  </div>
+                </div>
+              ) : (
+                ''
+              )}
+            </>
+          );
+        })}
+      </div>
+    );
   }
 };
 
