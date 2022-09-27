@@ -27,7 +27,7 @@ const UserUsers = () => {
 
   useEffect(() => {
     axios
-      .get('https://sequelize-api.vercel.app/User', config)
+      .get('https://sequelize-roadmap.herokuapp.com/User', config)
       .then((response) => {
         console.log(response);
         setData(response);
@@ -48,7 +48,7 @@ const UserUsers = () => {
       active: userActive,
     };
     axios
-      .put(`https://sequelize-api.vercel.app/User`, payload, config)
+      .put(`https://sequelize-roadmap.herokuapp.com/User`, payload, config)
       .then((response) => {
         console.log(response);
         setRunEffect((state) => !state);

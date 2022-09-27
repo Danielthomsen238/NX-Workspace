@@ -2,13 +2,14 @@ import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import axios from 'axios';
 import login_styles from '../src/styles/login.module.css';
+import frontpage_styles from '../src/styles/frontpage.module.css';
 
 const Index = () => {
   const { data: session, status } = useSession();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [error, setError] = useState();
-
+  console.log(session);
   const config = {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
@@ -21,7 +22,11 @@ const Index = () => {
         otp: null,
       };
       axios
-        .put(`https://sequelize-api.vercel.app/updatepass`, payload, config)
+        .put(
+          `https://sequelize-roadmap.herokuapp.com/updatepass`,
+          payload,
+          config
+        )
         .then((response) => {
           console.log(response);
           alert(
@@ -43,7 +48,7 @@ const Index = () => {
     return (
       <>
         <form className={login_styles.gentag_kode_container}>
-          <h2>Ændre Koden</h2>
+          {error ? <h2>{error}</h2> : <h2>Ændre Koden</h2>}
           <input
             placeholder="Indtast ny kode"
             type="password"
@@ -68,8 +73,18 @@ const Index = () => {
         </form>
       </>
     );
-  } else {
-    return;
+  } else if (session.user.active == false) {
+    return (
+      <>
+        <section className={frontpage_styles.container}>
+          <h2>Du er logget ind</h2>
+          <p>
+            men du er ikke blevet aktiveret af en admin endnu, så du kan ikke se
+            eller redigere noget.
+          </p>
+        </section>
+      </>
+    );
   }
 };
 Index.auth = true;

@@ -8,8 +8,10 @@
   overflow: scroll;
 }
 
+
 .disabled {
   background-color: #a5a5a5;
+
 }
 
 .ImageContainer {
@@ -18,16 +20,16 @@
   padding: 2vw 2vw 2vw 2vw;
 }
 
-.ImageContainer input[type=file]::-webkit-file-upload-button {
-  display: none;
-}
+
 
 .ImageContainer input {
+
   content: "Hej";
   margin-left: 1.8vw;
   margin-top: 0.5vw;
   opacity: 0;
 }
+
 
 .ImageContainer .icon {
   position: absolute;

@@ -35,7 +35,7 @@ const UnActiveUsers = (props) => {
       active: userActive,
     };
     axios
-      .put(`https://sequelize-api.vercel.app/User`, payload, config)
+      .put(`https://sequelize-roadmap.herokuapp.com/User`, payload, config)
       .then((response) => {
         console.log(response);
         runEffect((state) => !state);
@@ -70,7 +70,7 @@ const UnActiveUsers = (props) => {
         data: { id: e.target.id },
       };
       axios
-        .delete(`https://sequelize-api.vercel.app/User`, payload)
+        .delete(`https://sequelize-roadmap.herokuapp.com/User`, payload)
         .then((response) => {
           console.log(response);
           runEffect((state) => !state);

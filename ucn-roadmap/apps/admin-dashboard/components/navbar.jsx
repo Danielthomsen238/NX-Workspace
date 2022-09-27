@@ -27,9 +27,6 @@ const Navbar = () => {
     <>
       <nav className={navbar_styles.nav}>
         <div className={navbar_styles.current_user_container}>
-          <div>
-            <img src="" alt="" />
-          </div>
           <h2 className={navbar_styles.current_user_name}>
             {session.user.firstname}
           </h2>
@@ -51,24 +48,58 @@ const Navbar = () => {
               onClick={handleDropUp}
             />
           </li>
-          <li>
-            <Groups2Icon className={navbar_styles.icons} />
-            <Link href="/userList">
+          {session.user.active ? (
+            <li>
+              <Groups2Icon className={navbar_styles.icons} />
+              <Link href="/userList">
+                <a>Users</a>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Groups2Icon className={navbar_styles.icons} />
               <a>Users</a>
-            </Link>
-          </li>
-          <li>
-            <ApartmentIcon className={navbar_styles.icons} />
-            <Link href="/schoolList">
+            </li>
+          )}
+          {session.user.active ? (
+            <li>
+              <ApartmentIcon className={navbar_styles.icons} />
+              <Link href="/schoolList">
+                <a>Schools</a>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <ApartmentIcon className={navbar_styles.icons} />
               <a>Schools</a>
-            </Link>
-          </li>
-          <li>
-            <SchoolIcon className={navbar_styles.icons} /> Courses
-          </li>
-          <li>
-            <ListIcon className={navbar_styles.icons} /> Categories
-          </li>
+            </li>
+          )}
+          {session.user.active ? (
+            <li>
+              <SchoolIcon className={navbar_styles.icons} />{' '}
+              <Link href="/courses">
+                <a>Courses</a>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <SchoolIcon className={navbar_styles.icons} />
+              <a>Courses</a>
+            </li>
+          )}
+          {session.user.active ? (
+            <li>
+              <ListIcon className={navbar_styles.icons} />
+              <Link href="/categories">
+                <a>Categories</a>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <ListIcon className={navbar_styles.icons} />
+              <a>Categories</a>
+            </li>
+          )}
         </ul>
         <ul>
           <li>User</li>
