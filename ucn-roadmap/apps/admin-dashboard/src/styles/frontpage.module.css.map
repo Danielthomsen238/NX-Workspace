@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAIA,OAAO,CAAC,oGAAI;AAGZ,AAAA,UAAU,CAAC;EACP,WAAW,EAAE,wBAAwB;EACrC,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,GAAG;EACZ,GAAG,EAAE,IAAI;EACT,KAAK,EAAE,IAAI;EACX,gBAAgB,ECRN,IAAI;EDSd,aAAa,EAAE,IAAI;EACnB,UAAU,EAAE,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CCTb,oBAAoB;EDUlC,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;CAIf;;AAdD,AAWI,UAXM,CAWN,EAAE,CAAC;EACC,aAAa,EAAE,GAAG;CACrB",
+    "sources": [
+        "frontpage.module.scss",
+        "helper/_variables.scss"
+    ],
+    "names": [],
+    "file": "frontpage.module.css"
+}

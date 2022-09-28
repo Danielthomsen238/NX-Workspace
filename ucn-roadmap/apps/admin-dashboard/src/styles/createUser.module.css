@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 80vw;
   display: flex;
   justify-content: center;
@@ -15,19 +15,22 @@
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
   border-radius: 0.5vw;
 }
+
 .form fieldset {
   border-radius: 10px;
   padding: 1vw;
   border-color: rgba(0, 0, 0, 0.45);
 }
+
 .form fieldset legend {
   font-size: 1.3vw;
   padding: 0.5vw;
   margin-left: 0.5vw;
   color: #004250;
 }
+
 .form fieldset input {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   box-sizing: border-box;
   border-radius: 0.4vw;
@@ -37,15 +40,11 @@
   margin-bottom: 1vw;
   color: #004250;
 }
-.form fieldset input::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
-.form fieldset input:-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.45);
-}
+
 .form fieldset input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
+
 .form fieldset input:focus {
   outline-color: #004250;
 }
@@ -54,6 +53,7 @@
   position: relative;
   width: 100%;
 }
+
 .first_password_container div {
   position: absolute;
   top: 0.7vw;
@@ -68,6 +68,7 @@
   position: relative;
   width: 100%;
 }
+
 .sec_password_container div {
   position: absolute;
   top: 0.7vw;
@@ -81,8 +82,9 @@
 .button_container {
   margin-top: 2vw;
 }
+
 .button_container button {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 100%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
@@ -94,8 +96,10 @@
   border: 2px solid #0046AD;
   cursor: pointer;
 }
+
 .button_container button:hover {
   background-color: black;
   border: 2px solid black;
   color: #fff;
 }
+/*# sourceMappingURL=createUser.module.css.map */
