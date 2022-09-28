@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 80vw;
   margin-bottom: 3vw;
 }
@@ -10,7 +10,7 @@
   margin-left: 30vw;
   display: flex;
   justify-content: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   width: 15vw;
   font-size: 1.3vw;
   border-radius: 0.4vw;
@@ -22,6 +22,7 @@
   border: 2px solid #0046AD;
   cursor: pointer;
 }
+
 .create_user_btn:hover {
   background-color: black;
   border: 2px solid black;
@@ -32,25 +33,30 @@
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  color: rgb(33, 33, 33);
+  color: #212121;
 }
+
 .table td,
 .table th {
   font-size: 1.2vw;
   border: 1px solid #ddd;
 }
+
 .table td div,
 .table th div {
   min-width: 15vw;
   max-width: 25vw;
   overflow: auto;
 }
+
 .table th:last-child {
   width: 5vw;
 }
+
 .table th:nth-child(7) {
   width: 5vw;
 }
+
 .table th {
   padding-top: 12px;
   padding-left: 0.5vw;
@@ -59,19 +65,24 @@
   background-color: #004250;
   color: white;
 }
+
 .table tr {
   background-color: white;
 }
+
 .table tr:nth-child(even) {
   background-color: #d8d8d8;
 }
+
 .table tr:hover {
   background-color: #ddd;
 }
+
 .table button {
   border: none;
   background-color: rgba(255, 0, 0, 0);
 }
+
 .table input {
   font-size: 1.2vw;
   height: 2vw;
@@ -91,6 +102,7 @@
   height: 3vw;
   display: inline;
 }
+
 .OverButton button {
   position: absolute;
   width: 2vw;
@@ -103,3 +115,4 @@
   background-color: white;
   padding: 1vw;
 }
+/*# sourceMappingURL=user.module.css.map */

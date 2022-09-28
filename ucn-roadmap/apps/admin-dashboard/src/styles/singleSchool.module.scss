@@ -2,17 +2,32 @@
 
 .body {
   width: 40vw;
-  height: 90vh;
+  height: 47vw;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: auto;
   margin-top: 2vw;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow: scroll;
+  padding-bottom: 1vw;
+  overflow: hidden;
   box-sizing: content-box;
+  
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(138, 138, 138); 
+  border-radius: 10px;
+}
+
 
   textarea {
     font-family: 'Montserrat', sans-serif;
@@ -28,19 +43,17 @@
   }
 
   .ImageContainer {
+    position: relative;
     width: 100%;
     height: 52%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
     box-shadow: 0 0 15px 20px rgb(255, 255, 255);
-    z-index: 1;
+    z-index: 6;
+    margin: auto;
 
 
     .imgEdit {
       width: 90%;
+      margin: auto;
     }
 
     input[type=file]::-webkit-file-upload-button {
@@ -56,14 +69,19 @@
 
     img {
       width: 90%;
+      display: block;
+      margin: auto;
       border-radius: 10px;
+      margin-top: 2vw;
+      margin-bottom: 1vw;
     }
   }
 
   .InputContainer {
-    width: 100%;
+    width: 90%;
     height: 38%;
     overflow: scroll;
+    overflow-x: hidden;
     padding: 0vw 0vw 0vw 2vw;
 
 
@@ -71,7 +89,8 @@
 
     input {
       font-family: 'Montserrat', sans-serif;
-      width: 90%;
+      width: 98%;
+      padding-right: 1vw;
       box-sizing: border-box;
       border-radius: 0.4vw;
       border-color: rgba(0, 0, 0, 0.45);
@@ -107,9 +126,9 @@
 
     button {
       font-family: 'Montserrat', sans-serif;
-      width: 40%;
-      margin-left: -2vw;
+      width: 43%;
       font-size: 1.3vw;
+      height: 2.5vw;
       border-radius: 0.4vw;
       background-color: $ucn_Blue;
       color: $white_Color;
