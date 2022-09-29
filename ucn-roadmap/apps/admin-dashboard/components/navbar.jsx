@@ -78,7 +78,7 @@ const Navbar = () => {
           {session.user.active ? (
             <li>
               <SchoolIcon className={navbar_styles.icons} />{' '}
-              <Link href="/courses">
+              <Link href="/courseList">
                 <a>Courses</a>
               </Link>
             </li>

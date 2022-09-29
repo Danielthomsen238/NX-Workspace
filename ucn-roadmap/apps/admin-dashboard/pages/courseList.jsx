@@ -1,5 +1,7 @@
-const CourseList = () => {
-  return <h1>Course List</h1>;
-};
+import Courses from '../components/Courses';
 
+const CourseList = () => {
+  return <Courses />;
+};
+CourseList.auth = true;
 export default CourseList;
