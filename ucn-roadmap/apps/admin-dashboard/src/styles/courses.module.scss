@@ -1,0 +1,88 @@
+@import './helper/variables';
+//font-family: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+
+.body {
+    font-family: 'Montserrat', sans-serif;
+    width: 80vw;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: rgb(33, 33, 33);
+  
+    td,
+    th {
+      font-size: 1.2vw;
+      border: 1px solid #ddd;
+  
+      div {
+        min-width: 15vw;
+        max-width: 25vw;
+        overflow: auto;
+      }
+  
+    }
+  
+
+  
+    th {
+      padding-top: 12px;
+      padding-left: 0.5vw;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: $base_Color;
+      color: white;
+    }
+  
+    tr {
+      background-color: white;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #d8d8d8;
+    }
+  
+    tr:hover {
+      background-color: #ddd;
+    }
+  
+    button {
+      border: none;
+      background-color: rgba(255, 0, 0, 0);
+    }
+  
+    input {
+      font-size: 1.2vw;
+      height: 2vw;
+      width: 95%;
+      border: none;
+      background-color: rgba(221, 221, 221, 0);
+      padding-left: 0.5vw;
+    }
+  }
+  
+  .icon {
+    cursor: pointer;
+  }
+  
+  .OverButton {
+    position: relative;
+    width: 3vw;
+    height: 3vw;
+    display: inline;
+  
+    button {
+      position: absolute;
+      width: 2vw;
+      height: 2vw;
+      background-color: rgba(221, 221, 221, 0);
+      cursor: pointer;
+    }
+  }

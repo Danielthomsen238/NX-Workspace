@@ -1,31 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
 .nav {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.5vw;
   width: 20vw;
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: #252f32;
   height: 100vh;
 }
-
 .nav a {
   text-decoration: none;
   color: white;
   width: 20vw;
   cursor: pointer;
 }
-
 .nav ul:nth-child(3) {
   position: fixed;
   bottom: 0;
   min-width: 20vw;
 }
-
 .nav ul {
   overflow: hidden;
   transition: 200ms ease-in-out;
 }
-
 .nav ul li {
   position: relative;
   padding: 1vw;
@@ -33,12 +29,10 @@
   background-color: #252f32;
   border-bottom: rgba(119, 169, 210, 0.16) solid;
 }
-
 .nav ul li:nth-child(1) {
-  background-color: #1f2628;
+  background-color: rgb(31, 38, 40);
   padding-left: 1vw;
 }
-
 .nav button {
   border: none;
   background-color: inherit;
@@ -53,19 +47,16 @@
   width: 100%;
   height: 8vw;
 }
-
 .current_user_container h2 {
   margin-left: 8vw;
   padding-top: 2vw;
   font-size: 2vw;
 }
-
 .current_user_container p {
   margin-left: 8vw;
   font-size: 1vw;
   word-wrap: break-word;
 }
-
 .current_user_container div {
   position: absolute;
   width: 5vw;
@@ -110,4 +101,3 @@
 .droppedul {
   height: 20vw;
 }
-/*# sourceMappingURL=navbar.module.css.map */

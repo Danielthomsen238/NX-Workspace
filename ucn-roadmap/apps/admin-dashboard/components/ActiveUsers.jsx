@@ -35,7 +35,7 @@ const ActiveUsers = (props) => {
       active: userActive,
     };
     axios
-      .put(`https://sequelize-roadmap.herokuapp.com//User`, payload, config)
+      .put(`https://sequelize-roadmap.herokuapp.com/User`, payload, config)
       .then((response) => {
         console.log(response);
         runEffect((state) => !state);

@@ -10,9 +10,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
 
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import LockIcon from '@mui/icons-material/Lock';
-
 import school_styles from '../src/styles/school.module.css';
 import singleSchool_styles from '../src/styles/singleSchool.module.css';
 
@@ -345,27 +342,27 @@ const Schools = () => {
                           />
                         </button>
                       ) : (
-                          <div className={school_styles.OverButton}>
-                            <button
-                              className={school.id}
-                              onClick={(e) => {
-                                HandleEdit(e);
-                                setInitaleValue(
-                                  school.name,
-                                  school.telefon,
-                                  school.email,
-                                  school.image,
-                                  school.address,
-                                  school.zip,
-                                  school.city,
-                                  school.description,
-                                  school.id
-                                );
-                              }}
-                            ></button>
-                            <EditIcon className={school_styles.icon} />
-                          </div>
-                        )}
+                        <div className={school_styles.OverButton}>
+                          <button
+                            className={school.id}
+                            onClick={(e) => {
+                              HandleEdit(e);
+                              setInitaleValue(
+                                school.name,
+                                school.telefon,
+                                school.email,
+                                school.image,
+                                school.address,
+                                school.zip,
+                                school.city,
+                                school.description,
+                                school.id
+                              );
+                            }}
+                          ></button>
+                          <EditIcon className={school_styles.icon} />
+                        </div>
+                      )}
                       <div className={school_styles.OverButton}>
                         <button id={school.id} onClick={DeleteData}></button>
                         <DeleteForeverIcon className={school_styles.icon} />
@@ -386,11 +383,9 @@ const Schools = () => {
         {schoolData?.data.map((school, idx) => {
           return (
             <>
-
               {session.user.school_id == school.id ? (
                 <div className={singleSchool_styles.body}>
                   <div className={singleSchool_styles.ImageContainer}>
-
                     <img
                       src={
                         itemClicked == school.id ? schoolImage : school.image
@@ -405,14 +400,13 @@ const Schools = () => {
                         htmlFor={itemClicked == school.id ? 'files' : 'files'}
                       >
                         Opdater billede
-                    </label>
+                      </label>
                       <input
                         type="file"
                         id="files"
                         onClick={fileSelectedHandler}
                       />
                     </div>
-
                   </div>
                   <div className={singleSchool_styles.InputContainer}>
                     <br></br>
@@ -510,42 +504,50 @@ const Schools = () => {
                       }
                       onChange={(e) => setSchoolContent(e.target.value)}
                     ></textarea>
-
                   </div>
                   <div className={singleSchool_styles.ButtonsContainer}>
-                    <button className={school_styles.icon}
-                      onClick={handleSubmit}>Gem ændringer</button>  {itemClicked == school.id ? (
-
-                        <button className={school_styles.icon}
-                          onClick={HandleCancel}>
-                          Fortryd
-                        </button>
-                      ) : (
-                          <button
-                            className={school.id}
-                            onClick={(e) => {
-                              HandleEdit(e);
-                              setInitaleValue(
-                                school.name,
-                                school.telefon,
-                                school.email,
-                                school.image,
-                                school.address,
-                                school.zip,
-                                school.city,
-                                school.description,
-                                school.id
-                              );
-                            }}
-                          >Rediger</button>
-                        )}
+                    <button
+                      className={school_styles.icon}
+                      onClick={handleSubmit}
+                    >
+                      Gem ændringer
+                    </button>{' '}
+                    {itemClicked == school.id ? (
+                      <button
+                        className={school_styles.icon}
+                        onClick={HandleCancel}
+                      >
+                        Fortryd
+                      </button>
+                    ) : (
+                      <button
+                        className={school.id}
+                        onClick={(e) => {
+                          HandleEdit(e);
+                          setInitaleValue(
+                            school.name,
+                            school.telefon,
+                            school.email,
+                            school.image,
+                            school.address,
+                            school.zip,
+                            school.city,
+                            school.description,
+                            school.id
+                          );
+                        }}
+                      >
+                        Rediger
+                      </button>
+                    )}
                   </div>
                 </div>
-              ) : ('')}
+              ) : (
+                ''
+              )}
             </>
           );
         })}
-
       </>
     );
   }
