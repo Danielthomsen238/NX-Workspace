@@ -1,7 +1,7 @@
 .body {
   width: 40vw;
   height: 47vw;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   margin: auto;
   margin-top: 2vw;
@@ -12,23 +12,19 @@
   /* Track */
   /* Handle */
 }
-
 .body ::-webkit-scrollbar {
   width: 5px;
 }
-
 .body ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
-
 .body ::-webkit-scrollbar-thumb {
-  background: #8a8a8a;
+  background: rgb(138, 138, 138);
   border-radius: 10px;
 }
-
 .body textarea {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 90%;
   height: 10vw;
   box-sizing: border-box;
@@ -39,31 +35,26 @@
   margin-bottom: 4vw;
   color: #004250;
 }
-
 .body .ImageContainer {
   position: relative;
   width: 100%;
   height: 52%;
-  box-shadow: 0 0 15px 20px white;
+  box-shadow: 0 0 15px 20px rgb(255, 255, 255);
   z-index: 6;
   margin: auto;
 }
-
 .body .ImageContainer .imgEdit {
   width: 90%;
   margin: auto;
 }
-
 .body .ImageContainer input[type=file]::-webkit-file-upload-button {
   display: none;
 }
-
 .body .ImageContainer input {
   margin-left: 1.8vw;
   margin-top: 0.5vw;
   opacity: 0;
 }
-
 .body .ImageContainer img {
   width: 90%;
   display: block;
@@ -72,7 +63,6 @@
   margin-top: 2vw;
   margin-bottom: 1vw;
 }
-
 .body .InputContainer {
   width: 90%;
   height: 38%;
@@ -80,9 +70,8 @@
   overflow-x: hidden;
   padding: 0vw 0vw 0vw 2vw;
 }
-
 .body .InputContainer input {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 98%;
   padding-right: 1vw;
   box-sizing: border-box;
@@ -93,29 +82,30 @@
   margin-bottom: 1vw;
   color: #004250;
 }
-
+.body .InputContainer input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.body .InputContainer input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
 .body .InputContainer input::placeholder {
   color: rgba(0, 0, 0, 0.45);
 }
-
 .body .InputContainer input:focus {
   outline-color: #004250;
 }
-
 .body .InputContainer input {
   display: block;
 }
-
 .body .ButtonsContainer {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: space-evenly;
-  box-shadow: 0 0 10px 20px white;
+  box-shadow: 0 0 10px 20px rgb(255, 255, 255);
 }
-
 .body .ButtonsContainer button {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   width: 43%;
   font-size: 1.3vw;
   height: 2.5vw;
@@ -126,7 +116,6 @@
   cursor: pointer;
   border: rgba(255, 0, 0, 0);
 }
-
 .body .ButtonsContainer button:hover {
   background-color: black;
   border: 0px solid black;
@@ -135,7 +124,7 @@
 
 .files {
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.3vw;
   border-radius: 0.4vw;
   background-color: #0046AD;
@@ -145,9 +134,7 @@
   cursor: pointer;
   text-align: center;
 }
-
 .files:hover {
   background-color: black;
   border: 0px solid black;
-  color: #fff;
-}
+  color: #fff;}
