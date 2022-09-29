@@ -402,7 +402,7 @@ const Schools = () => {
                     <div className={singleSchool_styles.imgEdit}>
                       <label
                         className={singleSchool_styles.files}
-                        htmlFor={itemClicked == school.id ? 'files' : 'files'}
+                        htmlFor={itemClicked == school.id ? 'files' : ''}
                       >
                         Opdater billede
                     </label>
@@ -431,6 +431,7 @@ const Schools = () => {
                       }
                       onChange={(e) => setSchoolName(e.target.value)}
                     />
+                    <label htmlFor="phone">Telefon</label>
                     <input
                       className={
                         itemClicked == school.id
@@ -444,6 +445,7 @@ const Schools = () => {
                       onChange={(e) => setSchoolPhone(e.target.value)}
                       type="number"
                     />
+                    <label htmlFor="email">Email</label>
                     <input
                       className={
                         itemClicked == school.id
@@ -457,6 +459,7 @@ const Schools = () => {
                       onChange={(e) => setSchoolEmail(e.target.value)}
                       type="text"
                     />
+                    <label htmlFor="Adresse">Adresse</label>
                     <input
                       className={
                         itemClicked == school.id
@@ -472,6 +475,7 @@ const Schools = () => {
                       onChange={(e) => setSchoolAddresse(e.target.value)}
                       type="text"
                     />
+                    <label htmlFor="Zip">Zip</label>
                     <input
                       className={
                         itemClicked == school.id
@@ -483,6 +487,7 @@ const Schools = () => {
                       onChange={(e) => setSchoolZip(e.target.value)}
                       type="text"
                     />
+                    <label htmlFor="City">By</label>
                     <input
                       className={
                         itemClicked == school.id
@@ -496,6 +501,7 @@ const Schools = () => {
                       onChange={(e) => setSchoolCity(e.target.value)}
                       type="text"
                     />
+                    <label htmlFor="Beskrivelse">Beskrivelse</label>
                     <textarea
                       className={
                         itemClicked == school.id
