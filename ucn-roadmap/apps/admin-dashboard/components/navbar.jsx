@@ -57,11 +57,11 @@ const Navbar = () => {
               </Link>
             </li>
           ) : (
-            <li>
-              <Groups2Icon className={navbar_styles.icons} />
-              <a>Users</a>
-            </li>
-          )}
+              <li>
+                <Groups2Icon className={navbar_styles.icons} />
+                <a>Users</a>
+              </li>
+            )}
           {session.user.active ? (
             <li>
               <ApartmentIcon className={navbar_styles.icons} />
@@ -70,11 +70,11 @@ const Navbar = () => {
               </Link>
             </li>
           ) : (
-            <li>
-              <ApartmentIcon className={navbar_styles.icons} />
-              <a>Schools</a>
-            </li>
-          )}
+              <li>
+                <ApartmentIcon className={navbar_styles.icons} />
+                <a>Schools</a>
+              </li>
+            )}
           {session.user.active ? (
             <li>
               <SchoolIcon className={navbar_styles.icons} />{' '}
@@ -83,24 +83,24 @@ const Navbar = () => {
               </Link>
             </li>
           ) : (
-            <li>
-              <SchoolIcon className={navbar_styles.icons} />
-              <a>Courses</a>
-            </li>
-          )}
+              <li>
+                <SchoolIcon className={navbar_styles.icons} />
+                <a>Courses</a>
+              </li>
+            )}
           {session.user.active ? (
             <li>
               <ListIcon className={navbar_styles.icons} />
-              <Link href="/categories">
+              <Link href="/CategoriesList">
                 <a>Categories</a>
               </Link>
             </li>
           ) : (
-            <li>
-              <ListIcon className={navbar_styles.icons} />
-              <a>Categories</a>
-            </li>
-          )}
+              <li>
+                <ListIcon className={navbar_styles.icons} />
+                <a>Categories</a>
+              </li>
+            )}
         </ul>
         <ul>
           <li>User</li>

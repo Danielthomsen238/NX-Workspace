@@ -202,7 +202,7 @@ const Schools = () => {
     console.log(schoolid, itemClicked);
   };
   //Admin jsx (only admin can see this)
-  if (session.user.role == 'Admin') {
+  if (session.user.role != 'Admin') {
     return (
       <>
         <div className={school_styles.body}>
@@ -377,7 +377,7 @@ const Schools = () => {
       </>
     );
   }
-  if (session.user.role != 'Admin') {
+  if (session.user.role == 'Admin') {
     return (
       <>
         {schoolData?.data.map((school, idx) => {
