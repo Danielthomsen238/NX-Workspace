@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
-.body {
+.user_body {
+  font-family: "Montserrat", sans-serif;
+  width: 80vw;
+  margin-bottom: 1vw;
+  overflow-y: scroll;
+  max-height: 90vh;
+}
+
+.admin_body {
   font-family: "Montserrat", sans-serif;
   width: 80vw;
   margin-bottom: 3vw;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
 
 .create_user_btn {
-  margin-top: 2vw;
   margin-left: 30vw;
   display: flex;
   justify-content: center;
@@ -29,7 +38,7 @@
 }
 
 .table {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-collapse: collapse;
   width: 100%;
   color: rgb(33, 33, 33);
@@ -48,8 +57,14 @@
 .table th:last-child {
   width: 5vw;
 }
-.table th:nth-child(7) {
+.table th:nth-child(6) {
   width: 5vw;
+}
+.table th:nth-child(5) {
+  width: 10vw;
+}
+.table th:nth-child(7) {
+  width: 6vw;
 }
 .table th {
   padding-top: 12px;
@@ -64,9 +79,6 @@
 }
 .table tr:nth-child(even) {
   background-color: #d8d8d8;
-}
-.table tr:hover {
-  background-color: #ddd;
 }
 .table button {
   border: none;
@@ -101,4 +113,5 @@
 
 .table_h2 {
   background-color: white;
-  padding: 1vw;}
+  padding: 1vw;
+}

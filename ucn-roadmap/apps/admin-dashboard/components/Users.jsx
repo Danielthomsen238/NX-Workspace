@@ -34,18 +34,18 @@ const Users = () => {
         <h2 className={user_styles.table_h2}>
           &#x2022; Brugere der venter på blive aktiveret
         </h2>
-        <div className={user_styles.body}>
+        <div className={user_styles.admin_body}>
           <table className={user_styles.table}>
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
                 <th>Telefon</th>
                 <th>E-mail</th>
-                <th>School Name</th>
+                <th>Skole Navn</th>
                 <th>Role_id</th>
-                <th>Active</th>
-                <th>Actions</th>
+                <th>Aktiveret</th>
+                <th>Handling</th>
               </tr>
             </thead>
             <tbody>
@@ -53,18 +53,18 @@ const Users = () => {
             </tbody>
           </table>
         </div>
-        <div className={user_styles.body}>
+        <div className={user_styles.admin_body}>
           <table className={user_styles.table}>
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
                 <th>Telefon</th>
                 <th>E-mail</th>
-                <th>School Name</th>
+                <th>Skole Navn</th>
                 <th>Role_id</th>
-                <th>Active</th>
-                <th>Actions</th>
+                <th>Aktiveret</th>
+                <th>Handling</th>
               </tr>
             </thead>
             <tbody>
@@ -78,8 +78,8 @@ const Users = () => {
   //user jsx (only user can see this )
   if (session.user.role == 'User') {
     return (
-      <>
-        <div className={user_styles.body}>
+      <div className={user_styles.container}>
+        <div className={user_styles.user_body}>
           <table className={user_styles.table}>
             <thead>
               <tr>
@@ -94,11 +94,11 @@ const Users = () => {
               <UserUsers />
             </tbody>
           </table>
-          <Link href="/createUser">
-            <div className={user_styles.create_user_btn}>Opret Bruger</div>
-          </Link>
         </div>
-      </>
+        <Link href="/createUser">
+          <div className={user_styles.create_user_btn}>Opret Bruger</div>
+        </Link>
+      </div>
     );
   }
 };

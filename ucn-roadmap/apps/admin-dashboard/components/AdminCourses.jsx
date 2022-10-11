@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -18,7 +18,6 @@ const AdminCourses = (props) => {
   const [description, setDescription] = useState();
   const [duration, setDuration] = useState();
   const [schoolName, setSchoolName] = useState();
-  const [categoryID, setCategoryID] = useState();
   const [categoryName, setCategoryName] = useState();
   const [itemClicked, setItemClicked] = useState();
 
@@ -27,7 +26,6 @@ const AdminCourses = (props) => {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
   const getCategoryId = () => {
-    console.log(categoryName);
     const payload = {
       title: categoryName,
     };
@@ -35,21 +33,19 @@ const AdminCourses = (props) => {
       .post(`https://sequelize-roadmap.herokuapp.com/categoryId`, payload)
       .then((response) => {
         console.log(response);
-        setCategoryID(response.data.id);
-        handleSubmit()
+        handleSubmit(response.data.id);
       })
       .catch((e) => {
         console.log(e);
       });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (id) => {
     const payload = {
       id: itemClicked,
-      school_id: session.user.school_id,
       name: name,
       description: description,
       duration: duration,
-      category_id: categoryID
+      category_id: id,
     };
     axios
       .put(`https://sequelize-roadmap.herokuapp.com/course`, payload, config)
@@ -104,7 +100,6 @@ const AdminCourses = (props) => {
       return;
     }
   };
-
   console.log(courseData.data);
   return (
     <>
@@ -137,40 +132,35 @@ const AdminCourses = (props) => {
                 onChange={(e) => setDuration(e.target.value)}
               />
             </td>
+            <td>{course.school.name}</td>
             <td>
-              <input
-                type="text"
-                disabled={itemClicked == course.id ? '' : 'disabled'}
-                value={
-                  itemClicked == course.id ? schoolName : course.school.name
-                }
-                onChange={(e) => setSchoolName(e.target.value)}
-              />
-            </td>
-            <td>
-
-              <select name="Category" disabled={itemClicked == course.id ? null : true} value={itemClicked == course.id ? categoryName : course.category.title} onChange={(e) => setCategoryName(e.target.options[e.target.selectedIndex].value)}>
-                <option value={course.category.title}>{course.category.title}</option>
-                {categoryData.data?.map((category, idx) => {
-                  return (
-                    <>{category.title != course.category.title ? (
-                      <option value={category.title}>{category.title}</option>
-                    ) : (
-                        <> </>
-                      )}</>
-                  )
-                })}
-              </select>
-              {/* <input
-                type="text"
-                disabled={itemClicked == course.id ? '' : 'disabled'}
+              <select
+                name="Category"
+                disabled={itemClicked == course.id ? null : true}
                 value={
                   itemClicked == course.id
                     ? categoryName
                     : course.category.title
                 }
-                onChange={(e) => setCategoryName(e.target.value)}
-              /> */}
+                onChange={(e) => {
+                  setCategoryName(e.target.value);
+                }}
+              >
+                <option value={course.category.title}>
+                  {course.category.title}
+                </option>
+                {categoryData.data?.map((category, idx) => {
+                  return (
+                    <>
+                      {category.title != course.category.title ? (
+                        <option value={category.title}>{category.title}</option>
+                      ) : (
+                        <> </>
+                      )}
+                    </>
+                  );
+                })}
+              </select>
             </td>
             <td>
               {itemClicked == course.id ? (
@@ -185,21 +175,19 @@ const AdminCourses = (props) => {
                   />
                 </button>
               ) : (
-                  <div className={user_styles.OverButton}>
-                    <button
-                      className={course.id}
-                      onClick={(e) => {
-                        HandleEdit(e);
-                        setName(course.name);
-                        setDescription(course.description);
-                        setDuration(course.duration);
-                        setSchoolName(course.school.name);
-                        setCategoryName(course.category.title);
-                      }}
-                    ></button>
-                    <EditIcon className={user_styles.icon} />
-                  </div>
-                )}
+                <div className={user_styles.OverButton}>
+                  <button
+                    className={course.id}
+                    onClick={(e) => {
+                      HandleEdit(e);
+                      setName(course.name);
+                      setDescription(course.description);
+                      setDuration(course.duration);
+                    }}
+                  ></button>
+                  <EditIcon className={user_styles.icon} />
+                </div>
+              )}
               <div className={user_styles.OverButton}>
                 <button id={course.id} onClick={DeleteData}></button>
                 <DeleteForeverIcon className={user_styles.icon} />

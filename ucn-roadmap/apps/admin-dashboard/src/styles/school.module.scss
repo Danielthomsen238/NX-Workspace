@@ -2,19 +2,24 @@
 
 .body {
   width: 80%;
+  overflow-y:scroll;
+  max-height: 100vh;
 }
 
 
 
 .table {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   border-collapse: collapse;
   width: 100%;
   color: rgb(33, 33, 33);
 
-
+  input {
+    font-size: 1.3vw;
+  }
   td,
   th {
+    font-size: 1.2vw;
     border: 1px solid #ddd;
     transition: 500ms ease-in-out;
 
@@ -112,6 +117,7 @@
 }
 
 
+
 .readable {
   position: relative;
   width: 25vw;
@@ -141,3 +147,4 @@
 
   }
 }
+

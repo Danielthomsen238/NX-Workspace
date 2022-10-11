@@ -15,8 +15,6 @@ import singleSchool_styles from '../src/styles/singleSchool.module.css';
 const Categories = () => {
   //States for user changes
 
-
-
   const { data: session, status } = useSession();
   const [runEffect, setRunEffect] = useState(false);
   const [categoryTitle, setCategory] = useState();
@@ -26,8 +24,6 @@ const Categories = () => {
   const config = {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
-
-
 
   //fetch data
   useEffect(() => {
@@ -47,7 +43,7 @@ const Categories = () => {
     e.preventDefault();
     const payload = {
       id: itemClicked,
-      name: categoryTitle,
+      title: categoryTitle,
     };
     axios
       .put(`https://sequelize-roadmap.herokuapp.com/Category`, payload, config)
@@ -60,7 +56,6 @@ const Categories = () => {
         console.log(e);
       });
     console.log('Payload', payload);
-
   };
 
   //function that makes editing true
@@ -102,27 +97,16 @@ const Categories = () => {
     }
   };
 
-  //function to set the initial value of states if states is undefined on user clicked for editing
-  const setInitaleValue = (
-    category
-  ) => {
-    console.log(category)
-    if (!categoryTitle) {
-      setCategory(category);
-    }
-    console.log(category, itemClicked);
-
-  };
   //Admin jsx (only admin can see this)
-  if (session.user.role != 'Admin') {
+  if (session.user.role == 'Admin') {
     return (
       <>
         <div className={school_styles.body}>
           <table className={school_styles.table}>
             <thead>
               <tr>
-                <th>kategori</th>
-                <th>Action</th>
+                <th>Kategori</th>
+                <th>Handling</th>
               </tr>
             </thead>
             <tbody className={school_styles.ScrollAble}>
@@ -131,15 +115,16 @@ const Categories = () => {
                   <tr key={idx}>
                     <td>
                       <input
-                        value={category.title}
+                        value={
+                          itemClicked == category.id
+                            ? categoryTitle
+                            : category.title
+                        }
                         type="text"
                         disabled={itemClicked == category.id ? '' : 'disabled'}
                         onChange={(e) => setCategory(e.target.value)}
                       />
                     </td>
-
-
-
 
                     <td>
                       {itemClicked == category.id ? (
@@ -154,19 +139,17 @@ const Categories = () => {
                           />
                         </button>
                       ) : (
-                          <div className={school_styles.OverButton}>
-                            <button
-                              className={category.id}
-                              onClick={(e) => {
-                                HandleEdit(e);
-                                setInitaleValue(
-                                  category.title
-                                );
-                              }}
-                            ></button>
-                            <EditIcon className={school_styles.icon} />
-                          </div>
-                        )}
+                        <div className={school_styles.OverButton}>
+                          <button
+                            className={category.id}
+                            onClick={(e) => {
+                              HandleEdit(e);
+                              setCategory(category.title);
+                            }}
+                          ></button>
+                          <EditIcon className={school_styles.icon} />
+                        </div>
+                      )}
                       <div className={school_styles.OverButton}>
                         <button id={category.id} onClick={DeleteData}></button>
                         <DeleteForeverIcon className={school_styles.icon} />
