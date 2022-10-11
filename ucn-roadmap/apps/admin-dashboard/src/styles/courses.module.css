@@ -1,11 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
 .body {
   font-family: "Montserrat", sans-serif;
   width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  max-height: 90vh;
+  overflow-y: scroll;
 }
 
 .table {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-collapse: collapse;
   width: 100%;
   color: rgb(33, 33, 33);
@@ -34,9 +47,6 @@
 }
 .table tr:nth-child(even) {
   background-color: #d8d8d8;
-}
-.table tr:hover {
-  background-color: #ddd;
 }
 .table button {
   border: none;
@@ -67,4 +77,84 @@
   height: 2vw;
   background-color: rgba(221, 221, 221, 0);
   cursor: pointer;
+}
+
+.button {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 1vw;
+  width: 15vw;
+  font-size: 1.3vw;
+  border-radius: 0.4vw;
+  background-color: #0046AD;
+  color: #fff;
+  transition: 300ms ease-in-out;
+  padding: 0.5vw;
+  border: 2px solid #0046AD;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: black;
+  border: 2px solid black;
+  color: #fff;
+}
+
+.form_container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 45%;
+  top: 20%;
+  background-color: #fff;
+  height: 55vh;
+  width: 30vw;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw;
+}
+.form input {
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0.4vw;
+  border-color: rgba(0, 0, 0, 0.45);
+  font-size: 1.3vw;
+  margin-bottom: 1vw;
+  color: #004250;
+}
+.form input::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form input:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form input::placeholder {
+  color: rgba(0, 0, 0, 0.45);
+}
+.form input:focus {
+  outline-color: #004250;
+}
+.form select {
+  border-radius: 0.4vw;
+  border-color: rgba(0, 0, 0, 0.45);
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  height: auto;
+  font-size: 1.3vw;
+  margin-bottom: 1vw;
+}
+.form textarea {
+  border-radius: 0.4vw;
+  border-color: rgba(0, 0, 0, 0.45);
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  font-size: 1.3vw;
+  resize: none;
+  height: 20vh;
 }

@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #__next {
@@ -81,4 +82,9 @@ input[type=number]::-webkit-outer-spin-button {
   to {
     transform: rotate(360deg)
   }
+}
+
+select {
+  height: 1.3vw;
+  font-size: 1.3;
 }

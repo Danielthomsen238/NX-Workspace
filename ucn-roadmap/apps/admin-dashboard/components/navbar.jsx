@@ -53,60 +53,53 @@ const Navbar = () => {
             <li>
               <Groups2Icon className={navbar_styles.icons} />
               <Link href="/userList">
-                <a>Users</a>
+                <a>Brugere</a>
               </Link>
             </li>
           ) : (
-              <li>
-                <Groups2Icon className={navbar_styles.icons} />
-                <a>Users</a>
-              </li>
-            )}
+            <li>
+              <Groups2Icon className={navbar_styles.icons} />
+              <a>Brugere</a>
+            </li>
+          )}
           {session.user.active ? (
             <li>
               <ApartmentIcon className={navbar_styles.icons} />
               <Link href="/schoolList">
-                <a>Schools</a>
+                <a>Skoler</a>
               </Link>
             </li>
           ) : (
-              <li>
-                <ApartmentIcon className={navbar_styles.icons} />
-                <a>Schools</a>
-              </li>
-            )}
+            <li>
+              <ApartmentIcon className={navbar_styles.icons} />
+              <a>Skoler</a>
+            </li>
+          )}
           {session.user.active ? (
             <li>
               <SchoolIcon className={navbar_styles.icons} />{' '}
               <Link href="/courseList">
-                <a>Courses</a>
+                <a>Uddannelser</a>
               </Link>
             </li>
           ) : (
-              <li>
-                <SchoolIcon className={navbar_styles.icons} />
-                <a>Courses</a>
-              </li>
-            )}
-          {session.user.active ? (
+            <li>
+              <SchoolIcon className={navbar_styles.icons} />
+              <a>Udannelser</a>
+            </li>
+          )}
+          {session.user.role == 'Admin' ? (
             <li>
               <ListIcon className={navbar_styles.icons} />
-              <Link href="/CategoriesList">
-                <a>Categories</a>
+              <Link href="/categoriesList">
+                <a>Kategori</a>
               </Link>
             </li>
           ) : (
-              <li>
-                <ListIcon className={navbar_styles.icons} />
-                <a>Categories</a>
-              </li>
-            )}
+            <></>
+          )}
         </ul>
         <ul>
-          <li>User</li>
-          <li>
-            <SettingsIcon className={navbar_styles.icons} /> Settings
-          </li>
           <li onClick={() => signOut()}>
             <LogoutIcon className={navbar_styles.icons} />
             <a>Sign Out</a>
