@@ -22,91 +22,185 @@ const Navbar = () => {
     setIsDroppedUp((current) => !current);
   };
 
-  return (
-    <>
-      <nav className={navbar_styles.nav}>
-        <div className={navbar_styles.current_user_container}>
-          <div />
-          <h2 className={navbar_styles.current_user_name}>
-            {session.user.firstname}
-          </h2>
-          <p className={navbar_styles.current_user_school}>
-            {session.user.username}
-          </p>
-        </div>
-        <ul
-          className={
-            isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
-          }
-        >
-          <li>
-            Admin
-            <ArrowDropUpIcon
-              className={
-                isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
-              }
-              onClick={handleDropUp}
-            />
-          </li>
-          {session.user.active ? (
+  if (session.user.active && !session.user.hub) {
+    return (
+      <>
+        <nav className={navbar_styles.nav}>
+          <div className={navbar_styles.current_user_container}>
+            <div />
+            <h2 className={navbar_styles.current_user_name}>
+              {session.user.firstname}
+            </h2>
+            <p className={navbar_styles.current_user_school}>
+              {session.user.username}
+            </p>
+          </div>
+          <ul
+            className={
+              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
+            }
+          >
+            <li>
+              Admin
+              <ArrowDropUpIcon
+                className={
+                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
+                }
+                onClick={handleDropUp}
+              />
+            </li>
             <li>
               <Groups2Icon className={navbar_styles.icons} />
               <Link href="/userList">
                 <a>Brugere</a>
               </Link>
             </li>
-          ) : (
-            <li>
-              <Groups2Icon className={navbar_styles.icons} />
-              <a>Brugere</a>
-            </li>
-          )}
-          {session.user.active ? (
             <li>
               <ApartmentIcon className={navbar_styles.icons} />
               <Link href="/schoolList">
                 <a>Skoler</a>
               </Link>
             </li>
-          ) : (
             <li>
-              <ApartmentIcon className={navbar_styles.icons} />
-              <a>Skoler</a>
-            </li>
-          )}
-          {session.user.active ? (
-            <li>
-              <SchoolIcon className={navbar_styles.icons} />{' '}
+              <SchoolIcon className={navbar_styles.icons} />
               <Link href="/courseList">
                 <a>Uddannelser</a>
               </Link>
             </li>
-          ) : (
-            <li>
-              <SchoolIcon className={navbar_styles.icons} />
-              <a>Udannelser</a>
+            {session.user.role == 'Admin' ? (
+              <li>
+                <ListIcon className={navbar_styles.icons} />
+                <Link href="/categoriesList">
+                  <a>Kategori</a>
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
+          </ul>
+          <ul>
+            <li onClick={() => signOut()}>
+              <LogoutIcon className={navbar_styles.icons} />
+              <a>Sign Out</a>
             </li>
-          )}
-          {session.user.role == 'Admin' ? (
+          </ul>
+        </nav>
+      </>
+    );
+  } else if (session.user.active && session.user.hub) {
+    return (
+      <>
+        <nav className={navbar_styles.nav}>
+          <div className={navbar_styles.current_user_container}>
+            <div />
+            <h2 className={navbar_styles.current_user_name}>
+              {session.user.firstname}
+            </h2>
+            <p className={navbar_styles.current_user_school}>
+              {session.user.username}
+            </p>
+          </div>
+          <ul
+            className={
+              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
+            }
+          >
             <li>
-              <ListIcon className={navbar_styles.icons} />
-              <Link href="/categoriesList">
-                <a>Kategori</a>
+              Admin
+              <ArrowDropUpIcon
+                className={
+                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
+                }
+                onClick={handleDropUp}
+              />
+            </li>
+            <li>
+              <Groups2Icon className={navbar_styles.icons} />
+              <Link href="/userList">
+                <a>Brugere</a>
               </Link>
             </li>
-          ) : (
-            <></>
-          )}
-        </ul>
-        <ul>
-          <li onClick={() => signOut()}>
-            <LogoutIcon className={navbar_styles.icons} />
-            <a>Sign Out</a>
-          </li>
-        </ul>
-      </nav>
-    </>
-  );
+            <li>
+              <ApartmentIcon className={navbar_styles.icons} />
+              <Link href="/schoolList">
+                <a>Hub</a>
+              </Link>
+            </li>
+            {session.user.role == 'Admin' ? (
+              <li>
+                <ListIcon className={navbar_styles.icons} />
+                <Link href="/categoriesList">
+                  <a>Kategori</a>
+                </Link>
+              </li>
+            ) : (
+              <></>
+            )}
+          </ul>
+          <ul>
+            <li onClick={() => signOut()}>
+              <LogoutIcon className={navbar_styles.icons} />
+              <a>Sign Out</a>
+            </li>
+          </ul>
+        </nav>
+      </>
+    );
+  }
+  if (!session.user.active) {
+    return (
+      <>
+        <nav className={navbar_styles.nav}>
+          <div className={navbar_styles.current_user_container}>
+            <div />
+            <h2 className={navbar_styles.current_user_name}>
+              {session.user.firstname}
+            </h2>
+            <p className={navbar_styles.current_user_school}>
+              {session.user.username}
+            </p>
+          </div>
+          <ul
+            className={
+              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
+            }
+          >
+            <li>
+              Admin
+              <ArrowDropUpIcon
+                className={
+                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
+                }
+                onClick={handleDropUp}
+              />
+            </li>
+            <li>
+              <Groups2Icon className={navbar_styles.icons} />
+              <a>Brugere</a>
+            </li>
+            <li>
+              <ApartmentIcon className={navbar_styles.icons} />
+              <a>Hub/Skole</a>
+            </li>
+            {session.user.role == 'Admin' ? (
+              <li>
+                <ListIcon className={navbar_styles.icons} />
+                <a>Kategori</a>
+              </li>
+            ) : (
+              <></>
+            )}
+          </ul>
+          <ul>
+            <li onClick={() => signOut()}>
+              <LogoutIcon className={navbar_styles.icons} />
+              <a>Sign Out</a>
+            </li>
+          </ul>
+        </nav>
+      </>
+    );
+  }
 };
 
 export default Navbar;
