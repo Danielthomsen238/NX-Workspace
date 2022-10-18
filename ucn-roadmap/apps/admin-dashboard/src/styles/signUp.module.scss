@@ -33,6 +33,7 @@
             margin-left: 0.5vw;
             color: $base_Color;
         }
+        
         input {
         font-family: 'Montserrat', sans-serif;
         width: 100%;
@@ -156,3 +157,7 @@
     transform: rotate(30deg);
   }
  
+.checkbox {
+  display: flex;
+ flex-direction: column;
+}

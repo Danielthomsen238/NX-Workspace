@@ -38,6 +38,8 @@ const Index = ({ csrfToken }) => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   //Skole form
+  const [hub, setHub] = useState(false);
+  const [startupCommunity, setStartupCommunity] = useState(false);
   const [skoleNavn, setSkoleNavn] = useState();
   const [address, setAddress] = useState();
   const [zip, setZip] = useState();
@@ -73,6 +75,8 @@ const Index = ({ csrfToken }) => {
       address: address,
       zip: zip,
       city: city,
+      hub: hub,
+      start_up_community: startupCommunity,
       telefon: skoleTelefon,
       email: skoleEmail,
       description: beskrivelse,
@@ -363,10 +367,24 @@ const Index = ({ csrfToken }) => {
         {/* Opret Skole form */}
         <form className={signUp_styles.form}>
           <fieldset>
-            <legend>Tilmeld Skole</legend>
+            <legend>Tilmeld Skole Eller Hub</legend>
+            <div className={signUp_styles.checkbox}>
+              <label>er en Hub?</label>
+              <input
+                type="checkbox"
+                defaultChecked={hub}
+                onChange={() => setHub(!hub)}
+              />
+              <label>har Startup community?</label>
+              <input
+                type="checkbox"
+                defaultChecked={startupCommunity}
+                onChange={() => setStartupCommunity(!startupCommunity)}
+              />
+            </div>
             <input
               type="text"
-              placeholder="Navn på skolen"
+              placeholder="Navn på Skolen/Hub"
               value={skoleNavn}
               onChange={(e) => setSkoleNavn(e.target.value)}
             />

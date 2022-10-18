@@ -3,7 +3,6 @@ import Groups2Icon from '@mui/icons-material/Groups2';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import SchoolIcon from '@mui/icons-material/School';
 import ListIcon from '@mui/icons-material/List';
-import SettingsIcon from '@mui/icons-material/Settings';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import Link from 'next/link';
 import navbar_styles from '../src/styles/navbar.module.css';

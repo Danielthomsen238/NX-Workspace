@@ -156,3 +156,8 @@
   z-index: -9997;
   transform: rotate(30deg);
 }
+
+.checkbox {
+  display: flex;
+  flex-direction: column;
+}

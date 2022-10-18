@@ -42,6 +42,7 @@ export default NextAuth({
               role_id: payload.role_id,
               role: payload.role,
               school_name: payload.school_name,
+              hub: payload.hub,
               school_id: payload.school_id,
               otp: payload.otp,
               active: payload.active,
@@ -64,6 +65,7 @@ export default NextAuth({
               firstname: payload.firstname,
               role_id: payload.role_id,
               role: payload.role,
+              hub: payload.hub,
               school_name: payload.school_name,
               school_id: payload.school_id,
               otp: payload.otp,
@@ -107,6 +109,7 @@ export default NextAuth({
       session.user.firstname = token.user.firstname;
       session.user.role_id = token.user.role_id;
       session.user.role = token.user.role;
+      session.user.hub = token.user.hub;
       session.user.school_name = token.user.school_name;
       session.user.school_id = token.user.school_id;
       session.user.otp = token.user.otp;
