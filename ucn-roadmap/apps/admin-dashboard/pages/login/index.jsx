@@ -369,14 +369,16 @@ const Index = ({ csrfToken }) => {
           <fieldset>
             <legend>Tilmeld Skole Eller Hub</legend>
             <div className={signUp_styles.checkbox}>
-              <label>er en Hub?</label>
+              <label>Er en Hub?</label>
               <input
+                className={signUp_styles.checkbox_hub}
                 type="checkbox"
                 defaultChecked={hub}
                 onChange={() => setHub(!hub)}
               />
-              <label>har Startup community?</label>
+              <label>Har Startup community?</label>
               <input
+                className={signUp_styles.checkbox_startup}
                 type="checkbox"
                 defaultChecked={startupCommunity}
                 onChange={() => setStartupCommunity(!startupCommunity)}
@@ -435,7 +437,7 @@ const Index = ({ csrfToken }) => {
               </button>
             ) : (
               <button onClick={handleSubmit} type="button">
-                Opret Bruger og Skole
+                Opret
               </button>
             )}
             <button
