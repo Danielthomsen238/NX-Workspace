@@ -104,19 +104,31 @@
   flex-direction: column;
   align-items: center;
   left: 45%;
-  top: 20%;
+  top: 10%;
   background-color: #fff;
-  height: 55vh;
+  height: 80vh;
   width: 30vw;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
 }
 
 .form {
+  margin-top: -2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2vw;
+}
+.form fieldset {
+  border-radius: 10px;
+  padding: 1vw;
+  border-color: rgba(0, 0, 0, 0.45);
+}
+.form fieldset legend {
+  font-size: 1.3vw;
+  padding: 0.5vw;
+  margin-left: 0.5vw;
+  color: #004250;
 }
 .form input {
   font-family: "Montserrat", sans-serif;
