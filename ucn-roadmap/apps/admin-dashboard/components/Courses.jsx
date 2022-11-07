@@ -43,6 +43,9 @@ const Courses = () => {
             <thead>
               <tr>
                 <th>Navn</th>
+                <th>Adresse</th>
+                <th>Post nr</th>
+                <th>By</th>
                 <th>Beskrivelse</th>
                 <th>Varighed</th>
                 <th>Skole Navn</th>
@@ -73,6 +76,9 @@ const Courses = () => {
               <tr>
                 <th>id</th>
                 <th>Navn</th>
+                <th>Adresse</th>
+                <th>Post nr</th>
+                <th>By</th>
                 <th>Beskrivelse</th>
                 <th>Varighed</th>
                 <th>Kategori</th>

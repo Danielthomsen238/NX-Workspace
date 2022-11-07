@@ -5,8 +5,9 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import CheckIcon from '@mui/icons-material/Check';
 import ClearIcon from '@mui/icons-material/Clear';
-
+import school_styles from '../src/styles/school.module.css';
 import user_styles from '../src/styles/user.module.css';
+import Geocode from 'react-geocode';
 
 const UserCourses = (props) => {
   //destruct data from props
@@ -15,8 +16,12 @@ const UserCourses = (props) => {
   const { data: session, status } = useSession();
   //usestates for inputs
   const [name, setName] = useState();
+  const [courseId, setCourseId] = useState();
   const [description, setDescription] = useState();
   const [duration, setDuration] = useState();
+  const [addresse, setAddresse] = useState();
+  const [zip, setZip] = useState();
+  const [city, setCity] = useState();
   const [categoryName, setCategoryName] = useState();
   const [itemClicked, setItemClicked] = useState();
 
@@ -24,30 +29,54 @@ const UserCourses = (props) => {
   const config = {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
-  const getCategoryId = () => {
-    const payload = {
+  const handleGeo = () => {
+    Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_API);
+    Geocode.setLanguage('en');
+    Geocode.setLocationType('ROOFTOP');
+    Geocode.fromAddress(`${addresse} ${zip} ${city}`).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        if (lat && lng) {
+          handleCategoryID(lat, lng);
+        }
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
+  const handleCategoryID = (lat, lng) => {
+    const data = {
       title: categoryName,
     };
+
     axios
-      .post(`https://sequelize-roadmap.herokuapp.com/categoryId`, payload)
+      .post('http://localhost:3123/categoryId', data)
       .then((response) => {
-        console.log(response);
-        handleSubmit(response.data.id);
+        handleSubmit(response.data.id, lat, lng);
       })
       .catch((e) => {
         console.log(e);
       });
   };
-  const handleSubmit = (id) => {
-    const payload = {
-      id: itemClicked,
+
+  const handleSubmit = (categoryid, lat, lng) => {
+    const data = {
+      id: courseId,
       name: name,
       description: description,
       duration: duration,
-      category_id: id,
+      school_id: session.user.school_id,
+      category_id: categoryid,
+      address: addresse,
+      city: city,
+      zip: zip,
+      lat: lat,
+      lng: lng,
     };
+    console.log(data);
     axios
-      .put(`https://sequelize-roadmap.herokuapp.com/course`, payload, config)
+      .put('https://sequelize-roadmap.herokuapp.com/course', data, config)
       .then((response) => {
         console.log(response);
         runEffect((state) => !state);
@@ -69,6 +98,10 @@ const UserCourses = (props) => {
     setDescription();
     setDuration();
     setCategoryName();
+    setAddresse();
+    setCity();
+    setZip();
+    setCourseId();
   };
 
   //function(not done) to delete user
@@ -98,6 +131,7 @@ const UserCourses = (props) => {
       return;
     }
   };
+  console.log(courseData.data);
   return (
     <>
       {courseData.data?.map((course, idx) => {
@@ -116,13 +150,42 @@ const UserCourses = (props) => {
               </td>
               <td>
                 <input
+                  disabled={itemClicked == course.id ? '' : 'disabled'}
+                  value={itemClicked == course.id ? addresse : course.address}
+                  onChange={(e) => setAddresse(e.target.value)}
                   type="text"
+                />
+              </td>
+              <td>
+                <input
+                  disabled={itemClicked == course.id ? '' : 'disabled'}
+                  value={itemClicked == course.id ? zip : course.zip}
+                  onChange={(e) => setZip(e.target.value)}
+                  type="text"
+                />
+              </td>
+              <td>
+                <input
+                  disabled={itemClicked == course.id ? '' : 'disabled'}
+                  value={itemClicked == course.id ? city : course.city}
+                  onChange={(e) => setCity(e.target.value)}
+                  type="text"
+                />
+              </td>
+              <td
+                className={
+                  itemClicked == course.id
+                    ? school_styles.readable
+                    : school_styles.collapsed
+                }
+              >
+                <textarea
                   disabled={itemClicked == course.id ? '' : 'disabled'}
                   value={
                     itemClicked == course.id ? description : course.description
                   }
                   onChange={(e) => setDescription(e.target.value)}
-                />
+                ></textarea>
               </td>
               <td>
                 <input
@@ -169,7 +232,7 @@ const UserCourses = (props) => {
                   <button>
                     <CheckIcon
                       className={user_styles.icon}
-                      onClick={getCategoryId}
+                      onClick={handleGeo}
                     />
                     <ClearIcon
                       className={user_styles.icon}
@@ -185,6 +248,10 @@ const UserCourses = (props) => {
                         setName(course.name);
                         setDescription(course.description);
                         setDuration(course.duration);
+                        setAddresse(course.address);
+                        setCity(course.city);
+                        setZip(course.zip);
+                        setCourseId(course.id);
                       }}
                     ></button>
                     <EditIcon className={user_styles.icon} />
