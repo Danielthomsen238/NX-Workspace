@@ -53,7 +53,7 @@ const AdminCourses = (props) => {
     };
 
     axios
-      .post('http://localhost:3123/categoryId', data)
+      .post('https://sequelize-roadmap.herokuapp.com/categoryId', data)
       .then((response) => {
         handleSubmit(response.data.id, lat, lng);
       })
