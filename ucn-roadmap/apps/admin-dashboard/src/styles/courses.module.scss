@@ -22,12 +22,16 @@
 
 .table {
   font-family: 'Montserrat', sans-serif;
-    border-collapse: collapse;
     width: 100%;
     color: rgb(33, 33, 33);
+    border-collapse: collapse;
     td,
     th {
-      font-size: 1.2vw;
+      font-size: 1.1vw;
+      padding-top: 6px;
+      padding-left: 0.5vw;
+      padding-right: 0.5vw;
+      padding-bottom: 6px;
       border: 1px solid #ddd;
   
       div {
@@ -37,13 +41,14 @@
       }
   
     }
-  
+    
+    td {
+      border-color: grey;
+      text-overflow: ellipsis;
+    }
 
   
     th {
-      padding-top: 12px;
-      padding-left: 0.5vw;
-      padding-bottom: 12px;
       text-align: left;
       background-color: $base_Color;
       color: white;

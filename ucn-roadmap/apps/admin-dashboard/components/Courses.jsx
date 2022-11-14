@@ -74,7 +74,6 @@ const Courses = () => {
           <table className={courses_styles.table}>
             <thead>
               <tr>
-                <th>id</th>
                 <th>Navn</th>
                 <th>Adresse</th>
                 <th>Post nr</th>
@@ -82,7 +81,7 @@ const Courses = () => {
                 <th>Beskrivelse</th>
                 <th>Varighed</th>
                 <th>Kategori</th>
-                <th>Actions</th>
+                <th>Handling</th>
               </tr>
             </thead>
             <tbody>

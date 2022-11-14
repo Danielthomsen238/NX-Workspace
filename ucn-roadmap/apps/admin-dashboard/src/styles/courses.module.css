@@ -19,13 +19,17 @@
 
 .table {
   font-family: "Montserrat", sans-serif;
-  border-collapse: collapse;
   width: 100%;
   color: rgb(33, 33, 33);
+  border-collapse: collapse;
 }
 .table td,
 .table th {
-  font-size: 1.2vw;
+  font-size: 1.1vw;
+  padding-top: 6px;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-bottom: 6px;
   border: 1px solid #ddd;
 }
 .table td div,
@@ -34,10 +38,11 @@
   max-width: 25vw;
   overflow: auto;
 }
+.table td {
+  border-color: grey;
+  text-overflow: ellipsis;
+}
 .table th {
-  padding-top: 12px;
-  padding-left: 0.5vw;
-  padding-bottom: 12px;
   text-align: left;
   background-color: #004250;
   color: white;

@@ -7,7 +7,9 @@ import Geocode from 'react-geocode';
 
 export const getStaticPaths = async () => {
   try {
-    const result = await axios.get(`http://localhost:3123/course`);
+    const result = await axios.get(
+      `https://sequelize-roadmap.herokuapp.com/course`
+    );
     const data = result.data;
     console.log(data);
     const paths = data?.map((course) => {
@@ -27,7 +29,9 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   try {
-    const result = await axios.get(`http://localhost:3123/course/${id}`);
+    const result = await axios.get(
+      `https://sequelize-roadmap.herokuapp.com/course/${id}`
+    );
     const data = result.data;
     console.log(data);
     return {
@@ -41,16 +45,18 @@ export const getStaticProps = async (context) => {
 };
 
 const CourseDetail = ({ course }) => {
+  console.log(course);
   const router = useRouter();
   const { data: session, status } = useSession();
   const [categoryData, setCategoryData] = useState([]);
+  const [id, setId] = useState(course.id);
   const [name, setName] = useState(course.name);
   const [description, setDescription] = useState(course.description);
   const [address, setAddress] = useState(course.address);
   const [zip, setZip] = useState(course.zip);
   const [city, setCity] = useState(course.city);
   const [duration, setDuration] = useState(course.duration);
-  const [categoryName, setCategoryName] = useState(course.categoryName);
+  const [categoryName, setCategoryName] = useState(course.category.title);
 
   const payload = {
     headers: { authorization: `Bearer ${session?.user.token}` },
@@ -90,7 +96,7 @@ const CourseDetail = ({ course }) => {
     };
 
     axios
-      .post('https://sequelize-roadmap.herokuapp.com/categoryId', data)
+      .post('http://localhost:3123/categoryId', data)
       .then((response) => {
         handleSubmit(response.data.id, lat, lng);
       })
@@ -101,6 +107,7 @@ const CourseDetail = ({ course }) => {
 
   const handleSubmit = (categoryid, lat, lng) => {
     const data = {
+      id,
       name: name,
       description: description,
       duration: duration,
@@ -113,7 +120,7 @@ const CourseDetail = ({ course }) => {
       lng: lng,
     };
     axios
-      .post('https://sequelize-roadmap.herokuapp.com/course', data, payload)
+      .put('http://localhost:3123/course', data, payload)
       .then((response) => {
         console.log(response);
         setTimeout(() => {
@@ -126,7 +133,13 @@ const CourseDetail = ({ course }) => {
   };
   return (
     <div className={courses_styles.form_container}>
-      <form className={courses_styles.form}>
+      <form
+        className={courses_styles.form}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleGeo();
+        }}
+      >
         <fieldset>
           <legend>Opdatere Uddannelse</legend>
           <input
@@ -134,6 +147,7 @@ const CourseDetail = ({ course }) => {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
 
           <input
@@ -141,12 +155,14 @@ const CourseDetail = ({ course }) => {
             type="text"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
+            required
           />
           <input
             type="text"
             placeholder="Adresse"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            required
           />
           <input
             type="text"
@@ -159,6 +175,7 @@ const CourseDetail = ({ course }) => {
             placeholder="By"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            required
           />
           <select
             name="Category"
@@ -167,10 +184,8 @@ const CourseDetail = ({ course }) => {
               console.log(e.target);
               setCategoryName(e.target.value);
             }}
+            required
           >
-            <option value="" disabled selected hidden>
-              Vælge Kategori
-            </option>
             {categoryData.data?.map((category, idx) => {
               return (
                 <option key={idx} value={category.title}>
@@ -184,17 +199,13 @@ const CourseDetail = ({ course }) => {
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            required
           />
         </fieldset>
+        <button type="submit" className={courses_styles.button}>
+          Opret Uddannelse
+        </button>
       </form>
-      <button
-        className={courses_styles.button}
-        onClick={() => {
-          handleGeo();
-        }}
-      >
-        Opret Uddannelse
-      </button>
     </div>
   );
 };
