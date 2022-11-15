@@ -96,7 +96,7 @@ const CourseDetail = ({ course }) => {
     };
 
     axios
-      .post('http://localhost:3123/categoryId', data)
+      .post('https://sequelize-roadmap.herokuapp.com/categoryId', data)
       .then((response) => {
         handleSubmit(response.data.id, lat, lng);
       })
@@ -120,7 +120,7 @@ const CourseDetail = ({ course }) => {
       lng: lng,
     };
     axios
-      .put('http://localhost:3123/course', data, payload)
+      .put('https://sequelize-roadmap.herokuapp.com/course', data, payload)
       .then((response) => {
         console.log(response);
         setTimeout(() => {

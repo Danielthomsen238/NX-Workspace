@@ -1,19 +1,14 @@
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
-import school_styles from '../src/styles/school.module.css';
-import Geocode from 'react-geocode';
 import user_styles from '../src/styles/user.module.css';
 import { useRouter } from 'next/router';
 
 const AdminCourses = (props) => {
   const router = useRouter();
   //destruct data from props
-  const { courseData, categoryData, runEffect } = props;
+  const { courseData, runEffect } = props;
   //get user session
   const { data: session, status } = useSession();
 
@@ -53,7 +48,9 @@ const AdminCourses = (props) => {
             <td>{course.address}</td>
             <td>{course.zip}</td>
             <td>{course.city}</td>
-            <td>{course.description}</td>
+            <td>
+              <div>{course.description}</div>
+            </td>
             <td>{course.duration}</td>
             <td>{course.school.name}</td>
             <td>{course.category.title}</td>

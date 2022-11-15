@@ -36,9 +36,13 @@
 .table th div {
   min-width: 15vw;
   max-width: 25vw;
-  overflow: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .table td {
+  min-width: 5vw;
+  max-width: 7vw;
+  overflow: hidden;
   border-color: grey;
   text-overflow: ellipsis;
 }
