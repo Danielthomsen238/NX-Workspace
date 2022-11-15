@@ -25,9 +25,6 @@
   max-width: 25vw;
   overflow: auto;
 }
-.table th:last-child {
-  width: 5vw;
-}
 .table textarea {
   transition: 500ms ease-in-out;
 }
