@@ -60,7 +60,14 @@ const CreateUser = () => {
   };
   return (
     <div className={createUse_styles.body}>
-      <form className={createUse_styles.form}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          setButtonClicked((state) => !state);
+          submitUser();
+        }}
+        className={createUse_styles.form}
+      >
         <fieldset>
           <legend>Opret Bruger</legend>
           <input
@@ -69,6 +76,7 @@ const CreateUser = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="text"
@@ -76,6 +84,7 @@ const CreateUser = () => {
             placeholder="Fornavn"
             value={fornavn}
             onChange={(e) => setFornavn(e.target.value)}
+            required
           />
           <input
             type="text"
@@ -83,6 +92,7 @@ const CreateUser = () => {
             placeholder="Efternavn"
             value={efternavn}
             onChange={(e) => setEfternavn(e.target.value)}
+            required
           />
           <input
             type="text"
@@ -90,6 +100,7 @@ const CreateUser = () => {
             placeholder="Telefon"
             value={telefon}
             onChange={(e) => setTelefon(e.target.value)}
+            required
           />
           <div className={createUse_styles.first_password_container}>
             <input
@@ -99,6 +110,7 @@ const CreateUser = () => {
               type={firstVisibility ? 'text' : 'Password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <div onClick={handleFirstVisibility}>
               {firstVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -112,6 +124,7 @@ const CreateUser = () => {
               type={secVisibility ? 'text' : 'Password'}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+              required
             />
             <div onClick={handleSecVisibility}>
               {secVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -122,15 +135,7 @@ const CreateUser = () => {
           {buttonClicked ? (
             <button>Vent et øjeblik</button>
           ) : (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setButtonClicked((state) => !state);
-                submitUser();
-              }}
-            >
-              Opret Bruger
-            </button>
+            <button type="submit">Opret Bruger</button>
           )}
         </div>
       </form>

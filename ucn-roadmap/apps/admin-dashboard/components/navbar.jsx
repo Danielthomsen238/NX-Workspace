@@ -41,7 +41,7 @@ const Navbar = () => {
             }
           >
             <li>
-              Admin
+              Menu
               <ArrowDropUpIcon
                 className={
                   isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
@@ -55,12 +55,22 @@ const Navbar = () => {
                 <a>Brugere</a>
               </Link>
             </li>
-            <li>
-              <ApartmentIcon className={navbar_styles.icons} />
-              <Link href="/schoolList">
-                <a>Skoler</a>
-              </Link>
-            </li>
+            {session.user.role == 'Admin' ? (
+              <li>
+                <ApartmentIcon className={navbar_styles.icons} />
+                <Link href="/schoolList">
+                  <a>Skoler og Hubs</a>
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <ApartmentIcon className={navbar_styles.icons} />
+                <Link href="/schoolList">
+                  <a>Skole</a>
+                </Link>
+              </li>
+            )}
+
             <li>
               <SchoolIcon className={navbar_styles.icons} />
               <Link href="/courseList">
@@ -106,7 +116,7 @@ const Navbar = () => {
             }
           >
             <li>
-              Admin
+              Menu
               <ArrowDropUpIcon
                 className={
                   isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
@@ -120,12 +130,21 @@ const Navbar = () => {
                 <a>Brugere</a>
               </Link>
             </li>
-            <li>
-              <ApartmentIcon className={navbar_styles.icons} />
-              <Link href="/schoolList">
-                <a>Hub</a>
-              </Link>
-            </li>
+            {session.user.role == 'Admin' ? (
+              <li>
+                <ApartmentIcon className={navbar_styles.icons} />
+                <Link href="/schoolList">
+                  <a>Skoler og Hubs</a>
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <ApartmentIcon className={navbar_styles.icons} />
+                <Link href="/schoolList">
+                  <a>Hub</a>
+                </Link>
+              </li>
+            )}
             {session.user.role == 'Admin' ? (
               <li>
                 <ListIcon className={navbar_styles.icons} />

@@ -46,6 +46,10 @@
   border-color: grey;
   text-overflow: ellipsis;
 }
+.table td div {
+  overflow: hidden;
+  height: 2vw;
+}
 .table th {
   text-align: left;
   background-color: #004250;

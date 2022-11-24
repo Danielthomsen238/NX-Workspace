@@ -50,8 +50,7 @@ const Index = ({ csrfToken }) => {
   //activ login form
   const [activeForm, setActiveForm] = useState(false);
   //submit data after converting address to lat and lng
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_API);
     Geocode.setLanguage('en');
     Geocode.setLocationType('ROOFTOP');
@@ -184,6 +183,7 @@ const Index = ({ csrfToken }) => {
             value={loginEmail}
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={(e) => setLoginEmail(e.target.value)}
+            required
           />
           <div className={login_styles.password_container}>
             <input
@@ -193,6 +193,7 @@ const Index = ({ csrfToken }) => {
               type={loginVisibility ? 'text' : 'Password'}
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
+              required
             />
             <div onClick={handleLoginVisibility}>
               {loginVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -201,7 +202,14 @@ const Index = ({ csrfToken }) => {
           <button type="submit"> Log på </button>
         </form>
         {/* Reset password */}
-        <form className={login_styles.login_container}>
+        <form
+          className={login_styles.login_container}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleReset();
+            container.current.style.left = '33vw';
+          }}
+        >
           <UCNLogo />
           <h2>Reset Password</h2>
           <input
@@ -211,23 +219,16 @@ const Index = ({ csrfToken }) => {
             value={resetEmail}
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={(e) => setResetEmail(e.target.value)}
+            required
           />
           <input
             placeholder="Telefon"
             name="text"
             value={resetTelefon}
             onChange={(e) => setResetTelefon(e.target.value)}
+            required
           />
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              handleReset();
-              container.current.style.left = '33vw';
-            }}
-          >
-            Send Engangs kode
-          </button>
+          <button type="submit">Send Engangs kode</button>
         </form>
         {/* Login form */}
         {activeForm ? (
@@ -248,6 +249,7 @@ const Index = ({ csrfToken }) => {
               value={loginEmail}
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               onChange={(e) => setLoginEmail(e.target.value)}
+              required
             />
             <div className={login_styles.password_container}>
               <input
@@ -257,6 +259,7 @@ const Index = ({ csrfToken }) => {
                 type={loginVisibility ? 'text' : 'Password'}
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
+                required
               />
               <div onClick={handleLoginVisibility}>
                 {loginVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -286,7 +289,14 @@ const Index = ({ csrfToken }) => {
         )}
 
         {/* Opret bruger form */}
-        <form ref={form} className={signUp_styles.form}>
+        <form
+          ref={form}
+          className={signUp_styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            container.current.style.left = '-283vw';
+          }}
+        >
           <fieldset>
             <legend>Tilmeld Bruger</legend>
             <input
@@ -295,6 +305,7 @@ const Index = ({ csrfToken }) => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <input
               type="text"
@@ -302,6 +313,7 @@ const Index = ({ csrfToken }) => {
               placeholder="Fornavn"
               value={fornavn}
               onChange={(e) => setFornavn(e.target.value)}
+              required
             />
             <input
               type="text"
@@ -309,6 +321,7 @@ const Index = ({ csrfToken }) => {
               placeholder="Efternavn"
               value={efternavn}
               onChange={(e) => setEfternavn(e.target.value)}
+              required
             />
             <input
               type="text"
@@ -316,6 +329,7 @@ const Index = ({ csrfToken }) => {
               placeholder="Telefon"
               value={telefon}
               onChange={(e) => setTelefon(e.target.value)}
+              required
             />
             <div className={signUp_styles.first_password_container}>
               <input
@@ -325,6 +339,7 @@ const Index = ({ csrfToken }) => {
                 type={firstVisibility ? 'text' : 'Password'}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
               <div onClick={handleFirstVisibility}>
                 {firstVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -338,6 +353,7 @@ const Index = ({ csrfToken }) => {
                 type={secVisibility ? 'text' : 'Password'}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
               <div onClick={handleSecVisibility}>
                 {secVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
@@ -345,14 +361,7 @@ const Index = ({ csrfToken }) => {
             </div>
           </fieldset>
           <div className={signUp_styles.button_container}>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                container.current.style.left = '-283vw';
-              }}
-            >
-              Næste
-            </button>
+            <button type="submit">Næste</button>
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -365,7 +374,13 @@ const Index = ({ csrfToken }) => {
           </div>
         </form>
         {/* Opret Skole form */}
-        <form className={signUp_styles.form}>
+        <form
+          className={signUp_styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <fieldset>
             <legend>Tilmeld Skole Eller Hub</legend>
             <div className={signUp_styles.checkbox}>
@@ -389,36 +404,42 @@ const Index = ({ csrfToken }) => {
               placeholder="Navn på Skolen/Hub"
               value={skoleNavn}
               onChange={(e) => setSkoleNavn(e.target.value)}
+              required
             />
             <input
               type="text"
               placeholder="Adresse"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              required
             />
             <input
               type="text"
               placeholder="Post nr."
               value={zip}
               onChange={(e) => setZip(e.target.value)}
+              required
             />
             <input
               type="text"
               placeholder="By"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              required
             />
             <input
               type="text"
               placeholder="Telefon "
               value={skoleTelefon}
               onChange={(e) => setSkoleTelefon(e.target.value)}
+              required
             />
             <input
               type="email"
               placeholder="Email"
               value={skoleEmail}
               onChange={(e) => setSkoleEmail(e.target.value)}
+              required
             />
             <div className={signUp_styles.text_container}>
               <textarea
@@ -436,9 +457,7 @@ const Index = ({ csrfToken }) => {
                 Vent et øjeblik
               </button>
             ) : (
-              <button onClick={handleSubmit} type="button">
-                Opret
-              </button>
+              <button type="submit">Opret</button>
             )}
             <button
               onClick={(e) => {

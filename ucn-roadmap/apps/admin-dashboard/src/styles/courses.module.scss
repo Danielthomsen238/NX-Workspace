@@ -49,6 +49,10 @@
       overflow: hidden;
       border-color: grey;
       text-overflow: ellipsis;
+      div {
+        overflow: hidden;
+        height: 2vw;
+      }
       
     }
 
