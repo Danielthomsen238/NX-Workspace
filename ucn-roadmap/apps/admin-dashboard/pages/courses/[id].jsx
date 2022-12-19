@@ -20,7 +20,6 @@ export const getStaticPaths = async () => {
     return {
       paths: paths,
       fallback: true,
-      revalidate: 1,
     };
   } catch (error) {
     console.log(error);
