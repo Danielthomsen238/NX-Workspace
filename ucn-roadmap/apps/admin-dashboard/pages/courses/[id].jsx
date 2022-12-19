@@ -12,7 +12,6 @@ export const getStaticPaths = async () => {
       `https://sequelize-roadmap.herokuapp.com/course`
     );
     const data = result.data;
-    console.log(data);
     const paths = data?.map((course) => {
       return {
         params: { id: course.id.toString() },
@@ -39,6 +38,7 @@ export const getStaticProps = async (context) => {
       props: {
         course: data,
       },
+      revalidate: 1,
     };
   } catch (error) {
     console.log(error);
