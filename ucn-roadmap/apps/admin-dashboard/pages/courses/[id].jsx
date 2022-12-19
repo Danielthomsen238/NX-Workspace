@@ -19,7 +19,8 @@ export const getStaticPaths = async () => {
     });
     return {
       paths: paths,
-      fallback: false,
+      fallback: true,
+      revalidate: 1,
     };
   } catch (error) {
     console.log(error);
@@ -38,6 +39,7 @@ export const getStaticProps = async (context) => {
       props: {
         course: data,
       },
+      fallback: true,
       revalidate: 1,
     };
   } catch (error) {
