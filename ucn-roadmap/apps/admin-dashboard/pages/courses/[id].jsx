@@ -38,7 +38,6 @@ export const getStaticProps = async (context) => {
       props: {
         course: data,
       },
-      fallback: true,
       revalidate: 1,
     };
   } catch (error) {
