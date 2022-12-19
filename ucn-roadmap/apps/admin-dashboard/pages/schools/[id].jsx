@@ -1,11 +1,10 @@
 import { useSession } from 'next-auth/react';
 import { useState } from 'react';
 import singleSchool_styles from '../../src/styles/singleSchool.module.css';
-import { getSession } from 'next-auth/react';
 import Geocode from 'react-geocode';
 import school_styles from '../../src/styles/school.module.css';
 import axios from 'axios';
-import Animate from 'apps/admin-dashboard/components/Animate';
+import Animate from '../../components/Animate';
 
 export async function getServerSideProps(context) {
   const id = context.params.id;

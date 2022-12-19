@@ -4,7 +4,7 @@ import courses_styles from '../../src/styles/courses.module.css';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Geocode from 'react-geocode';
-import Animate from 'apps/admin-dashboard/components/Animate';
+import Animate from '../../components/Animate';
 
 export const getStaticPaths = async () => {
   try {

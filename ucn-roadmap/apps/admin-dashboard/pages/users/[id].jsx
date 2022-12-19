@@ -4,7 +4,7 @@ import createUse_styles from '../../src/styles/createUser.module.css';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { getSession } from 'next-auth/react';
-import Animate from 'apps/admin-dashboard/components/Animate';
+import Animate from '../../components/Animate';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
