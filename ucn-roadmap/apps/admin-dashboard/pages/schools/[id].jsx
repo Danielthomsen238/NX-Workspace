@@ -104,7 +104,7 @@ const SchoolDetails = ({ school }) => {
     fetch('https://api.imgur.com/3/image', {
       method: 'post',
       headers: {
-        Authorization: 'Client-ID 1b600c51c02423d',
+        Authorization: 'Client-ID d4e7ab1dc021147',
       },
       body: formdata,
     })
