@@ -1,6 +1,7 @@
 import Categories from '../components/Categories';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import Animate from '../components/Animate';
 
 const CategoriesList = () => {
   const { data: session, status } = useSession();
@@ -10,7 +11,9 @@ const CategoriesList = () => {
   }
   return (
     <>
-      <Categories />
+      <Animate>
+        <Categories />
+      </Animate>
     </>
   );
 };

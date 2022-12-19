@@ -3,6 +3,7 @@ import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import user_styles from '../src/styles/user.module.css';
+import courses_styles from '../src/styles/courses.module.css';
 import { useRouter } from 'next/router';
 
 const AdminCourses = (props) => {
@@ -54,7 +55,7 @@ const AdminCourses = (props) => {
             <td>{course.duration}</td>
             <td>{course.school.name}</td>
             <td>{course.category.title}</td>
-            <td>
+            <td className={courses_styles.action}>
               <button>
                 <EditIcon
                   className={user_styles.icon}

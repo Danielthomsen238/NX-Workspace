@@ -1,10 +1,11 @@
 import Head from 'next/head';
-import Navbar from "../components/navbar"
-import { SessionProvider } from 'next-auth/react'
+import Navbar from '../components/navbar';
+import { SessionProvider } from 'next-auth/react';
 import Auth from '../components/auth';
 import '../src/styles/styles.css';
+import { AnimatePresence } from 'framer-motion';
 
-function CustomApp({ Component, pageProps }) {
+function CustomApp({ Component, pageProps, router }) {
   return (
     <>
       <Head>
@@ -14,13 +15,15 @@ function CustomApp({ Component, pageProps }) {
         {Component.auth ? (
           <Auth>
             <div className="global_body">
-            <Navbar />
-            <Component {...pageProps} />
+              <Navbar />
+              <AnimatePresence mode="wait">
+                <Component {...pageProps} key={router.asPath} />
+              </AnimatePresence>
             </div>
           </Auth>
         ) : (
-            <Component {...pageProps} />
-          )}
+          <Component {...pageProps} />
+        )}
       </SessionProvider>
     </>
   );

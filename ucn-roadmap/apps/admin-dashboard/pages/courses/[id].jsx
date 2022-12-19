@@ -4,6 +4,7 @@ import courses_styles from '../../src/styles/courses.module.css';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Geocode from 'react-geocode';
+import Animate from 'apps/admin-dashboard/components/Animate';
 
 export const getStaticPaths = async () => {
   try {
@@ -132,81 +133,83 @@ const CourseDetail = ({ course }) => {
       });
   };
   return (
-    <div className={courses_styles.form_container}>
-      <form
-        className={courses_styles.form}
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleGeo();
-        }}
-      >
-        <fieldset>
-          <legend>Opdatere Uddannelse</legend>
-          <input
-            placeholder="Navn på Uddannelse"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+    <Animate>
+      <div className={courses_styles.form_container}>
+        <form
+          className={courses_styles.form}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleGeo();
+          }}
+        >
+          <fieldset>
+            <legend>Opdater Uddannelse</legend>
+            <input
+              placeholder="Navn på Uddannelse"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
 
-          <input
-            placeholder="Varighed på uddannelse"
-            type="text"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Adresse"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Post nr."
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="By"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-          <select
-            name="Category"
-            value={categoryName}
-            onChange={(e) => {
-              console.log(e.target);
-              setCategoryName(e.target.value);
-            }}
-            required
-          >
-            {categoryData.data?.map((category, idx) => {
-              return (
-                <option key={idx} value={category.title}>
-                  {category.title}
-                </option>
-              );
-            })}
-          </select>
-          <textarea
-            placeholder="Beskrivelse"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </fieldset>
-        <button type="submit" className={courses_styles.button}>
-          Opret Uddannelse
-        </button>
-      </form>
-    </div>
+            <input
+              placeholder="Varighed på uddannelse"
+              type="text"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Adresse"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              placeholder="Post nr."
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="By"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+            <select
+              name="Category"
+              value={categoryName}
+              onChange={(e) => {
+                console.log(e.target);
+                setCategoryName(e.target.value);
+              }}
+              required
+            >
+              {categoryData.data?.map((category, idx) => {
+                return (
+                  <option key={idx} value={category.title}>
+                    {category.title}
+                  </option>
+                );
+              })}
+            </select>
+            <textarea
+              placeholder="Beskrivelse"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </fieldset>
+          <button type="submit" className={courses_styles.button}>
+            Opdater Uddannelse
+          </button>
+        </form>
+      </div>
+    </Animate>
   );
 };
 CourseDetail.auth = true;

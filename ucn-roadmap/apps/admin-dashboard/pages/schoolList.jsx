@@ -1,6 +1,7 @@
 import Schools from '../components/Schools';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import Animate from '../components/Animate';
 
 const SchoolList = () => {
   const { data: session, status } = useSession();
@@ -10,7 +11,9 @@ const SchoolList = () => {
   }
   return (
     <>
-      <Schools />
+      <Animate>
+        <Schools />
+      </Animate>
     </>
   );
 };

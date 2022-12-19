@@ -4,6 +4,7 @@ import createUse_styles from '../../src/styles/createUser.module.css';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import { getSession } from 'next-auth/react';
+import Animate from 'apps/admin-dashboard/components/Animate';
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -70,54 +71,56 @@ const CourseDetail = ({ user }) => {
   //function that makes editing true
 
   return (
-    <div className={createUse_styles.body}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-        className={createUse_styles.form}
-      >
-        <fieldset>
-          <legend>Opdater Bruger</legend>
-          <input
-            type="text"
-            name="user_email"
-            placeholder="Email"
-            value={userEmail}
-            onChange={(e) => setUserEmail(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_firstname"
-            placeholder="Fornavn"
-            value={userFirstname}
-            onChange={(e) => setUserFirstname(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_lastname"
-            placeholder="Efternavn"
-            value={userLastname}
-            onChange={(e) => setUserLastname(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_phone"
-            placeholder="Telefon"
-            value={userTelefon}
-            onChange={(e) => setUserTelefon(e.target.value)}
-            required
-          />
-        </fieldset>
-        <div className={createUse_styles.button_container}>
-          <button type="submit">Opdater Bruger</button>
-        </div>
-      </form>
-    </div>
+    <Animate>
+      <div className={createUse_styles.body}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+          className={createUse_styles.form}
+        >
+          <fieldset>
+            <legend>Opdater Bruger</legend>
+            <input
+              type="text"
+              name="user_email"
+              placeholder="Email"
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              name="user_firstname"
+              placeholder="Fornavn"
+              value={userFirstname}
+              onChange={(e) => setUserFirstname(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              name="user_lastname"
+              placeholder="Efternavn"
+              value={userLastname}
+              onChange={(e) => setUserLastname(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              name="user_phone"
+              placeholder="Telefon"
+              value={userTelefon}
+              onChange={(e) => setUserTelefon(e.target.value)}
+              required
+            />
+          </fieldset>
+          <div className={createUse_styles.button_container}>
+            <button type="submit">Opdater Bruger</button>
+          </div>
+        </form>
+      </div>
+    </Animate>
   );
 };
 CourseDetail.auth = true;

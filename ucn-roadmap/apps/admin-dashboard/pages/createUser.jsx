@@ -5,6 +5,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import Animate from '../components/Animate';
 
 const CreateUser = () => {
   //session data
@@ -59,87 +60,89 @@ const CreateUser = () => {
       });
   };
   return (
-    <div className={createUse_styles.body}>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setButtonClicked((state) => !state);
-          submitUser();
-        }}
-        className={createUse_styles.form}
-      >
-        <fieldset>
-          <legend>Opret Bruger</legend>
-          <input
-            type="text"
-            name="user_email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_firstname"
-            placeholder="Fornavn"
-            value={fornavn}
-            onChange={(e) => setFornavn(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_lastname"
-            placeholder="Efternavn"
-            value={efternavn}
-            onChange={(e) => setEfternavn(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            name="user_phone"
-            placeholder="Telefon"
-            value={telefon}
-            onChange={(e) => setTelefon(e.target.value)}
-            required
-          />
-          <div className={createUse_styles.first_password_container}>
+    <Animate>
+      <div className={createUse_styles.body}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setButtonClicked((state) => !state);
+            submitUser();
+          }}
+          className={createUse_styles.form}
+        >
+          <fieldset>
+            <legend>Opret Bruger</legend>
             <input
-              placeholder="Adgangskode"
-              name="password"
-              minLength="3"
-              type={firstVisibility ? 'text' : 'Password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="text"
+              name="user_email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <div onClick={handleFirstVisibility}>
-              {firstVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
-            </div>
-          </div>
-          <div className={createUse_styles.sec_password_container}>
             <input
-              placeholder="Adgangskode"
-              name="password"
-              minLength="3"
-              type={secVisibility ? 'text' : 'Password'}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              type="text"
+              name="user_firstname"
+              placeholder="Fornavn"
+              value={fornavn}
+              onChange={(e) => setFornavn(e.target.value)}
               required
             />
-            <div onClick={handleSecVisibility}>
-              {secVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            <input
+              type="text"
+              name="user_lastname"
+              placeholder="Efternavn"
+              value={efternavn}
+              onChange={(e) => setEfternavn(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              name="user_phone"
+              placeholder="Telefon"
+              value={telefon}
+              onChange={(e) => setTelefon(e.target.value)}
+              required
+            />
+            <div className={createUse_styles.first_password_container}>
+              <input
+                placeholder="Adgangskode"
+                name="password"
+                minLength="3"
+                type={firstVisibility ? 'text' : 'Password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <div onClick={handleFirstVisibility}>
+                {firstVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </div>
             </div>
+            <div className={createUse_styles.sec_password_container}>
+              <input
+                placeholder="Adgangskode"
+                name="password"
+                minLength="3"
+                type={secVisibility ? 'text' : 'Password'}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+              <div onClick={handleSecVisibility}>
+                {secVisibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+              </div>
+            </div>
+          </fieldset>
+          <div className={createUse_styles.button_container}>
+            {buttonClicked ? (
+              <button>Vent et øjeblik</button>
+            ) : (
+              <button type="submit">Opret Bruger</button>
+            )}
           </div>
-        </fieldset>
-        <div className={createUse_styles.button_container}>
-          {buttonClicked ? (
-            <button>Vent et øjeblik</button>
-          ) : (
-            <button type="submit">Opret Bruger</button>
-          )}
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </Animate>
   );
 };
 CreateUser.auth = true;

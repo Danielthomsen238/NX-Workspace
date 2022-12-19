@@ -4,6 +4,7 @@ import courses_styles from '../src/styles/courses.module.css';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import Geocode from 'react-geocode';
+import Animate from '../components/Animate';
 
 const CreateCourse = () => {
   const router = useRouter();
@@ -90,77 +91,79 @@ const CreateCourse = () => {
       });
   };
   return (
-    <div className={courses_styles.form_container}>
-      <form className={courses_styles.form}>
-        <fieldset>
-          <legend>Opret Uddannelse</legend>
-          <input
-            placeholder="Navn på Uddannelse"
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+    <Animate>
+      <div className={courses_styles.form_container}>
+        <form className={courses_styles.form}>
+          <fieldset>
+            <legend>Opret Uddannelse</legend>
+            <input
+              placeholder="Navn på Uddannelse"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-          <input
-            placeholder="Varighed på uddannelse"
-            type="text"
-            value={duration}
-            onChange={(e) => setDuration(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Adresse"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Post nr."
-            value={zip}
-            onChange={(e) => setZip(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="By"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <select
-            name="Category"
-            value={categoryName}
-            onChange={(e) => {
-              console.log(e.target);
-              setCategoryName(e.target.value);
-            }}
-          >
-            <option value="" disabled selected hidden>
-              Vælge Kategori
-            </option>
-            {categoryData.data?.map((category, idx) => {
-              return (
-                <option key={idx} value={category.title}>
-                  {category.title}
-                </option>
-              );
-            })}
-          </select>
-          <textarea
-            placeholder="Beskrivelse"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </fieldset>
-      </form>
-      <button
-        className={courses_styles.button}
-        onClick={() => {
-          handleGeo();
-        }}
-      >
-        Opret Uddannelse
-      </button>
-    </div>
+            <input
+              placeholder="Varighed på uddannelse"
+              type="text"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Adresse"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Post nr."
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="By"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <select
+              name="Category"
+              value={categoryName}
+              onChange={(e) => {
+                console.log(e.target);
+                setCategoryName(e.target.value);
+              }}
+            >
+              <option value="" disabled selected hidden>
+                Vælge Kategori
+              </option>
+              {categoryData.data?.map((category, idx) => {
+                return (
+                  <option key={idx} value={category.title}>
+                    {category.title}
+                  </option>
+                );
+              })}
+            </select>
+            <textarea
+              placeholder="Beskrivelse"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </fieldset>
+        </form>
+        <button
+          className={courses_styles.button}
+          onClick={() => {
+            handleGeo();
+          }}
+        >
+          Opret Uddannelse
+        </button>
+      </div>
+    </Animate>
   );
 };
 CreateCourse.auth = true;

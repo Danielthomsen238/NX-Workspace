@@ -59,6 +59,7 @@ const Index = ({ csrfToken }) => {
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
         if (lat && lng) {
+          console.log(lat, lng);
           submitSkole(lat, lng);
         }
       },
@@ -83,7 +84,7 @@ const Index = ({ csrfToken }) => {
       lng: lng,
     };
     axios
-      .post('https://sequelize-roadmap.herokuapp.com/school', data)
+      .post('http://localhost:3123/school', data)
       .then((response) => {
         submitUser(response.data.newId);
       })
@@ -103,7 +104,7 @@ const Index = ({ csrfToken }) => {
       school_id: skoleId,
     };
     axios
-      .post('https://sequelize-roadmap.herokuapp.com/user', data)
+      .post('http://localhost:3123/user', data)
       .then((response) => {
         sendEmail();
         router.push('/');

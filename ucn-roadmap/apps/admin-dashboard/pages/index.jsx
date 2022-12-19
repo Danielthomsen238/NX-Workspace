@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import login_styles from '../src/styles/login.module.css';
 import frontpage_styles from '../src/styles/frontpage.module.css';
+import Animate from '../components/Animate';
 
 const Index = () => {
   const { data: session, status } = useSession();
@@ -47,42 +48,46 @@ const Index = () => {
   if (session.user.otp) {
     return (
       <>
-        <form className={login_styles.gentag_kode_container}>
-          {error ? <h2>{error}</h2> : <h2>Ændre Koden</h2>}
-          <input
-            placeholder="Indtast ny kode"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            placeholder="Gentag koden"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-              handleSubmit();
-            }}
-          >
-            Gem kode
-          </button>
-        </form>
+        <Animate>
+          <form className={login_styles.gentag_kode_container}>
+            {error ? <h2>{error}</h2> : <h2>Ændre Koden</h2>}
+            <input
+              placeholder="Indtast ny kode"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              placeholder="Gentag koden"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <button
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSubmit();
+              }}
+            >
+              Gem kode
+            </button>
+          </form>
+        </Animate>
       </>
     );
   } else if (session.user.active == false) {
     return (
       <>
-        <section className={frontpage_styles.container}>
-          <h2>Du er logget ind</h2>
-          <p>
-            men du er ikke blevet aktiveret af en admin endnu, så du kan ikke se
-            eller redigere noget.
-          </p>
-        </section>
+        <Animate>
+          <section className={frontpage_styles.container}>
+            <h2>Du er logget ind</h2>
+            <p>
+              men du er ikke blevet aktiveret af en admin endnu, så du kan ikke
+              se eller redigere noget.
+            </p>
+          </section>
+        </Animate>
       </>
     );
   }

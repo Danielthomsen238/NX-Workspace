@@ -16,6 +16,10 @@ body {
   background-color: #004250;
 }
 
+.animate {
+  width: 80vw;
+}
+
 #ucnlogo_svg__Layer_1 {
   position: absolute;
   top: 2vw;

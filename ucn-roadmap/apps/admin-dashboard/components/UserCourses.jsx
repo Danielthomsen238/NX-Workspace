@@ -4,6 +4,7 @@ import axios from 'axios';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import user_styles from '../src/styles/user.module.css';
+import courses_styles from '../src/styles/courses.module.css';
 
 const UserCourses = (props) => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const UserCourses = (props) => {
               </td>
               <td>{course.duration}</td>
               <td>{course.category.title}</td>
-              <td>
+              <td className={courses_styles.action}>
                 <button>
                   <EditIcon
                     className={user_styles.icon}
