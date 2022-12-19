@@ -101,7 +101,7 @@ const SchoolDetails = ({ school }) => {
   const fileSelectedHandler = (event) => {
     const formdata = new FormData();
     formdata.append('image', event.target.files[0]);
-    fetch('https://api.imgur.com/3/upload/', {
+    fetch('https://api.imgur.com/3/image', {
       method: 'post',
       headers: {
         Authorization: 'Client-ID 1b600c51c02423d',
