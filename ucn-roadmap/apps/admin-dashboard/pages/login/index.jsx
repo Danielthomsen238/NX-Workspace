@@ -84,7 +84,7 @@ const Index = ({ csrfToken }) => {
       lng: lng,
     };
     axios
-      .post('http://localhost:3123/school', data)
+      .post('https://sequelize-roadmap.herokuapp.com/school', data)
       .then((response) => {
         submitUser(response.data.newId);
       })
@@ -104,7 +104,7 @@ const Index = ({ csrfToken }) => {
       school_id: skoleId,
     };
     axios
-      .post('http://localhost:3123/user', data)
+      .post('https://sequelize-roadmap.herokuapp.com/user', data)
       .then((response) => {
         sendEmail();
         router.push('/');
