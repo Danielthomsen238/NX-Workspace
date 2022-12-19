@@ -18,7 +18,6 @@ export async function getServerSideProps(context) {
       props: {
         school: data,
       },
-      revalidate: 1, // In seconds
     };
   } catch (error) {
     console.log(error);
