@@ -83,7 +83,7 @@ const SchoolDetails = ({ school }) => {
         lng: lng,
       };
       axios
-        .put(`http://localhost:3123/school`, payload, config)
+        .put(`https://sequelize-roadmap.herokuapp.com/school`, payload, config)
         .then((response) => {
           console.log(response);
           setItemClicked(false);
@@ -102,7 +102,7 @@ const SchoolDetails = ({ school }) => {
   const fileSelectedHandler = (event) => {
     const formdata = new FormData();
     formdata.append('image', event.target.files[0]);
-    fetch('https://api.imgur.com/3/upload', {
+    fetch('https://api.imgur.com/3/upload/', {
       method: 'post',
       headers: {
         Authorization: 'Client-ID 1b600c51c02423d',
