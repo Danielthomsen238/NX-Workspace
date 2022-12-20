@@ -138,7 +138,7 @@ const SchoolDetails = ({ school }) => {
             >
               Opdater billede
             </label>
-            <input type="file" id="files" onClick={fileSelectedHandler} />
+            <input type="file" id="files" onChange={fileSelectedHandler} />
           </div>
         </div>
         <div className={singleSchool_styles.InputContainer}>
