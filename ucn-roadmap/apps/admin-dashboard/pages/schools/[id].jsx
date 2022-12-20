@@ -110,7 +110,6 @@ const SchoolDetails = ({ school }) => {
     })
       .then((data) => data.json())
       .then((data) => {
-        console.log(data);
         sessionStorage.setItem('ImageToPost', data.data.link);
         if (data.data.link) {
           GeneratedImageUrl = data.data.link;
