@@ -61,67 +61,162 @@ const CourseDetail = ({ user }) => {
       .put(`https://sequelize-roadmap.herokuapp.com/User`, payload, config)
       .then((response) => {
         console.log(response);
-        // router.push('/userList');
+        router.push('/userList');
       })
       .catch((e) => {
         console.log(e);
       });
   };
 
-  //function that makes editing true
+  const Other = (X) => {
+    return !X;
+  };
 
-  return (
-    <Animate>
-      <div className={createUse_styles.body}>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit();
-          }}
-          className={createUse_styles.form}
-        >
-          <fieldset>
-            <legend>Opdater Bruger</legend>
-            <input
-              type="text"
-              name="user_email"
-              placeholder="Email"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              name="user_firstname"
-              placeholder="Fornavn"
-              value={userFirstname}
-              onChange={(e) => setUserFirstname(e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              name="user_lastname"
-              placeholder="Efternavn"
-              value={userLastname}
-              onChange={(e) => setUserLastname(e.target.value)}
-              required
-            />
-            <input
-              type="text"
-              name="user_phone"
-              placeholder="Telefon"
-              value={userTelefon}
-              onChange={(e) => setUserTelefon(e.target.value)}
-              required
-            />
-          </fieldset>
-          <div className={createUse_styles.button_container}>
-            <button type="submit">Opdater Bruger</button>
-          </div>
-        </form>
-      </div>
-    </Animate>
-  );
+  //function that makes editing true
+  if (session.user.role == 'User') {
+    return (
+      <Animate>
+        <div className={createUse_styles.body}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+            className={createUse_styles.form}
+          >
+            <fieldset>
+              <legend>Opdater Bruger</legend>
+              <input
+                type="text"
+                name="user_email"
+                placeholder="Email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_firstname"
+                placeholder="Fornavn"
+                value={userFirstname}
+                onChange={(e) => setUserFirstname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_lastname"
+                placeholder="Efternavn"
+                value={userLastname}
+                onChange={(e) => setUserLastname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_phone"
+                placeholder="Telefon"
+                value={userTelefon}
+                onChange={(e) => setUserTelefon(e.target.value)}
+                required
+              />
+            </fieldset>
+            <div className={createUse_styles.button_container}>
+              <button type="submit">Opdater Bruger</button>
+            </div>
+          </form>
+        </div>
+      </Animate>
+    );
+  }
+  if (session.user.role == 'Admin') {
+    return (
+      <Animate>
+        <div className={createUse_styles.body}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+            }}
+            className={createUse_styles.form}
+          >
+            <fieldset>
+              <legend>Opdater Bruger</legend>
+              <input
+                type="text"
+                name="user_email"
+                placeholder="Email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_firstname"
+                placeholder="Fornavn"
+                value={userFirstname}
+                onChange={(e) => setUserFirstname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_lastname"
+                placeholder="Efternavn"
+                value={userLastname}
+                onChange={(e) => setUserLastname(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                name="user_phone"
+                placeholder="Telefon"
+                value={userTelefon}
+                onChange={(e) => setUserTelefon(e.target.value)}
+                required
+              />
+              <div className="select_container">
+                <label htmlFor="Role">Role</label>
+                <select
+                  name="Role"
+                  id="role"
+                  value={userRoleId}
+                  onChange={(e) => setUserRoleId(e.target.value)}
+                >
+                  <option value={1} className="admin">
+                    Admin
+                  </option>
+                  <option value={2} className="user">
+                    User
+                  </option>
+                </select>
+                <label htmlFor="Role">Aktiv</label>
+                <select
+                  name="active"
+                  id="active"
+                  value={userActive}
+                  onChange={(e) => setUserActive(e.target.value)}
+                >
+                  <option
+                    value={user.active.toString()}
+                    className={user.active.toString()}
+                  >
+                    {user.active.toString()}
+                  </option>
+                  <option
+                    value={Other(user.active).toString()}
+                    className={Other(user.active).toString()}
+                  >
+                    {Other(user.active).toString()}
+                  </option>
+                </select>
+              </div>
+            </fieldset>
+            <div className={createUse_styles.button_container}>
+              <button type="submit">Opdater Bruger</button>
+            </div>
+          </form>
+        </div>
+      </Animate>
+    );
+  }
 };
 CourseDetail.auth = true;
 export default CourseDetail;
