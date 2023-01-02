@@ -125,7 +125,7 @@ const SchoolDetails = ({ school }) => {
       <div className={singleSchool_styles.body}>
         <div className={singleSchool_styles.ImageContainer}>
           <img
-            src={school.image}
+            src={schoolImage}
             onChange={(e) => setSchoolImage(e.target.value)}
             alt=""
             layout="fill"
