@@ -59,7 +59,6 @@ const Index = ({ csrfToken }) => {
       (response) => {
         const { lat, lng } = response.results[0].geometry.location;
         if (lat && lng) {
-          console.log(lat, lng);
           submitSkole(lat, lng);
         }
       },

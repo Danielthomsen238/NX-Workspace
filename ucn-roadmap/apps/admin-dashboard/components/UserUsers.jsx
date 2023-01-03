@@ -20,7 +20,6 @@ const UserUsers = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/User', config)
       .then((response) => {
-        console.log(response);
         setData(response);
       })
       .catch((e) => {
@@ -39,7 +38,6 @@ const UserUsers = () => {
       axios
         .delete(`https://sequelize-api.vercel.app/User`, payload)
         .then((response) => {
-          console.log(response);
           setRunEffect((state) => !state);
         })
         .catch((e) => {

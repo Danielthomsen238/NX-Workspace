@@ -24,7 +24,6 @@ const UserCourses = (props) => {
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/course`, payload)
         .then((response) => {
-          console.log(response);
           runEffect((state) => !state);
         })
         .catch((e) => {

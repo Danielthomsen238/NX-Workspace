@@ -14,7 +14,6 @@ export async function getServerSideProps(context) {
       `https://sequelize-roadmap.herokuapp.com/school/${id}`
     );
     const data = result.data;
-    console.log(data);
     return {
       props: {
         school: data,
@@ -26,7 +25,6 @@ export async function getServerSideProps(context) {
 }
 
 const SchoolDetails = ({ school }) => {
-  console.log(school);
   const { data: session, status } = useSession();
   const [schoolName, setSchoolName] = useState(school.name);
   const [schoolPhone, setSchoolPhone] = useState(school.telefon);
@@ -74,12 +72,10 @@ const SchoolDetails = ({ school }) => {
         lat: lat,
         lng: lng,
       };
-      console.log(payload);
       axios
         .put(`https://sequelize-roadmap.herokuapp.com/school`, payload, config)
         .then((response) => {
-          console.log(response);
-          setItemClicked(false);
+          router.push('/');
         })
         .catch((e) => {
           console.log(e);
@@ -100,13 +96,11 @@ const SchoolDetails = ({ school }) => {
       .then((data) => data.json())
       .then((data) => {
         sessionStorage.setItem('ImageToPost', data.data.link);
-        console.log(data);
         if (data.data.link) {
           GeneratedImageUrl = data.data.link;
         } else {
           GeneratedImageUrl = schoolImage;
         }
-        console.log(GeneratedImageUrl);
         setSchoolImage(GeneratedImageUrl);
       });
   };

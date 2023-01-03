@@ -10,7 +10,6 @@ const Index = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [error, setError] = useState();
-  console.log(session);
   const config = {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
@@ -29,7 +28,6 @@ const Index = () => {
           config
         )
         .then((response) => {
-          console.log(response);
           alert(
             'Koden er gemt du vil nu blive logget ud, log ind med din nye kode.'
           );

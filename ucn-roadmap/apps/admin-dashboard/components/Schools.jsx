@@ -24,7 +24,6 @@ const Schools = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/School', config)
       .then((response) => {
-        console.log(response);
         setData(response);
       })
       .catch((e) => {
@@ -45,7 +44,6 @@ const Schools = () => {
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/School`, payload)
         .then((response) => {
-          console.log(response);
           setRunEffect((state) => !state);
         })
         .catch((e) => {

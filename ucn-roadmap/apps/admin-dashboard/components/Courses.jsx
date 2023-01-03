@@ -18,7 +18,6 @@ const Courses = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/course')
       .then((response) => {
-        console.log(response);
         setCourseData(response);
       })
       .catch((e) => {
@@ -27,7 +26,6 @@ const Courses = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/category')
       .then((response) => {
-        console.log(response);
         setCategoryData(response);
       })
       .catch((e) => {

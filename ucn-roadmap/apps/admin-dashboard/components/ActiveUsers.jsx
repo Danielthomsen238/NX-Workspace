@@ -23,7 +23,6 @@ const ActiveUsers = (props) => {
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/User`, payload)
         .then((response) => {
-          console.log(response);
           runEffect((state) => !state);
         })
         .catch((e) => {

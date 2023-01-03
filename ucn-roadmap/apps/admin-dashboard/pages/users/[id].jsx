@@ -30,10 +30,8 @@ export async function getServerSideProps(context) {
 }
 
 const CourseDetail = ({ user }) => {
-  // console.log(user);
   const router = useRouter();
   const { query } = useRouter();
-  console.log(query);
   const { data: session, status } = useSession();
   const [userFirstname, setUserFirstname] = useState(user.firstname);
   const [userLastname, setUserLastname] = useState(user.lastname);
@@ -56,11 +54,10 @@ const CourseDetail = ({ user }) => {
       role_id: userRoleId,
       active: userActive,
     };
-    console.log(payload);
+
     axios
       .put(`https://sequelize-roadmap.herokuapp.com/User`, payload, config)
       .then((response) => {
-        console.log(response);
         router.push('/userList');
       })
       .catch((e) => {

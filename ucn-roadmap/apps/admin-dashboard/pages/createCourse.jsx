@@ -26,7 +26,6 @@ const CreateCourse = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/category')
       .then((response) => {
-        console.log(response);
         setCategoryData(response);
       })
       .catch((e) => {
@@ -81,7 +80,6 @@ const CreateCourse = () => {
     axios
       .post('https://sequelize-roadmap.herokuapp.com/course', data, payload)
       .then((response) => {
-        console.log(response);
         setTimeout(() => {
           router.push('/');
         }, 1000);
@@ -131,7 +129,6 @@ const CreateCourse = () => {
               name="Category"
               value={categoryName}
               onChange={(e) => {
-                console.log(e.target);
                 setCategoryName(e.target.value);
               }}
             >
