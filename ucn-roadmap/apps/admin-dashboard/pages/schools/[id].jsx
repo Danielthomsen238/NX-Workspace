@@ -61,7 +61,7 @@ const SchoolDetails = ({ school }) => {
 
     const submitSkoleEdit = (lat, lng) => {
       const payload = {
-        id: parseInt(itemClicked),
+        id: itemClicked,
         name: schoolName,
         address: schoolAddresse,
         zip: schoolZip,
