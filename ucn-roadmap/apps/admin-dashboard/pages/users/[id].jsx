@@ -187,10 +187,10 @@ const CourseDetail = ({ user }) => {
                   value={userActive}
                   onChange={(e) => setUserActive(e.target.value)}
                 >
-                  <option value={0} className="ikke_aktiveret">
+                  <option value={false} className="ikke_aktiveret">
                     Ikke aktiveret
                   </option>
-                  <option value={1} className="aktiveret">
+                  <option value={true} className="aktiveret">
                     Aktiveret
                   </option>
                 </select>
