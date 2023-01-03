@@ -20,3 +20,23 @@
         margin-bottom: 2vw;
     }
 }
+
+.guide {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    padding: 2vw;
+    top: 1vw;
+    right: 18vw;
+    background-color: $white_Color;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+    width: 40vw;
+    height: 85vh;
+    h1 {
+        margin-bottom: 0.5vw;
+    }
+
+    p {
+        margin-bottom: 1vw;
+    }
+}

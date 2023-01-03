@@ -14,3 +14,22 @@
 .container h2 {
   margin-bottom: 2vw;
 }
+
+.guide {
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  padding: 2vw;
+  top: 1vw;
+  right: 18vw;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
+  width: 40vw;
+  height: 85vh;
+}
+.guide h1 {
+  margin-bottom: 0.5vw;
+}
+.guide p {
+  margin-bottom: 1vw;
+}

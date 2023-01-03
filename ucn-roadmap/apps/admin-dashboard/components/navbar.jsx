@@ -2,8 +2,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Groups2Icon from '@mui/icons-material/Groups2';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import SchoolIcon from '@mui/icons-material/School';
-import ListIcon from '@mui/icons-material/List';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import HomeIcon from '@mui/icons-material/Home';
 import Link from 'next/link';
 import navbar_styles from '../src/styles/navbar.module.css';
 
@@ -45,6 +45,12 @@ const Navbar = () => {
                 }
                 onClick={handleDropUp}
               />
+            </li>
+            <li>
+              <HomeIcon className={navbar_styles.icons} />
+              <Link href="/">
+                <a>Bruger Manual</a>
+              </Link>
             </li>
             <li>
               <Groups2Icon className={navbar_styles.icons} />
