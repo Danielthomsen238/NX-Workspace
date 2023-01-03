@@ -26,6 +26,7 @@ export async function getServerSideProps(context) {
 }
 
 const SchoolDetails = ({ school }) => {
+  console.log(school);
   const { data: session, status } = useSession();
   const [schoolName, setSchoolName] = useState(school.name);
   const [schoolPhone, setSchoolPhone] = useState(school.telefon);
