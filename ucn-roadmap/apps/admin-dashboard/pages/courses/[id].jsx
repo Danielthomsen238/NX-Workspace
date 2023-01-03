@@ -33,7 +33,6 @@ export const getStaticProps = async (context) => {
       `https://sequelize-roadmap.herokuapp.com/course/${id}`
     );
     const data = result.data;
-    console.log(data);
     return {
       props: {
         course: data,
@@ -46,7 +45,6 @@ export const getStaticProps = async (context) => {
 };
 
 const CourseDetail = ({ course }) => {
-  console.log(course);
   const router = useRouter();
   const { data: session, status } = useSession();
   const [categoryData, setCategoryData] = useState([]);
@@ -67,7 +65,6 @@ const CourseDetail = ({ course }) => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/category')
       .then((response) => {
-        console.log(response);
         setCategoryData(response);
       })
       .catch((e) => {
@@ -123,7 +120,6 @@ const CourseDetail = ({ course }) => {
     axios
       .put('https://sequelize-roadmap.herokuapp.com/course', data, payload)
       .then((response) => {
-        console.log(response);
         setTimeout(() => {
           router.push('/');
         }, 1000);
@@ -183,7 +179,6 @@ const CourseDetail = ({ course }) => {
               name="Category"
               value={categoryName}
               onChange={(e) => {
-                console.log(e.target);
                 setCategoryName(e.target.value);
               }}
               required

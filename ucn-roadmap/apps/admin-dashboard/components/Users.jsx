@@ -20,7 +20,6 @@ const Users = () => {
     axios
       .get('https://sequelize-roadmap.herokuapp.com/User', config)
       .then((response) => {
-        console.log(response);
         setData(response);
       })
       .catch((e) => {

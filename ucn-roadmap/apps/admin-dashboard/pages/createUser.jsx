@@ -49,7 +49,6 @@ const CreateUser = () => {
     axios
       .post('https://sequelize-roadmap.herokuapp.com/user', data)
       .then((response) => {
-        console.log(response);
         setTimeout(() => {
           router.push('/userList');
         }, 1000);
