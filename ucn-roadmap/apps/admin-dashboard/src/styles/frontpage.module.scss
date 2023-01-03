@@ -32,6 +32,8 @@
     box-shadow: 5px 5px 5px 5px $boxShadow_Color;
     width: 40vw;
     height: 85vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
     h1 {
         margin-bottom: 0.5vw;
     }

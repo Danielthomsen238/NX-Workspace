@@ -14,12 +14,12 @@ const UserCourses = (props) => {
   const { data: session, status } = useSession();
 
   //function(not done) to delete user
-  const DeleteData = (e) => {
+  const DeleteData = (course) => {
     let person = prompt('Please confirm by typing, "DELETE"');
     if (person == 'DELETE') {
       const payload = {
         headers: { authorization: `Bearer ${session?.user.token}` },
-        data: { id: e.target.id },
+        data: { id: course },
       };
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/course`, payload)
@@ -65,7 +65,7 @@ const UserCourses = (props) => {
                 </div>
 
                 <div className={user_styles.OverButton}>
-                  <button id={course.id} onClick={DeleteData}>
+                  <button id={course.id} onClick={() => DeleteData(course.id)}>
                     <DeleteForeverIcon className={user_styles.icon} />
                   </button>
                 </div>

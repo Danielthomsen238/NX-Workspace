@@ -34,12 +34,12 @@ const Schools = () => {
   //submit function to update school
 
   //function(not done) to delete user
-  const DeleteData = (e) => {
+  const DeleteData = (school) => {
     let person = prompt('Please confirm by typing, "DELETE"');
     if (person == 'DELETE') {
       const payload = {
         headers: { authorization: `Bearer ${session?.user.token}` },
-        data: { id: e.target.id },
+        data: { id: school },
       };
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/School`, payload)
@@ -107,7 +107,10 @@ const Schools = () => {
                         </button>
                       </div>
                       <div className={school_styles.OverButton}>
-                        <button id={school.id} onClick={DeleteData}>
+                        <button
+                          id={school.id}
+                          onClick={() => DeleteData(school.id)}
+                        >
                           <DeleteForeverIcon className={school_styles.icon} />
                         </button>
                       </div>

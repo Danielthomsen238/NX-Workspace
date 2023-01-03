@@ -13,12 +13,12 @@ const UnActiveUsers = (props) => {
   //header config for api
 
   //function(not done) to delete user
-  const DeleteData = (e) => {
+  const DeleteData = (user) => {
     let person = prompt('Please confirm by typing, "DELETE"');
     if (person == 'DELETE') {
       const payload = {
         headers: { authorization: `Bearer ${session?.user.token}` },
-        data: { id: e.target.id },
+        data: { id: user },
       };
       axios
         .delete(`https://sequelize-roadmap.herokuapp.com/User`, payload)
@@ -65,7 +65,7 @@ const UnActiveUsers = (props) => {
                 </div>
 
                 <div className={user_styles.OverButton}>
-                  <button id={user.id} onClick={DeleteData}>
+                  <button id={user.id} onClick={() => DeleteData(user.id)}>
                     <DeleteForeverIcon className={user_styles.icon} />
                   </button>
                 </div>

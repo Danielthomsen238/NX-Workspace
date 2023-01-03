@@ -65,10 +65,6 @@ const CourseDetail = ({ user }) => {
       });
   };
 
-  const Other = (X) => {
-    return !X;
-  };
-
   //function that makes editing true
   if (session.user.role == 'User') {
     return (

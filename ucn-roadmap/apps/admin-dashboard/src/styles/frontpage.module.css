@@ -26,6 +26,8 @@
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
   width: 40vw;
   height: 85vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .guide h1 {
   margin-bottom: 0.5vw;
