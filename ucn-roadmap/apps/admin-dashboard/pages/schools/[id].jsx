@@ -42,17 +42,7 @@ const SchoolDetails = ({ school }) => {
   const config = {
     headers: { authorization: `Bearer ${session?.user.token}` },
   };
-  const HandleCancel = (e) => {
-    setItemClicked(e.target.className);
-    setSchoolName(school.name);
-    setSchoolPhone(school.telefon);
-    setSchoolEmail(school.email);
-    setSchoolImage(school.image);
-    setSchoolAddresse(school.address);
-    setSchoolZip(school.zip);
-    setSchoolCity(school.city);
-    setSchoolContent(school.description);
-  };
+
   const handleSubmit = (e) => {
     Geocode.setApiKey(process.env.NEXT_PUBLIC_GOOGLE_API);
     Geocode.setLanguage('en');
@@ -83,6 +73,7 @@ const SchoolDetails = ({ school }) => {
         lat: lat,
         lng: lng,
       };
+      console.log(payload);
       axios
         .put(`https://sequelize-roadmap.herokuapp.com/school`, payload, config)
         .then((response) => {
