@@ -62,7 +62,7 @@ const SchoolDetails = ({ school }) => {
 
     const submitSkoleEdit = (lat, lng) => {
       const payload = {
-        id: itemClicked,
+        id: school.id,
         name: schoolName,
         address: schoolAddresse,
         zip: schoolZip,
