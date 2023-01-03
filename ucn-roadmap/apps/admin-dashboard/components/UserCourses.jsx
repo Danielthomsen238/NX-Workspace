@@ -56,16 +56,19 @@ const UserCourses = (props) => {
               <td>{course.duration}</td>
               <td>{course.category.title}</td>
               <td className={courses_styles.action}>
-                <button>
-                  <EditIcon
-                    className={user_styles.icon}
-                    onClick={() => router.push(`/courses/${course.id}`)}
-                  />
-                </button>
+                <div className={user_styles.OverButton}>
+                  <button>
+                    <EditIcon
+                      className={user_styles.icon}
+                      onClick={() => router.push(`/courses/${course.id}`)}
+                    />
+                  </button>
+                </div>
 
                 <div className={user_styles.OverButton}>
-                  <button id={course.id} onClick={DeleteData}></button>
-                  <DeleteForeverIcon className={user_styles.icon} />
+                  <button id={course.id} onClick={DeleteData}>
+                    <DeleteForeverIcon className={user_styles.icon} />
+                  </button>
                 </div>
               </td>
             </tr>

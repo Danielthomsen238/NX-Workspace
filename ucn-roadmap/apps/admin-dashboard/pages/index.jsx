@@ -79,15 +79,13 @@ const Index = () => {
   } else if (session.user.active == false) {
     return (
       <>
-        <Animate>
-          <section className={frontpage_styles.container}>
-            <h2>Du er logget ind</h2>
-            <p>
-              men du er ikke blevet aktiveret af en admin endnu, så du kan ikke
-              se eller redigere noget.
-            </p>
-          </section>
-        </Animate>
+        <section className={frontpage_styles.container}>
+          <h2>Du er logget ind</h2>
+          <p>
+            men du er ikke blevet aktiveret af en admin endnu, så du kan ikke se
+            eller redigere noget.
+          </p>
+        </section>
       </>
     );
   }

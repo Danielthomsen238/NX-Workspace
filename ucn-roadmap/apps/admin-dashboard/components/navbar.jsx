@@ -27,13 +27,10 @@ const Navbar = () => {
       <>
         <nav className={navbar_styles.nav}>
           <div className={navbar_styles.current_user_container}>
-            <div />
+            <div>{session.user.firstname.charAt(0)}</div>
             <h2 className={navbar_styles.current_user_name}>
               {session.user.firstname}
             </h2>
-            <p className={navbar_styles.current_user_school}>
-              {session.user.username}
-            </p>
           </div>
           <ul
             className={
@@ -77,7 +74,7 @@ const Navbar = () => {
                 <a>Uddannelser</a>
               </Link>
             </li>
-            {session.user.role == 'Admin' ? (
+            {/* {session.user.role == 'Admin' ? (
               <li>
                 <ListIcon className={navbar_styles.icons} />
                 <Link href="/categoriesList">
@@ -86,7 +83,7 @@ const Navbar = () => {
               </li>
             ) : (
               <></>
-            )}
+            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>
@@ -102,13 +99,10 @@ const Navbar = () => {
       <>
         <nav className={navbar_styles.nav}>
           <div className={navbar_styles.current_user_container}>
-            <div />
+            <div>{session.user.firstname.charAt(0)}</div>
             <h2 className={navbar_styles.current_user_name}>
               {session.user.firstname}
             </h2>
-            <p className={navbar_styles.current_user_school}>
-              {session.user.username}
-            </p>
           </div>
           <ul
             className={
@@ -145,7 +139,7 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {session.user.role == 'Admin' ? (
+            {/* {session.user.role == 'Admin' ? (
               <li>
                 <ListIcon className={navbar_styles.icons} />
                 <Link href="/categoriesList">
@@ -154,7 +148,7 @@ const Navbar = () => {
               </li>
             ) : (
               <></>
-            )}
+            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>
@@ -171,13 +165,10 @@ const Navbar = () => {
       <>
         <nav className={navbar_styles.nav}>
           <div className={navbar_styles.current_user_container}>
-            <div />
+            <div>{session.user.firstname.charAt(0)}</div>
             <h2 className={navbar_styles.current_user_name}>
               {session.user.firstname}
             </h2>
-            <p className={navbar_styles.current_user_school}>
-              {session.user.username}
-            </p>
           </div>
           <ul
             className={
@@ -201,14 +192,14 @@ const Navbar = () => {
               <ApartmentIcon className={navbar_styles.icons} />
               <a>Hub/Skole</a>
             </li>
-            {session.user.role == 'Admin' ? (
+            {/* {session.user.role == 'Admin' ? (
               <li>
                 <ListIcon className={navbar_styles.icons} />
                 <a>Kategori</a>
               </li>
             ) : (
               <></>
-            )}
+            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>

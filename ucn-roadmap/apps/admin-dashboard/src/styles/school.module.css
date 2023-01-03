@@ -63,6 +63,10 @@
   background-color: rgba(221, 221, 221, 0);
   padding-left: 0.5vw;
 }
+.table .action {
+  display: flex;
+}
+
 .icon {
   cursor: pointer;
 }
@@ -72,13 +76,16 @@
   width: 3vw;
   height: 3vw;
   display: inline;
+  margin-left: 0.5vw;
 }
 .OverButton button {
   position: absolute;
-  width: 2vw;
-  height: 2vw;
   background-color: rgba(221, 221, 221, 0);
   cursor: pointer;
+}
+.OverButton button svg {
+  margin-top: 0.5vw;
+  font-size: 32px;
 }
 
 .NotActive {

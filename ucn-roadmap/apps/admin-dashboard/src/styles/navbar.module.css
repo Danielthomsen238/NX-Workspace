@@ -48,29 +48,29 @@
   height: 8vw;
 }
 .current_user_container h2 {
-  margin-left: 8vw;
-  padding-top: 2vw;
+  margin-left: 9vw;
+  padding-top: 3vw;
   font-size: 2vw;
-}
-.current_user_container p {
-  margin-left: 8vw;
-  font-size: 1vw;
-  word-wrap: break-word;
 }
 .current_user_container div {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.5vw;
   width: 5vw;
   height: 5vw;
+  margin-left: 2vw;
   top: 1.4vw;
   left: 0.5vw;
   border-radius: 50%;
-  background-color: greenyellow;
+  background-color: #004250;
 }
 
 .icons {
   position: absolute;
   left: 1vw;
-  top: 1vw;
+  top: 1.3vw;
   font-size: 1.5vw;
   color: white;
 }

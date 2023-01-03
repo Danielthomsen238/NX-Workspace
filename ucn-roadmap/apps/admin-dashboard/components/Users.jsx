@@ -43,7 +43,7 @@ const Users = () => {
                 <th>Telefon</th>
                 <th>E-mail</th>
                 <th>Skole Navn</th>
-                <th>Role_id</th>
+                <th>Role</th>
                 <th>Aktiveret</th>
                 <th>Handling</th>
               </tr>
@@ -53,6 +53,9 @@ const Users = () => {
             </tbody>
           </table>
         </div>
+        <h2 className={user_styles.table_h2}>
+          &#x2022; Brugere der er aktiveret
+        </h2>
         <div className={user_styles.admin_body}>
           <table className={user_styles.table}>
             <thead>
@@ -62,7 +65,7 @@ const Users = () => {
                 <th>Telefon</th>
                 <th>E-mail</th>
                 <th>Skole Navn</th>
-                <th>Role_id</th>
+                <th>Role</th>
                 <th>Aktiveret</th>
                 <th>Handling</th>
               </tr>
@@ -72,6 +75,9 @@ const Users = () => {
             </tbody>
           </table>
         </div>
+        <Link href="/createUser">
+          <div className={user_styles.create_user_btn}>Opret Bruger</div>
+        </Link>
       </div>
     );
   }

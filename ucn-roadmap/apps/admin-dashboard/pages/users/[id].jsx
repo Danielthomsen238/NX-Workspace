@@ -194,23 +194,20 @@ const CourseDetail = ({ user }) => {
                   value={userActive}
                   onChange={(e) => setUserActive(e.target.value)}
                 >
-                  <option
-                    value={user.active.toString()}
-                    className={user.active.toString()}
-                  >
-                    {user.active.toString()}
+                  <option value={0} className="ikke_aktiveret">
+                    Ikke aktiveret
                   </option>
-                  <option
-                    value={Other(user.active).toString()}
-                    className={Other(user.active).toString()}
-                  >
-                    {Other(user.active).toString()}
+                  <option value={1} className="aktiveret">
+                    Aktiveret
                   </option>
                 </select>
               </div>
             </fieldset>
             <div className={createUse_styles.button_container}>
               <button type="submit">Opdater Bruger</button>
+              <button type="button" onClick={() => router.push('/userList')}>
+                Fortryd
+              </button>
             </div>
           </form>
         </div>

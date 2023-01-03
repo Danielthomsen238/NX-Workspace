@@ -103,12 +103,15 @@ const Schools = () => {
                         <button
                           className={school.id}
                           onClick={() => router.push(`/schools/${school.id}`)}
-                        ></button>
-                        <EditIcon className={school_styles.icon} />
+                        >
+                          {' '}
+                          <EditIcon className={school_styles.icon} />
+                        </button>
                       </div>
                       <div className={school_styles.OverButton}>
-                        <button id={school.id} onClick={DeleteData}></button>
-                        <DeleteForeverIcon className={school_styles.icon} />
+                        <button id={school.id} onClick={DeleteData}>
+                          <DeleteForeverIcon className={school_styles.icon} />
+                        </button>
                       </div>
                     </td>
                   </tr>

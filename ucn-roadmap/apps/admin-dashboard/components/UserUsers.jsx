@@ -65,19 +65,22 @@ const UserUsers = () => {
               <td>{user.lastname}</td>
               <td>{user.telefon}</td>
               <td>{user.email}</td>
-              <td>
+              <td className={user_styles.action}>
                 <div className={user_styles.OverButton}>
                   <button
                     className={user.id}
                     onClick={(e) => {
                       router.push(`users/${user.id}`);
                     }}
-                  ></button>
-                  <EditIcon className={user_styles.icon} />
+                  >
+                    {' '}
+                    <EditIcon className={user_styles.icon} />
+                  </button>
                 </div>
                 <div className={user_styles.OverButton}>
-                  <button id={user.id} onClick={DeleteData}></button>
-                  <DeleteForeverIcon className={user_styles.icon} />
+                  <button id={user.id} onClick={DeleteData}>
+                    <DeleteForeverIcon className={user_styles.icon} />
+                  </button>
                 </div>
               </td>
             </tr>

@@ -2,16 +2,14 @@
 .user_body {
   font-family: "Montserrat", sans-serif;
   width: 80vw;
-  margin-bottom: 1vw;
   overflow-y: scroll;
-  max-height: 90vh;
+  max-height: 40vh;
 }
 
 .admin_body {
   font-family: "Montserrat", sans-serif;
   width: 80vw;
-  margin-bottom: 3vw;
-  max-height: 50vh;
+  max-height: 40vh;
   overflow-y: scroll;
 }
 
@@ -26,6 +24,7 @@
   background-color: #0046AD;
   color: #fff;
   transition: 300ms ease-in-out;
+  margin-top: 1vw;
   margin-bottom: 0.5vw;
   padding: 0.5vw;
   border: 2px solid #0046AD;
@@ -39,37 +38,36 @@
 
 .table {
   font-family: "Montserrat", sans-serif;
-  border-collapse: collapse;
   width: 100%;
   color: rgb(33, 33, 33);
+  border-collapse: collapse;
 }
 .table td,
 .table th {
-  font-size: 1.2vw;
+  font-size: 1.1vw;
+  padding-top: 6px;
+  padding-left: 0.5vw;
+  padding-right: 0.5vw;
+  padding-bottom: 6px;
   border: 1px solid #ddd;
 }
-.table td div,
-.table th div {
-  min-width: 15vw;
-  max-width: 25vw;
-  overflow: auto;
-}
 .table th:last-child {
-  width: 5vw;
+  width: 2vw;
+  background-color: rgb(2, 108, 206);
 }
-.table th:nth-child(6) {
-  width: 5vw;
+.table td {
+  min-width: 5vw;
+  max-width: 7vw;
+  overflow: hidden;
+  border-color: rgb(191, 190, 190);
+  text-overflow: ellipsis;
 }
-.table th:nth-child(5) {
-  width: 10vw;
-}
-.table th:nth-child(7) {
-  width: 6vw;
+.table td div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200vw;
 }
 .table th {
-  padding-top: 12px;
-  padding-left: 0.5vw;
-  padding-bottom: 12px;
   text-align: left;
   background-color: #004250;
   color: white;
@@ -92,12 +90,16 @@
   background-color: rgba(221, 221, 221, 0);
   padding-left: 0.5vw;
 }
+.table .action {
+  display: flex;
+}
 
 .icon {
   cursor: pointer;
 }
 
 .OverButton {
+  margin-left: 0.5vw;
   position: relative;
   width: 3vw;
   height: 3vw;
@@ -105,13 +107,16 @@
 }
 .OverButton button {
   position: absolute;
-  width: 2vw;
-  height: 2vw;
   background-color: rgba(221, 221, 221, 0);
   cursor: pointer;
 }
+.OverButton button svg {
+  margin-top: 0.5vw;
+  font-size: 32px;
+}
 
 .table_h2 {
-  background-color: white;
-  padding: 1vw;
+  background-color: #252f32;
+  color: white;
+  padding: 1vh 0;
 }

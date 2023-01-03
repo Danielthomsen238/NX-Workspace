@@ -63,7 +63,9 @@ const Courses = () => {
           </table>
         </div>
         <Link href="/createCourse">
-          <button className={courses_styles.button}>Opret Uddannelse</button>
+          <button className={courses_styles.button_table}>
+            Opret Uddannelse
+          </button>
         </Link>
       </div>
     );
@@ -94,7 +96,9 @@ const Courses = () => {
           </table>
         </div>
         <Link href="/createCourse">
-          <button className={courses_styles.button}>Opret Uddannelse</button>
+          <button className={courses_styles.button_table}>
+            Opret Uddannelse
+          </button>
         </Link>
       </div>
     );

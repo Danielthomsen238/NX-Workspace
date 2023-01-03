@@ -83,6 +83,7 @@
       padding-left: 0.5vw;
     }
     .action {
+      display: flex;
     }
   }
   .icon {
@@ -94,11 +95,13 @@
     width: 3vw;
     height: 3vw;
     display: inline;
-  
+    margin-left: 0.5vw;
     button {
       position: absolute;
-      width: 2vw;
-      height: 2vw;
+      svg {
+        margin-top: 0.5vw;
+        font-size: 32px;
+      }
       background-color: rgba(221, 221, 221, 0);
       cursor: pointer;
     }
@@ -106,7 +109,27 @@
 
   .button {
     font-family: 'Montserrat', sans-serif;
-    margin-top: 1vw;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+        width: 100%;
+        font-size: 1.3vw;
+        border-radius: 0.4vw;
+        background-color: $ucn_Blue;
+        color: $white_Color;
+        transition: 300ms ease-in-out;
+        padding: 0.5vw;
+        border: 2px solid $ucn_Blue;
+        cursor: pointer;
+        &:hover {
+          background-color: $black_Color;
+          border: 2px solid $black_Color;
+          color: $white_Color;
+        }
+  }
+  .button_table {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
         width: 15vw;
         font-size: 1.3vw;
         border-radius: 0.4vw;
@@ -129,12 +152,13 @@
     flex-direction: column;
     align-items: center;
     left: 45%;
-    top: 10%;
+    top: 2%;
     background-color: $white_Color;
-    height: 80vh;
+    max-height: 95vh;
     width: 30vw;
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px $boxShadow_Color;
+    padding: 1vw 1vw 0vw 1vw;
   }
 
   .form {
@@ -142,10 +166,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2vw;
     fieldset {
       border-radius: 10px;
-        padding: 1vw;
+      padding: 1vw 1vw 1vw 1vw;
         border-color: rgba(0, 0, 0, 0.45);
         legend {
             font-size: 1.3vw;
@@ -163,6 +186,7 @@
       font-size: 1.3vw;
       margin-bottom: 1vw;
       color: $base_Color;
+      padding: 0.5vw;
       &::placeholder {
         color: rgba(0, 0, 0, 0.45);
       }
@@ -178,15 +202,20 @@
       height: auto;
       font-size: 1.3vw;
       margin-bottom: 1vw;
+      color: $base_Color;
+      border-width: 2px;
     }
 
     textarea {
       border-radius: 0.4vw;
       border-color: rgba(0, 0, 0, 0.45);
       font-family: 'Montserrat', sans-serif;
-      width: 100%;
+      width: 95%;
       font-size: 1.3vw;
       resize: none;
       height: 20vh;
+      padding: 0.5vw;
+      color: $base_Color;
+      border-width: 2px;
     }
   }

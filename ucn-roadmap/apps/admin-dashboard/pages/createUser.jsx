@@ -139,6 +139,9 @@ const CreateUser = () => {
             ) : (
               <button type="submit">Opret Bruger</button>
             )}
+            <button type="button" onClick={() => router.push('/userList')}>
+              Fortryd
+            </button>
           </div>
         </form>
       </div>

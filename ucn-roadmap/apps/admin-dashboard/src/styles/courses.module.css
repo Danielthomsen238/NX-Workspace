@@ -71,6 +71,10 @@
   background-color: rgba(221, 221, 221, 0);
   padding-left: 0.5vw;
 }
+.table .action {
+  display: flex;
+}
+
 .icon {
   cursor: pointer;
 }
@@ -80,19 +84,23 @@
   width: 3vw;
   height: 3vw;
   display: inline;
+  margin-left: 0.5vw;
 }
 .OverButton button {
   position: absolute;
-  width: 2vw;
-  height: 2vw;
   background-color: rgba(221, 221, 221, 0);
   cursor: pointer;
+}
+.OverButton button svg {
+  margin-top: 0.5vw;
+  font-size: 32px;
 }
 
 .button {
   font-family: "Montserrat", sans-serif;
-  margin-top: 1vw;
-  width: 15vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  width: 100%;
   font-size: 1.3vw;
   border-radius: 0.4vw;
   background-color: #0046AD;
@@ -108,18 +116,39 @@
   color: #fff;
 }
 
+.button_table {
+  font-family: "Montserrat", sans-serif;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  width: 15vw;
+  font-size: 1.3vw;
+  border-radius: 0.4vw;
+  background-color: #0046AD;
+  color: #fff;
+  transition: 300ms ease-in-out;
+  padding: 0.5vw;
+  border: 2px solid #0046AD;
+  cursor: pointer;
+}
+.button_table:hover {
+  background-color: black;
+  border: 2px solid black;
+  color: #fff;
+}
+
 .form_container {
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   left: 45%;
-  top: 10%;
+  top: 2%;
   background-color: #fff;
-  height: 80vh;
+  max-height: 95vh;
   width: 30vw;
   border-radius: 10px;
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.189);
+  padding: 1vw 1vw 0vw 1vw;
 }
 
 .form {
@@ -127,11 +156,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vw;
 }
 .form fieldset {
   border-radius: 10px;
-  padding: 1vw;
+  padding: 1vw 1vw 1vw 1vw;
   border-color: rgba(0, 0, 0, 0.45);
 }
 .form fieldset legend {
@@ -149,6 +177,7 @@
   font-size: 1.3vw;
   margin-bottom: 1vw;
   color: #004250;
+  padding: 0.5vw;
 }
 .form input::-moz-placeholder {
   color: rgba(0, 0, 0, 0.45);
@@ -170,13 +199,18 @@
   height: auto;
   font-size: 1.3vw;
   margin-bottom: 1vw;
+  color: #004250;
+  border-width: 2px;
 }
 .form textarea {
   border-radius: 0.4vw;
   border-color: rgba(0, 0, 0, 0.45);
   font-family: "Montserrat", sans-serif;
-  width: 100%;
+  width: 95%;
   font-size: 1.3vw;
   resize: none;
   height: 20vh;
+  padding: 0.5vw;
+  color: #004250;
+  border-width: 2px;
 }

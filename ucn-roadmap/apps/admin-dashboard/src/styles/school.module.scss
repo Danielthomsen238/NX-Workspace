@@ -75,7 +75,7 @@
       padding-left: 0.5vw;
     }
     .action {
-
+        display: flex;
     }
   }
   
@@ -88,11 +88,13 @@
   width: 3vw;
   height: 3vw;
   display: inline;
-
+  margin-left: 0.5vw;
   button {
     position: absolute;
-    width: 2vw;
-    height: 2vw;
+    svg {
+      margin-top: 0.5vw;
+      font-size: 32px;
+    }
     background-color: rgba(221, 221, 221, 0);
     cursor: pointer;
   }

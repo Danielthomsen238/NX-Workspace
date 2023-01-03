@@ -154,6 +154,7 @@ const CreateCourse = () => {
             />
           </fieldset>
         </form>
+
         <button
           className={courses_styles.button}
           onClick={() => {
@@ -161,6 +162,14 @@ const CreateCourse = () => {
           }}
         >
           Opret Uddannelse
+        </button>
+        <button
+          className={courses_styles.button}
+          onClick={() => {
+            router.push('/courseList');
+          }}
+        >
+          Fortryd
         </button>
       </div>
     </Animate>

@@ -5,6 +5,7 @@ import Geocode from 'react-geocode';
 import school_styles from '../../src/styles/school.module.css';
 import axios from 'axios';
 import Animate from '../../components/Animate';
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
   const id = context.params.id;
@@ -35,6 +36,7 @@ const SchoolDetails = ({ school }) => {
   const [schoolCity, setSchoolCity] = useState(school.city);
   const [schoolContent, setSchoolContent] = useState(school.description);
   const [itemClicked, setItemClicked] = useState();
+  const router = useRouter();
   let GeneratedImageUrl;
 
   const config = {
@@ -93,11 +95,6 @@ const SchoolDetails = ({ school }) => {
     };
   };
 
-  //function that makes editing true
-  const HandleEdit = (e) => {
-    setItemClicked(e.target.className);
-  };
-
   const fileSelectedHandler = (event) => {
     const formdata = new FormData();
     formdata.append('image', event.target.files[0]);
@@ -132,10 +129,7 @@ const SchoolDetails = ({ school }) => {
             layout="fill"
           />
           <div className={singleSchool_styles.imgEdit}>
-            <label
-              className={singleSchool_styles.files}
-              htmlFor={itemClicked == school.id ? 'files' : ''}
-            >
+            <label className={singleSchool_styles.files} htmlFor="files">
               Opdater billede
             </label>
             <input type="file" id="files" onChange={fileSelectedHandler} />
@@ -150,7 +144,6 @@ const SchoolDetails = ({ school }) => {
             }
             id="name"
             type="text"
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolName}
             onChange={(e) => setSchoolName(e.target.value)}
           />
@@ -159,7 +152,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolPhone}
             onChange={(e) => setSchoolPhone(e.target.value)}
             type="number"
@@ -169,7 +161,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolEmail}
             onChange={(e) => setSchoolEmail(e.target.value)}
             type="text"
@@ -179,7 +170,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolAddresse}
             onChange={(e) => setSchoolAddresse(e.target.value)}
             type="text"
@@ -189,7 +179,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolZip}
             onChange={(e) => setSchoolZip(e.target.value)}
             type="text"
@@ -199,7 +188,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolCity}
             onChange={(e) => setSchoolCity(e.target.value)}
             type="text"
@@ -209,7 +197,6 @@ const SchoolDetails = ({ school }) => {
             className={
               itemClicked == school.id ? '' : singleSchool_styles.disabled
             }
-            disabled={itemClicked == school.id ? '' : 'disabled'}
             value={schoolContent}
             onChange={(e) => setSchoolContent(e.target.value)}
           ></textarea>
@@ -220,21 +207,18 @@ const SchoolDetails = ({ school }) => {
             onClick={(e) => handleSubmit(e)}
           >
             Gem ændringer
-          </button>{' '}
-          {itemClicked == school.id ? (
-            <button className={school_styles.icon} onClick={HandleCancel}>
-              Fortryd
-            </button>
-          ) : (
-            <button
-              className={school.id}
-              onClick={(e) => {
-                HandleEdit(e);
-              }}
-            >
-              Rediger
-            </button>
-          )}
+          </button>
+
+          <button
+            className={school.id}
+            onClick={() => {
+              session.user.role === 'Admin'
+                ? router.push('/schoolList')
+                : router.push('/');
+            }}
+          >
+            Fortryd
+          </button>
         </div>
       </div>
     </Animate>
