@@ -125,6 +125,12 @@ const Navbar = () => {
               />
             </li>
             <li>
+              <HomeIcon className={navbar_styles.icons} />
+              <Link href="/">
+                <a>Bruger Manual</a>
+              </Link>
+            </li>
+            <li>
               <Groups2Icon className={navbar_styles.icons} />
               <Link href="/userList">
                 <a>Brugere</a>
@@ -189,6 +195,12 @@ const Navbar = () => {
                 }
                 onClick={handleDropUp}
               />
+            </li>
+            <li>
+              <HomeIcon className={navbar_styles.icons} />
+              <Link href="/">
+                <a>Bruger Manual</a>
+              </Link>
             </li>
             <li>
               <Groups2Icon className={navbar_styles.icons} />
