@@ -98,7 +98,7 @@ const Index = ({ csrfToken }) => {
       firstname: fornavn,
       lastname: efternavn,
       telefon: telefon,
-      email: email,
+      email: email.toLowerCase(),
       password: password,
       school_id: skoleId,
     };
@@ -147,7 +147,7 @@ const Index = ({ csrfToken }) => {
   //submit reset password
   const handleReset = (e) => {
     const payload = {
-      username: resetEmail,
+      username: resetEmail.toLowerCase(),
       telefon: resetTelefon,
     };
     axios
@@ -181,7 +181,6 @@ const Index = ({ csrfToken }) => {
             name="user"
             type="email"
             value={loginEmail}
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={(e) => setLoginEmail(e.target.value)}
             required
           />
@@ -217,7 +216,6 @@ const Index = ({ csrfToken }) => {
             name="user"
             type="email"
             value={resetEmail}
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             onChange={(e) => setResetEmail(e.target.value)}
             required
           />
@@ -247,7 +245,6 @@ const Index = ({ csrfToken }) => {
               name="user"
               type="email"
               value={loginEmail}
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               onChange={(e) => setLoginEmail(e.target.value)}
               required
             />

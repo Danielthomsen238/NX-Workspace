@@ -27,8 +27,9 @@ export default NextAuth({
       },
       async authorize(credentials) {
         if (credentials.password) {
+          console.log(credentials.user.toLowerCase());
           const accessToken = await login(
-            credentials.user,
+            credentials.user.toLowerCase(),
             credentials.password
           );
           const payload = jwt_decode(accessToken.data.token);
@@ -53,7 +54,7 @@ export default NextAuth({
           }
         } else if (credentials.otp) {
           const accessToken = await oneTimeLogin(
-            credentials.user,
+            credentials.user.toLowerCase(),
             credentials.otp
           );
           const payload = jwt_decode(accessToken.data.token);
