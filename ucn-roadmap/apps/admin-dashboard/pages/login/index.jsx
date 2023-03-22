@@ -143,7 +143,7 @@ const Index = ({ csrfToken }) => {
       );
   };
   //Error handling
-  const error = router.query.error;
+  // const error = router.query.error;
   //submit reset password
   const handleReset = (e) => {
     const payload = {
