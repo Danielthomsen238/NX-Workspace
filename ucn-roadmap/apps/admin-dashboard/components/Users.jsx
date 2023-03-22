@@ -88,8 +88,8 @@ const Users = () => {
           <table className={user_styles.table}>
             <thead>
               <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
                 <th>Telefon</th>
                 <th>E-mail</th>
                 <th>Handling</th>
