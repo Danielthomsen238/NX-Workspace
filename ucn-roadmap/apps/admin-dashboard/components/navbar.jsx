@@ -2,25 +2,14 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Groups2Icon from '@mui/icons-material/Groups2';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import SchoolIcon from '@mui/icons-material/School';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import HomeIcon from '@mui/icons-material/Home';
 import Link from 'next/link';
 import navbar_styles from '../src/styles/navbar.module.css';
-
 import { useSession } from 'next-auth/react';
-
-import { useState } from 'react';
-
 import { signOut } from 'next-auth/react';
 
 const Navbar = () => {
-  const { data: session, status } = useSession();
-
-  const [isDroppedUp, setIsDroppedUp] = useState(false);
-
-  const handleDropUp = (event) => {
-    setIsDroppedUp((current) => !current);
-  };
+  const { data: session } = useSession();
 
   if (session.user.active && !session.user.hub) {
     return (
@@ -32,20 +21,8 @@ const Navbar = () => {
               {session.user.firstname}
             </h2>
           </div>
-          <ul
-            className={
-              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
-            }
-          >
-            <li>
-              Menu
-              <ArrowDropUpIcon
-                className={
-                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
-                }
-                onClick={handleDropUp}
-              />
-            </li>
+          <ul className={navbar_styles.droppedul}>
+            <li>Menu</li>
             <li>
               <HomeIcon className={navbar_styles.icons} />
               <Link href="/">
@@ -80,16 +57,6 @@ const Navbar = () => {
                 <a>Uddannelser</a>
               </Link>
             </li>
-            {/* {session.user.role == 'Admin' ? (
-              <li>
-                <ListIcon className={navbar_styles.icons} />
-                <Link href="/categoriesList">
-                  <a>Kategori</a>
-                </Link>
-              </li>
-            ) : (
-              <></>
-            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>
@@ -110,20 +77,8 @@ const Navbar = () => {
               {session.user.firstname}
             </h2>
           </div>
-          <ul
-            className={
-              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
-            }
-          >
-            <li>
-              Menu
-              <ArrowDropUpIcon
-                className={
-                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
-                }
-                onClick={handleDropUp}
-              />
-            </li>
+          <ul className={navbar_styles.droppedul}>
+            <li>Menu</li>
             <li>
               <HomeIcon className={navbar_styles.icons} />
               <Link href="/">
@@ -151,16 +106,6 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
-            {/* {session.user.role == 'Admin' ? (
-              <li>
-                <ListIcon className={navbar_styles.icons} />
-                <Link href="/categoriesList">
-                  <a>Kategori</a>
-                </Link>
-              </li>
-            ) : (
-              <></>
-            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>
@@ -182,20 +127,8 @@ const Navbar = () => {
               {session.user.firstname}
             </h2>
           </div>
-          <ul
-            className={
-              isDroppedUp ? navbar_styles.notdropped : navbar_styles.droppedul
-            }
-          >
-            <li>
-              Admin
-              <ArrowDropUpIcon
-                className={
-                  isDroppedUp ? navbar_styles.dropped : navbar_styles.arrows
-                }
-                onClick={handleDropUp}
-              />
-            </li>
+          <ul className={navbar_styles.droppedul}>
+            <li>Admin</li>
             <li>
               <HomeIcon className={navbar_styles.icons} />
               <Link href="/">
@@ -210,14 +143,6 @@ const Navbar = () => {
               <ApartmentIcon className={navbar_styles.icons} />
               <a>Hub/Skole</a>
             </li>
-            {/* {session.user.role == 'Admin' ? (
-              <li>
-                <ListIcon className={navbar_styles.icons} />
-                <a>Kategori</a>
-              </li>
-            ) : (
-              <></>
-            )} */}
           </ul>
           <ul>
             <li onClick={() => signOut()}>
